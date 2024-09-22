@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:solar/core/helper/spacing.dart';
 import 'package:solar/core/routing/routes.dart';
 import 'package:solar/core/widgets/widgets/main_image.dart';
@@ -10,6 +11,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    testSentryError();
     List<Map<String, dynamic>> data = [
       {
         'icon': 'assets/images/screen_one/price_offer_icon.png',
@@ -55,5 +57,18 @@ class HomeScreen extends StatelessWidget {
         ],
       )),
     );
+  }
+
+  Future<void> testSentryError() async {
+    try {
+      int? num;
+      int result = num! + 1;
+    } catch (exception, stackTrace) {
+      print('exception');
+      await Sentry.captureException(
+        exception,
+        stackTrace: stackTrace,
+      );
+    }
   }
 }
