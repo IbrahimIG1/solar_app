@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solar/core/helper/spacing.dart';
-import 'package:solar/core/routing/routes.dart';
+import 'package:solar/core/routing/router_check.dart';
 import 'package:solar/core/widgets/widgets/main_image.dart';
 import 'package:solar/core/widgets/widgets/main_item.dart';
 
@@ -13,21 +13,25 @@ class HomeScreen extends StatelessWidget {
     // testSentryError();
     List<Map<String, dynamic>> data = [
       {
+        "id": "Price offers-1",
         'icon': 'assets/images/home_screen/price_offer_icon.png',
         'e_name': "Price offers",
         'ar_name': "عروض أسعار",
       },
       {
+        "id": "Technical offer",
         'icon': 'assets/images/home_screen/calculator_icon.png',
         'e_name': "Technical offer",
         'ar_name': "العرض الفني",
       },
       {
+        "id": "Maintenance-1",
         'icon': 'assets/images/home_screen/settings_icon.png',
         'e_name': "Maintenance",
         'ar_name': "الصيانة",
       },
       {
+        "id": "customer Base",
         'icon': 'assets/images/home_screen/customer_base_icon.png',
         'e_name': "customer Base",
         'ar_name': "قاعدة العملاء",
@@ -50,7 +54,7 @@ class HomeScreen extends StatelessWidget {
                     horizontal: 10.w,
                   ),
                   child: MainItem(
-                    routeName: checkRoutNameNaviigation(data[index]['e_name']),
+                    routeName: checkRoutNameNaviigation(data[index]['id']),
                     data: data,
                     index: index,
                   ),
@@ -63,20 +67,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  String checkRoutNameNaviigation(String screenName) {
-    switch (screenName) {
-      case 'Price offers':
-        return Routes.priceOffersScreen;
-      case 'Technical offer':
-        return Routes.technicalOfferScreen;
-      case 'Maintenance':
-        return Routes.technicalOfferScreen;
-      case 'customer Base':
-        return Routes.technicalOfferScreen;
-      default:
-        return '';
-    }
-  }
+ 
   // Future<void> testSentryError() async {
   //   try {
   //     int? num;

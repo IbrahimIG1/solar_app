@@ -4,10 +4,10 @@ import 'package:solar/core/helper/extensions.dart';
 import 'package:solar/core/helper/spacing.dart';
 import 'package:solar/core/routing/routes.dart';
 import 'package:solar/core/widgets/widgets/main_image.dart';
-import 'package:solar/features/categories/widgets/item_card.dart';
+import 'package:solar/features/home/screens/price_offers/screens/new_price_offers/screens/lighting_stations_categories/ui/widgets/item_card.dart';
 
-class CategoriesScreen extends StatelessWidget {
-  const CategoriesScreen({super.key});
+class LightingStationsCategoriesScreen extends StatelessWidget {
+  const LightingStationsCategoriesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -81,21 +81,21 @@ class CategoriesScreen extends StatelessWidget {
         'second_choose': "وات اللوح",
         'thired_choose': "عدد الالواح",
         'icon': 'assets/images/categories_icons/car_electric.png',
-        'width': 120.w,
-        'height': 92.8.h,
+        'width': 144.22.w,
+        'height': 140.22.h,
       },
-      {
-        'first_name': 'Panel Type',
-        'second_name': "panel watt",
-        'thired_name': "Number of panels",
-        'forth_name': "panal Type",
-        'first_choose': "اللوح",
-        'second_choose': "وات",
-        'thired_choose': "عدد الالواح",
-        'icon': 'assets/images/categories_icons/settings.png',
-        'width': 100.w,
-        'height': 100.h,
-      },
+      // {
+      //   'first_name': 'Panel Type',
+      //   'second_name': "panel watt",
+      //   'thired_name': "Number of panels",
+      //   'forth_name': "panal Type",
+      //   'first_choose': "اللوح",
+      //   'second_choose': "وات",
+      //   'thired_choose': "عدد الالواح",
+      //   'icon': 'assets/images/categories_icons/settings.png',
+      //   'width': 100.w,
+      //   'height': 100.h,
+      // },
       {
         'first_name': 'Panel Type',
         'second_name': "panel watt",
@@ -109,7 +109,7 @@ class CategoriesScreen extends StatelessWidget {
         'height': 100.h,
       },
     ];
-    
+
     return Scaffold(
         body: SafeArea(
       child: Column(

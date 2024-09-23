@@ -2,27 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solar/core/helper/extensions.dart';
 import 'package:solar/core/helper/spacing.dart';
-import 'package:solar/core/routing/routes.dart';
+import 'package:solar/core/routing/router_check.dart';
 import 'package:solar/core/widgets/widgets/main_image.dart';
 import 'package:solar/core/widgets/widgets/main_item.dart';
 
-class SectionsScreen extends StatelessWidget {
-  const SectionsScreen({super.key});
+class NewPriceOffers extends StatelessWidget {
+  const NewPriceOffers({super.key});
 
   @override
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> data = [
       {
+        "id": "Lighting stations",
         'icon': 'assets/images/sections_screen/light_icon.png',
         'e_name': "Lighting stations",
         'ar_name': "محطات انارة",
       },
       {
+        "id": "Surface irrigation stations",
         'icon': 'assets/images/sections_screen/surrface.png',
         'e_name': "Surface irrigation stations",
         'ar_name': "محطات ري سطحي",
       },
       {
+        "id": "Deep irrigation stations",
         'icon': 'assets/images/sections_screen/deep.png',
         'e_name': "Deep irrigation stations",
         'ar_name': "محطات ري عميق",
@@ -41,14 +44,14 @@ class SectionsScreen extends StatelessWidget {
           verticalSpace(30),
           Expanded(
             child: ListView.builder(
-              itemCount: 3,
+              itemCount: data.length,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: EdgeInsets.symmetric(
                     horizontal: 10.w,
                   ),
                   child: MainItem(
-                    routeName: Routes.categoriesScreen,
+                    routeName: checkRoutNameNaviigation(data[index]['id']),
                     data: data,
                     index: index,
                   ),

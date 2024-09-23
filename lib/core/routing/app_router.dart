@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:solar/core/routing/routes.dart';
-import 'package:solar/features/categories/categories_screen.dart';
+import 'package:solar/features/home/screens/price_offers/screens/new_price_offers/screens/lighting_stations_categories/ui/categories_screen.dart';
 import 'package:solar/features/categories_details/categories_details.dart';
-import 'package:solar/features/home/home_screen.dart';
-import 'package:solar/features/home/screens/price_offer_screen/price_offers_screen.dart';
+import 'package:solar/features/home/ui/home_screen.dart';
+import 'package:solar/features/home/screens/price_offers/ui/price_offers_screen.dart';
 import 'package:solar/features/home/screens/technical_offer_screen/technical_offer_screen.dart';
-import 'package:solar/features/sections_screen/sections_screen.dart';
+import 'package:solar/features/home/screens/price_offers/screens/new_price_offers/ui/new_price_offers_screen.dart';
 
 class AppRouter {
   Route? generateRoute(RouteSettings settings) {
@@ -21,17 +21,21 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const PriceOffersScreen(),
         );
-         case Routes.technicalOfferScreen:
+      case Routes.newPriceOffersScreen:
+        return MaterialPageRoute(
+          builder: (_) => const NewPriceOffers(),
+        );
+      case Routes.technicalOfferScreen:
         return MaterialPageRoute(
           builder: (_) => const TechnicalOfferScreen(),
         );
       case Routes.sectionsScreen:
         return MaterialPageRoute(
-          builder: (_) => const SectionsScreen(),
+          builder: (_) => const NewPriceOffers(),
         );
-      case Routes.categoriesScreen:
+      case Routes.lightingStationscategoriesScreen:
         return MaterialPageRoute(
-          builder: (_) => const CategoriesScreen(),
+          builder: (_) => const LightingStationsCategoriesScreen(),
         );
       case Routes.categoriesDetailsScreen:
         return MaterialPageRoute(
@@ -39,11 +43,12 @@ class AppRouter {
             list: arguments as Map,
           ),
         );
+      case Routes.categoriesDetailsScreen:
       default:
         return MaterialPageRoute(
           builder: (_) => const Scaffold(
             body: Center(
-              child: Text('OnBording Screen'),
+              child: Text('No Screen Yet'),
             ),
           ),
         );
