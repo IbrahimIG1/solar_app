@@ -13,19 +13,24 @@ class HomeScreen extends StatelessWidget {
     // testSentryError();
     List<Map<String, dynamic>> data = [
       {
-        'icon': 'assets/images/screen_one/price_offer_icon.png',
+        'icon': 'assets/images/home_screen/price_offer_icon.png',
         'e_name': "Price offers",
         'ar_name': "عروض أسعار",
       },
       {
-        'icon': 'assets/images/screen_one/calculator_icon.png',
-        'e_name': "Solar Equation",
-        'ar_name': "معادلات الطاقه",
+        'icon': 'assets/images/home_screen/calculator_icon.png',
+        'e_name': "Technical offer",
+        'ar_name': "العرض الفني",
       },
       {
-        'icon': 'assets/images/screen_one/settings_icon.png',
+        'icon': 'assets/images/home_screen/settings_icon.png',
         'e_name': "Maintenance",
         'ar_name': "الصيانة",
+      },
+      {
+        'icon': 'assets/images/home_screen/customer_base_icon.png',
+        'e_name': "customer Base",
+        'ar_name': "قاعدة العملاء",
       }
     ];
     return Scaffold(
@@ -38,14 +43,14 @@ class HomeScreen extends StatelessWidget {
           verticalSpace(30),
           Expanded(
             child: ListView.builder(
-              itemCount: 3,
+              itemCount: data.length,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: EdgeInsets.symmetric(
                     horizontal: 10.w,
                   ),
                   child: MainItem(
-                    routeName: Routes.secondScreen,
+                    routeName: checkRoutNameNaviigation(data[index]['e_name']),
                     data: data,
                     index: index,
                   ),
@@ -58,6 +63,20 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
+  String checkRoutNameNaviigation(String screenName) {
+    switch (screenName) {
+      case 'Price offers':
+        return Routes.priceOffersScreen;
+      case 'Technical offer':
+        return Routes.technicalOfferScreen;
+      case 'Maintenance':
+        return Routes.technicalOfferScreen;
+      case 'customer Base':
+        return Routes.technicalOfferScreen;
+      default:
+        return '';
+    }
+  }
   // Future<void> testSentryError() async {
   //   try {
   //     int? num;
