@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:solar/core/routing/app_router.dart';
 import 'package:solar/core/routing/routes.dart';
 import 'package:solar/features/home/home_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await SentryFlutter.init(
-    (options) {
-      options.dsn =
-          'https://cbbfc993d5fd65841a67b49890fc592c@o4507997126328320.ingest.us.sentry.io/4507997133864960';
+  // await SentryFlutter.init(
+  //   (options) {
+  //     options.dsn =
+  //         'https://cbbfc993d5fd65841a67b49890fc592c@o4507997126328320.ingest.us.sentry.io/4507997133864960';
 
-      options.tracesSampleRate = 0.01;
-    },
-    appRunner: () => runApp(MyApp()),
-  );
+  //     options.tracesSampleRate = 0.01;
+  //   },
+  //   appRunner: () => runApp(MyApp()),
+  // );
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
