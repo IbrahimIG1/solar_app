@@ -18,23 +18,23 @@ class NewPriceOffers extends StatelessWidget {
         'e_name': "Lighting stations",
         'ar_name': "محطات انارة",
         'width': 102.w,
-        'height': 68.h,
+        'height': 140.22.h,
       },
       {
         "id": "Surface irrigation stations",
         'icon': 'assets/images/sections_screen/surrface.png',
         'e_name': "Surface irrigation stations",
         'ar_name': "محطات ري سطحي",
-        'width': 115.w,
-        'height': 75.h,
+        'width': 144.22.w,
+        'height': 140.22.h,
       },
       {
         "id": "Deep irrigation stations",
         'icon': 'assets/images/sections_screen/deep.png',
         'e_name': "Deep irrigation stations",
         'ar_name': "محطات ري عميق",
-        'width': 114.w,
-        'height': 77.h,
+        'width': 144.22.w,
+        'height': 140.22.h,
       }
     ];
     return Scaffold(

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solar/core/routing/routes.dart';
 import 'package:solar/features/home/screens/price_offers/screens/new_price_offers/screens/lighting_stations_categories/ui/categories_screen.dart';
 import 'package:solar/features/categories_details/categories_details.dart';
 import 'package:solar/features/home/screens/technical_offer_screen/screens/new_technical_offer/screens/lighting_stations/screens/inverter_and_battery_calculation/inverter_and_battery_calculation.dart';
+import 'package:solar/features/home/screens/technical_offer_screen/screens/new_technical_offer/screens/lighting_stations/screens/lighting_load_calculation/logic/cubit/lighting_calculation_cubit.dart';
+import 'package:solar/features/home/screens/technical_offer_screen/screens/new_technical_offer/screens/lighting_stations/screens/lighting_load_calculation/ui/Lighting_load_calculation.dart';
 import 'package:solar/features/home/screens/technical_offer_screen/screens/new_technical_offer/screens/lighting_stations/ui/lighting_station_screen.dart';
 import 'package:solar/features/home/screens/technical_offer_screen/screens/new_technical_offer/ui/new_technical_offers.dart';
 import 'package:solar/features/home/ui/home_screen.dart';
@@ -52,9 +55,16 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const TechLightingStationScreen(),
         );
-         case Routes.inverterAndBatteryCalculation:
+      case Routes.inverterAndBatteryCalculation:
         return MaterialPageRoute(
           builder: (_) => const InverterAndBatteryCalculation(),
+        );
+      case Routes.lightingLoadCalculation:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => LightingCalculationCubit()..createDatabase(),
+            child: const LightingLoadCalculation(),
+          ),
         );
       default:
         return MaterialPageRoute(

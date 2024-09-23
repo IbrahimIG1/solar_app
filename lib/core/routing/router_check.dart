@@ -32,9 +32,9 @@ String checkRoutNameNaviigation(String screenName) {
       return Routes.technicalLightingStations;
     case 'inverter and battery calculation':
       return Routes.inverterAndBatteryCalculation;
-      
-    case 'Store Management':
-      return 'Routes.technicalOfferScreen';
+    case 'Lighting load calculation':
+      return Routes.lightingLoadCalculation;
+
     default:
       return '';
   }

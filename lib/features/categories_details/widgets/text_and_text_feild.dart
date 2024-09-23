@@ -21,6 +21,7 @@ class TextAndTextFeild extends StatelessWidget {
         Container(
             height: 51.h,
             child: TextFormField(
+              // cursorHeight: ,
               textAlignVertical: TextAlignVertical.center,
               decoration: InputDecoration(
                   hintTextDirection: TextDirection.rtl,

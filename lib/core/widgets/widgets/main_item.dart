@@ -26,35 +26,36 @@ class MainItem extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(20.r)),
           elevation: 5,
           child: Container(
+            padding: EdgeInsets.symmetric(vertical: 10),
             decoration: BoxDecoration(
+                color: Colors.white,
                 borderRadius: BorderRadius.all(Radius.circular(20.r)),
                 border: Border.all(color: Colors.black, width: 1)),
-            width: 340.w,
-            height: 170.h,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Image.asset(
-                  data[index]['icon'],
-                  width: data[index]['width'],
-                  height: data[index]['height'],
+                Container(
+                  // width: data[index]['width'],
+                  // height: data[index]['height'],
+                  child: Image.asset(
+                    data[index]['icon'],
+                    width: data[index]['width'],
+                    height: data[index]['height'],
+                  ),
                 ),
                 Text(
                   data[index]['e_name'],
                   style: TextStyles.font25BlackRegular,
                 ),
-                Padding(
-                  padding: EdgeInsets.only(bottom: 3.h),
-                  child: OutlinedText(
-                      text: Text(
-                        data[index]['ar_name'],
-                        style: TextStyles.font20BlackRegular,
-                      ),
-                      strokes: [
-                        OutlinedTextStroke(color: Colors.black, width: 2),
-                      ]),
-                ),
+                OutlinedText(
+                    text: Text(
+                      data[index]['ar_name'],
+                      style: TextStyles.font20WhiteRegular,
+                    ),
+                    strokes: [
+                      OutlinedTextStroke(color: Colors.black, width: 2.w),
+                    ]),
               ],
             ),
           ),

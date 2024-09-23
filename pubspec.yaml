@@ -34,6 +34,7 @@ dependencies:
     sdk: flutter
   flutter_bloc: ^8.1.6
   flutter_screenutil: ^5.9.3
+  image_picker: ^1.1.2
   outlined_text: ^1.0.1
   sentry_flutter: ^8.9.0
   sqflite: ^2.3.3+1
@@ -54,6 +55,7 @@ flutter:
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/images/
     - assets/images/categories_icons/
     - assets/images/public_icons/
     # Home

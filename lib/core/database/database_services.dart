@@ -4,18 +4,16 @@ class DatabaseServices {
   DatabaseServices(this.databaseFactory);
   final DatabaseFactory databaseFactory;
 
-  
   void insertDatabase(
-    String title,
-    String time,
-    String date,
+    String name,
+    String icon,
   ) async {
     print("insertDatabase Start");
     final database = await databaseFactory.createDatabase();
     database
         .transaction(
       (txn) => txn.rawInsert(
-          'INSERT INTO customers(title, time ,date ,status ) VALUES("$title", "$time" ,"$date","new")'),
+          'INSERT INTO lighting_load_calculation_items( name ,icon) VALUES("$name", "$icon")'),
     )
         .then((value) {
       print("insertDatabase End >> $value");

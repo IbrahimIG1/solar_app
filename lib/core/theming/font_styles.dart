@@ -12,7 +12,7 @@ class TextStyles {
   static TextStyle font20BlackRegular = TextStyle(
     fontSize: 20.sp,
     fontWeight: FontWeightHelper.regular,
-    color: Colors.white,
+    color: Colors.black,
   );
   // grey
   static TextStyle font25GreyRegular = TextStyle(
@@ -24,5 +24,10 @@ class TextStyles {
     fontSize: 20.sp,
     fontWeight: FontWeightHelper.regular,
     color: Colors.grey,
+  );
+   static TextStyle font20WhiteRegular = TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: Colors.white,
   );
 }

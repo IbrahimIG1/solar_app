@@ -22,9 +22,13 @@ class DatabaseFactory {
     return await openDatabase(path, version: 1,
         onCreate: (Database db, int version) async {
       // When creating the db, create the table
-      await db.execute(
-          'CREATE TABLE Test (id INTEGER PRIMARY KEY, name TEXT, value INTEGER, num REAL)');
+      await createTable(db,'lighting_load_calculation_items');
     }, onOpen: (db) {});
+  }
+
+  Future<void> createTable(Database db,String tableName) async {
+    await db.execute(
+        'CREATE TABLE $tableName (id INTEGER PRIMARY KEY, name TEXT, value INTEGER, num REAL)');
   }
 
   void closeDatabase() {

@@ -17,7 +17,7 @@ class InverterAndBatteryCalculation extends StatelessWidget {
             MainImage(arrowBacFunc: () {
               context.pop();
             }),
-            FormCalaculation(),
+            const FormCalaculation(),
           ],
         ),
       )),
