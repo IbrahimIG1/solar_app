@@ -6,36 +6,28 @@ import 'package:solar/core/routing/router_check.dart';
 import 'package:solar/core/widgets/widgets/main_image.dart';
 import 'package:solar/core/widgets/widgets/main_item.dart';
 
-class PriceOffersScreen extends StatelessWidget {
-  const PriceOffersScreen({super.key});
+class TechLightingStationScreen extends StatelessWidget {
+  const TechLightingStationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> data = [
       {
-        "id": "Price offers-2",
-        'icon': 'assets/images/price_offers_screen/new_price.png',
-        'e_name': "New Price offers",
-        'ar_name': "عرض سعر جديد",
-        'width': 69.98.w,
-        'height': 69.95.h,
+        "id": "Lighting load calculation",
+        'icon': 'assets/images/technical_offers/home_power_icon.png',
+        'e_name': "",
+        'ar_name': "حساب احمال الانارة",
+        'width': 110.w,
+        'height': 90.h,
       },
       {
-        "id": "Price offers issued",
-        'icon': 'assets/images/price_offers_screen/price_offer.png',
-        'e_name': "Price offers issued",
-        'ar_name': "عروض الاسعار الصادره",
-        'width': 61.16.w,
-        'height': 69.31.h,
+        "id": "inverter and battery calculation",
+        'icon': 'assets/images/technical_offers/inventer_and_pattery_group.png',
+        'e_name': "",
+        'ar_name': "حساب الالواح والانفرتر والبطارية",
+        'width': 306.w,
+        'height': 90.h,
       },
-      {
-        "id": "Maintenance-2",
-        'icon': 'assets/images/price_offers_screen/stor_management.png',
-        'e_name': "Maintenance",
-        'ar_name': "ادارة المخزن",
-        'width': 82.w,
-        'height': 68.h,
-      }
     ];
     return Scaffold(
       body: SafeArea(

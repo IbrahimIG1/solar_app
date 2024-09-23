@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:solar/core/routing/routes.dart';
 import 'package:solar/features/home/screens/price_offers/screens/new_price_offers/screens/lighting_stations_categories/ui/categories_screen.dart';
 import 'package:solar/features/categories_details/categories_details.dart';
+import 'package:solar/features/home/screens/technical_offer_screen/screens/new_technical_offer/screens/lighting_stations/screens/inverter_and_battery_calculation/inverter_and_battery_calculation.dart';
+import 'package:solar/features/home/screens/technical_offer_screen/screens/new_technical_offer/screens/lighting_stations/ui/lighting_station_screen.dart';
+import 'package:solar/features/home/screens/technical_offer_screen/screens/new_technical_offer/ui/new_technical_offers.dart';
 import 'package:solar/features/home/ui/home_screen.dart';
 import 'package:solar/features/home/screens/price_offers/ui/price_offers_screen.dart';
-import 'package:solar/features/home/screens/technical_offer_screen/technical_offer_screen.dart';
+import 'package:solar/features/home/screens/technical_offer_screen/ui/technical_offer_screen.dart';
 import 'package:solar/features/home/screens/price_offers/screens/new_price_offers/ui/new_price_offers_screen.dart';
 
 class AppRouter {
@@ -17,6 +20,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const HomeScreen(),
         );
+      //* New Price Offers
       case Routes.priceOffersScreen:
         return MaterialPageRoute(
           builder: (_) => const PriceOffersScreen(),
@@ -25,15 +29,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const NewPriceOffers(),
         );
-      case Routes.technicalOfferScreen:
-        return MaterialPageRoute(
-          builder: (_) => const TechnicalOfferScreen(),
-        );
-      case Routes.sectionsScreen:
-        return MaterialPageRoute(
-          builder: (_) => const NewPriceOffers(),
-        );
-      case Routes.lightingStationscategoriesScreen:
+      case Routes.lightingStationsCategoriesScreen:
         return MaterialPageRoute(
           builder: (_) => const LightingStationsCategoriesScreen(),
         );
@@ -43,7 +39,23 @@ class AppRouter {
             list: arguments as Map,
           ),
         );
-      case Routes.categoriesDetailsScreen:
+      //* Technical Offer
+      case Routes.technicalOfferScreen:
+        return MaterialPageRoute(
+          builder: (_) => const TechnicalOfferScreen(),
+        );
+      case Routes.newTechnicalOffers:
+        return MaterialPageRoute(
+          builder: (_) => const NewTechnicalOffers(),
+        );
+      case Routes.technicalLightingStations:
+        return MaterialPageRoute(
+          builder: (_) => const TechLightingStationScreen(),
+        );
+         case Routes.inverterAndBatteryCalculation:
+        return MaterialPageRoute(
+          builder: (_) => const InverterAndBatteryCalculation(),
+        );
       default:
         return MaterialPageRoute(
           builder: (_) => const Scaffold(

@@ -6,36 +6,28 @@ import 'package:solar/core/routing/router_check.dart';
 import 'package:solar/core/widgets/widgets/main_image.dart';
 import 'package:solar/core/widgets/widgets/main_item.dart';
 
-class PriceOffersScreen extends StatelessWidget {
-  const PriceOffersScreen({super.key});
+class NewTechnicalOffers extends StatelessWidget {
+  const NewTechnicalOffers({super.key});
 
   @override
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> data = [
       {
-        "id": "Price offers-2",
-        'icon': 'assets/images/price_offers_screen/new_price.png',
-        'e_name': "New Price offers",
-        'ar_name': "عرض سعر جديد",
-        'width': 69.98.w,
-        'height': 69.95.h,
+        "id": "Technical Lighting stations",
+        'icon': 'assets/images/sections_screen/light_icon.png',
+        'e_name': "Lighting stations",
+        'ar_name': "محطات انارة",
+        'width': 155.22.w,
+        'height': 60.22.h,
       },
       {
-        "id": "Price offers issued",
-        'icon': 'assets/images/price_offers_screen/price_offer.png',
-        'e_name': "Price offers issued",
-        'ar_name': "عروض الاسعار الصادره",
-        'width': 61.16.w,
-        'height': 69.31.h,
+        "id": "Technical irrigation stations",
+        'icon': 'assets/images/technical_offers/irrigation_stations.png',
+        'e_name': "irrigation stations",
+        'ar_name': "محطات ري ",
+        'width': 155.22.w,
+        'height': 60.22.h,
       },
-      {
-        "id": "Maintenance-2",
-        'icon': 'assets/images/price_offers_screen/stor_management.png',
-        'e_name': "Maintenance",
-        'ar_name': "ادارة المخزن",
-        'width': 82.w,
-        'height': 68.h,
-      }
     ];
     return Scaffold(
       body: SafeArea(

@@ -56,8 +56,12 @@ flutter:
   assets:
     - assets/images/categories_icons/
     - assets/images/public_icons/
+    # Home
     - assets/images/home_screen/
+    # Price offers
     - assets/images/price_offers_screen/
+    # Technical offers
+    - assets/images/technical_offers/
     - assets/images/sections_screen/
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see

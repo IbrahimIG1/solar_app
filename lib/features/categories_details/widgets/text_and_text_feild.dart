@@ -20,7 +20,8 @@ class TextAndTextFeild extends StatelessWidget {
         verticalSpace(10),
         Container(
             height: 51.h,
-            child: TextField(
+            child: TextFormField(
+              textAlignVertical: TextAlignVertical.center,
               decoration: InputDecoration(
                   hintTextDirection: TextDirection.rtl,
                   fillColor: Colors.white,

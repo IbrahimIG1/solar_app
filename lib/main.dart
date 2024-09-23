@@ -10,11 +10,11 @@ void main() async {
   //   (options) {
   //     options.dsn =
   //         'https://cbbfc993d5fd65841a67b49890fc592c@o4507997126328320.ingest.us.sentry.io/4507997133864960';
-
   //     options.tracesSampleRate = 0.01;
   //   },
   //   appRunner: () => runApp(MyApp()),
   // );
+  
   runApp(const MyApp());
 }
 

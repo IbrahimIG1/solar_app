@@ -30,28 +30,31 @@ class MainItem extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(20.r)),
                 border: Border.all(color: Colors.black, width: 1)),
             width: 340.w,
-            height: 152.h,
+            height: 170.h,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Image.asset(
                   data[index]['icon'],
-                  width: 60.w,
-                  height: 60.h,
+                  width: data[index]['width'],
+                  height: data[index]['height'],
                 ),
                 Text(
                   data[index]['e_name'],
                   style: TextStyles.font25BlackRegular,
                 ),
-                OutlinedText(
-                    text: Text(
-                      data[index]['ar_name'],
-                      style: TextStyles.font20BlackRegular,
-                    ),
-                    strokes: [
-                      OutlinedTextStroke(color: Colors.black, width: 2),
-                    ]),
+                Padding(
+                  padding: EdgeInsets.only(bottom: 3.h),
+                  child: OutlinedText(
+                      text: Text(
+                        data[index]['ar_name'],
+                        style: TextStyles.font20BlackRegular,
+                      ),
+                      strokes: [
+                        OutlinedTextStroke(color: Colors.black, width: 2),
+                      ]),
+                ),
               ],
             ),
           ),
