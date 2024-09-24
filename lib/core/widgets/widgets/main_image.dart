@@ -18,7 +18,7 @@ class MainImage extends StatelessWidget {
             ),
             image: const DecorationImage(
                 image: AssetImage('assets/images/public_icons/main_image.png'),
-                fit: BoxFit.cover)),
+                fit: BoxFit.fill)),
       ),
       Padding(
         padding: const EdgeInsets.all(8.0),
@@ -31,7 +31,8 @@ class MainImage extends StatelessWidget {
             height: 40.h,
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('assets/images/public_icons/arrow_back_image.png')),
+                    image: AssetImage(
+                        'assets/images/public_icons/arrow_back_image.png')),
                 borderRadius: BorderRadius.all(Radius.circular(10))),
           ),
         ),

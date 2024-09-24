@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solar/core/helper/spacing.dart';
-import 'package:solar/core/routing/router_check.dart';
+import 'package:solar/core/routing/routes.dart';
 import 'package:solar/core/widgets/widgets/main_image.dart';
 import 'package:solar/core/widgets/widgets/main_item.dart';
 
@@ -45,6 +45,12 @@ class HomeScreen extends StatelessWidget {
         'height': 94.91.h,
       }
     ];
+    List<String> screens = [
+      Routes.priceOffersScreen,
+      Routes.technicalOfferScreen,
+      "Routes.maintenanceScreen",
+      "Routes.customerBaseScreen",
+    ];
     return Scaffold(
       body: SafeArea(
           child: Column(
@@ -62,7 +68,7 @@ class HomeScreen extends StatelessWidget {
                     horizontal: 10.w,
                   ),
                   child: MainItem(
-                    routeName: checkRoutNameNaviigation(data[index]['id']),
+                    routeName: screens[index],
                     data: data,
                     index: index,
                   ),
@@ -75,7 +81,6 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
- 
   // Future<void> testSentryError() async {
   //   try {
   //     int? num;

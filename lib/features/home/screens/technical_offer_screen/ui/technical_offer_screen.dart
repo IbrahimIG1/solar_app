@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solar/core/helper/extensions.dart';
 import 'package:solar/core/helper/spacing.dart';
-import 'package:solar/core/routing/router_check.dart';
+import 'package:solar/core/routing/routes.dart';
 import 'package:solar/core/widgets/widgets/main_image.dart';
 import 'package:solar/core/widgets/widgets/main_item.dart';
 
@@ -37,6 +37,11 @@ class TechnicalOfferScreen extends StatelessWidget {
         'height': 68.h,
       }
     ];
+    List<String> screens = [
+      Routes.newTechnicalOffers,
+      "Routes.technicalOffersIssued",
+      "Routes.StoreManagement",
+    ];
     return Scaffold(
       body: SafeArea(
           child: Column(
@@ -57,7 +62,7 @@ class TechnicalOfferScreen extends StatelessWidget {
                     horizontal: 10.w,
                   ),
                   child: MainItem(
-                    routeName: checkRoutNameNaviigation(data[index]['id']),
+                    routeName: screens[index],
                     data: data,
                     index: index,
                   ),
