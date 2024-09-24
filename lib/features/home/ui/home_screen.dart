@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solar/core/helper/spacing.dart';
 import 'package:solar/core/routing/routes.dart';
-import 'package:solar/core/widgets/widgets/main_image.dart';
-import 'package:solar/core/widgets/widgets/main_item.dart';
+import 'package:solar/core/widgets/main_image.dart';
+import 'package:solar/core/widgets/main_item.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solar/core/helper/extensions.dart';
 import 'package:solar/core/helper/spacing.dart';
 import 'package:solar/core/routing/routes.dart';
-import 'package:solar/core/widgets/widgets/main_image.dart';
 import 'package:solar/features/home/screens/price_offers/screens/new_price_offers/screens/lighting_stations_categories/ui/widgets/item_card.dart';
+import '../../../../../../../../../core/widgets/main_image.dart';
 
 class LightingStationsCategoriesScreen extends StatelessWidget {
   const LightingStationsCategoriesScreen({super.key});

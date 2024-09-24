@@ -11,6 +11,7 @@ class TextAndTextFeild extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      textDirection: TextDirection.rtl,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
@@ -18,21 +19,20 @@ class TextAndTextFeild extends StatelessWidget {
           style: TextStyles.font25BlackRegular,
         ),
         verticalSpace(10),
-        Container(
-            height: 51.h,
-            child: TextFormField(
-              // cursorHeight: ,
-              textAlignVertical: TextAlignVertical.center,
-              decoration: InputDecoration(
-                  hintTextDirection: TextDirection.rtl,
-                  fillColor: Colors.white,
-                  filled: true,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  hintText: hintText,
-                  hintStyle: TextStyles.font25GreyRegular),
-            )),
+        TextFormField(
+          // cursorHeight: ,
+          textAlignVertical: TextAlignVertical.center,
+          decoration: InputDecoration(
+              isDense: true, // this will remove the default content padding
+              hintTextDirection: TextDirection.rtl,
+              fillColor: Colors.white,
+              filled: true,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(15.0),
+              ),
+              hintText: hintText,
+              hintStyle: TextStyles.font25GreyRegular),
+        ),
       ],
     );
   }

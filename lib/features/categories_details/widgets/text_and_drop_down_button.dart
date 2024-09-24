@@ -28,7 +28,7 @@ class _TextAndDropDownButtonState extends State<TextAndDropDownButton> {
           color: Colors.white,
           width: double.infinity,
           child: DropdownMenu<String>(
-            width: 340.w,
+            expandedInsets: EdgeInsets.zero, // to get parnt width
             initialSelection: items.first,
             onSelected: (newValue) {
               print('choosed is $newValue');

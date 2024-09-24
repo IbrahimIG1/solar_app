@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solar/core/helper/extensions.dart';
 import 'package:solar/core/helper/spacing.dart';
 import 'package:solar/core/routing/routes.dart';
-import 'package:solar/core/widgets/widgets/main_image.dart';
-import 'package:solar/core/widgets/widgets/main_item.dart';
+import 'package:solar/core/widgets/main_image.dart';
+import 'package:solar/core/widgets/main_item.dart';
 
 class NewTechnicalOffers extends StatelessWidget {
   const NewTechnicalOffers({super.key});
@@ -29,11 +29,9 @@ class NewTechnicalOffers extends StatelessWidget {
         'height': 60.22.h,
       },
     ];
-    List<String> screens = 
-    [
+    List<String> screens = [
       Routes.technicalLightingStations,
       "Routes.technicalIrrigationStations",
-
     ];
     return Scaffold(
       body: SafeArea(
@@ -42,6 +40,10 @@ class NewTechnicalOffers extends StatelessWidget {
           MainImage(
             arrowBacFunc: () {
               print('clicked');
+              // context.pushNamedAndRemoveUntil(
+              //   Routes.homeScreen,
+              //   predicate: (route) => false,
+              // );
               context.pop();
             },
           ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:solar/core/helper/spacing.dart';
-import 'package:solar/core/widgets/widgets/main_image.dart';
+import 'package:solar/core/widgets/main_image.dart';
 import 'package:solar/features/home/ui/home_screen.dart';
 
 class AppScreen extends StatelessWidget {

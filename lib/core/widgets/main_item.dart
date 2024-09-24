@@ -18,28 +18,36 @@ class MainItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(bottom: 25.h),
-      child: InkWell(
+      child: GestureDetector(
         onTap: () {
           context.pushNamed(routeName);
+          //  context.pushNamedAndRemoveUntil(
+          //   routeName,
+          //   predicate: (route) => false,
+          // );
         },
-        child: Material(
-          borderRadius: BorderRadius.all(Radius.circular(20.r)),
+        child: Card(
           elevation: 5,
+          shadowColor: Colors.black,
+          shape: const RoundedRectangleBorder(
+            side: BorderSide(color: Colors.black),
+            borderRadius: BorderRadius.all(Radius.circular(20)),
+          ),
+          color: Colors.white,
           child: Container(
+            width: double.maxFinite,
             padding: EdgeInsets.symmetric(vertical: 10),
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.all(Radius.circular(20.r)),
-                border: Border.all(color: Colors.black, width: 1)),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
+                  padding: const EdgeInsets.all(5).w,
                   // width: data[index]['width'],
                   // height: data[index]['height'],
                   child: Image.asset(
                     data[index]['icon'],
+                    fit: BoxFit.contain,
                     width: data[index]['width'],
                     height: data[index]['height'],
                   ),

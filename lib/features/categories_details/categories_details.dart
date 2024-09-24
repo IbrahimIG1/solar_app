@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:solar/core/helper/extensions.dart';
 import 'package:solar/core/helper/spacing.dart';
+import 'package:solar/core/widgets/main_image.dart';
 import 'package:solar/features/categories_details/widgets/text_and_drop_down_button.dart';
 import 'package:solar/features/categories_details/widgets/text_and_text_feild.dart';
 
-import '../../core/widgets/widgets/main_image.dart';
 
 class CategoriesDetailsScreen extends StatelessWidget {
   const CategoriesDetailsScreen({
