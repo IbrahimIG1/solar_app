@@ -1,52 +1,61 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
+import 'package:solar/core/helper/extensions.dart';
 import 'package:solar/core/helper/spacing.dart';
 import 'package:solar/core/routing/routes.dart';
 import 'package:solar/core/widgets/widgets/main_image.dart';
 import 'package:solar/core/widgets/widgets/main_item.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class NewTechnicalOffers extends StatelessWidget {
+  const NewTechnicalOffers({super.key});
 
   @override
   Widget build(BuildContext context) {
-    testSentryError();
     List<Map<String, dynamic>> data = [
       {
-        'icon': 'assets/images/screen_one/price_offer_icon.png',
-        'e_name': "Price offers",
-        'ar_name': "عروض أسعار",
+        "id": "Technical Lighting stations",
+        'icon': 'assets/images/sections_screen/light_icon.png',
+        'e_name': "Lighting stations",
+        'ar_name': "محطات انارة",
+        'width': 155.22.w,
+        'height': 60.22.h,
       },
       {
-        'icon': 'assets/images/screen_one/calculator_icon.png',
-        'e_name': "Solar Equation",
-        'ar_name': "معادلات الطاقه",
+        "id": "Technical irrigation stations",
+        'icon': 'assets/images/technical_offers/irrigation_stations.png',
+        'e_name': "irrigation stations",
+        'ar_name': "محطات ري ",
+        'width': 155.22.w,
+        'height': 60.22.h,
       },
-      {
-        'icon': 'assets/images/screen_one/settings_icon.png',
-        'e_name': "Maintenance",
-        'ar_name': "الصيانة",
-      }
+    ];
+    List<String> screens = 
+    [
+      Routes.technicalLightingStations,
+      "Routes.technicalIrrigationStations",
+
     ];
     return Scaffold(
       body: SafeArea(
           child: Column(
         children: [
           MainImage(
-            arrowBacFunc: () {},
+            arrowBacFunc: () {
+              print('clicked');
+              context.pop();
+            },
           ),
           verticalSpace(30),
           Expanded(
             child: ListView.builder(
-              itemCount: 3,
+              itemCount: data.length,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: EdgeInsets.symmetric(
                     horizontal: 10.w,
                   ),
                   child: MainItem(
-                    routeName: Routes.secondScreen,
+                    routeName: screens[index],
                     data: data,
                     index: index,
                   ),
@@ -57,18 +66,5 @@ class HomeScreen extends StatelessWidget {
         ],
       )),
     );
-  }
-
-  Future<void> testSentryError() async {
-    try {
-      int? num;
-      int result = num! + 1;
-    } catch (exception, stackTrace) {
-      print('exception');
-      await Sentry.captureException(
-        exception,
-        stackTrace: stackTrace,
-      );
-    }
   }
 }

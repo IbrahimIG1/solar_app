@@ -28,8 +28,8 @@ platform :android do
             firebase_cli_token: "1//03nRWmz--Hes5CgYIARAAGAMSNwF-L9Ir-9GJ-Qr1OJCF_QSoTQwug7nnoR-2GEUtW0uyU4-Z-ygk3OqtwlI9uOdZO0JAFuz9oQ0",
             android_artifact_type: "APK",
             android_artifact_path: "../build/app/outputs/flutter-apk/app-release.apk",
-            testers: "ibrahim13elgammal@gmail.com",
-            release_notes: "First fastlane firebase distribtuion for me"
+            testers: "ibrahim13elgammal@gmail.com, mohamedfawzi8898@gmail.com",
+            release_notes: "Refactor Text in UI - Added Database to app"
         )
   end
 end

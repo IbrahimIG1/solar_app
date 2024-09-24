@@ -1,10 +1,20 @@
 class Routes {
   static const String onBoardingScreen = '/onBoardingScreen';
-  static const String loginScreen = '/loginScreen';
-  static const String signUpScreen = '/signUpScreen';
+  //* Home 
+  static const String appScreen = '/appScreen';
   static const String homeScreen = '/homeScreen';
-  static const String secondScreen = '/secondScreen';
-  static const String sectionsScreen = '/sectionScreen';
-  static const String categoriesScreen = '/categoriesScreen';
+  //* New Price 
+  static const String priceOffersScreen = '/priceOffersScreen';
+  static const String newPriceOffersScreen = '/newPriceOffersScreen';
+  static const String lightingStationsCategoriesScreen = '/lightingStationsCategoriesScreen';
   static const String categoriesDetailsScreen = '/categoriesDetailsScreen';
+
+  //* Technical Offers 
+  static const String technicalOfferScreen = '/technicalOfferScreen';
+  static const String newTechnicalOffers = '/newTechnicalOffers';
+  static const String technicalLightingStations = '/technicalLightingStations';
+  static const String inverterAndBatteryCalculation = '/inverterAndBatteryCalculation';
+  static const String lightingLoadCalculation = '/LightingloadCalculation';
+
+  
 }
