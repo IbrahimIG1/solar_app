@@ -4,10 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solar/core/helper/extensions.dart';
 import 'package:solar/core/routing/routes.dart';
 import 'package:solar/core/theming/font_styles.dart';
-import 'package:solar/core/widgets/main_item.dart';
-import 'package:solar/features/home/screens/technical_offer_screen/screens/new_technical_offer/screens/lighting_stations/screens/lighting_load_calculation/logic/cubit/lighting_calculation_cubit.dart';
-import 'package:solar/features/home/screens/technical_offer_screen/screens/new_technical_offer/screens/lighting_stations/screens/lighting_load_calculation/logic/cubit/lighting_calculation_state.dart';
-import 'package:solar/features/home/screens/technical_offer_screen/screens/new_technical_offer/screens/lighting_stations/screens/lighting_load_calculation/ui/widgets/lighting_calcolator_item.dart';
+import 'package:solar/features/technical_offer_screen/screens/new_technical_offer_screens/screens/lighting_stations_screen/screens/lighting_load_calculation_screen/logic/cubit/lighting_calculation_cubit.dart';
+import 'package:solar/features/technical_offer_screen/screens/new_technical_offer_screens/screens/lighting_stations_screen/screens/lighting_load_calculation_screen/logic/cubit/lighting_calculation_state.dart';
+import 'package:solar/features/technical_offer_screen/screens/new_technical_offer_screens/screens/lighting_stations_screen/screens/lighting_load_calculation_screen/ui/widgets/lighting_calcolator_item.dart';
 
 class LightingCalculatorList extends StatelessWidget {
   const LightingCalculatorList({super.key});

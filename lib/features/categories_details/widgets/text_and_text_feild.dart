@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solar/core/helper/spacing.dart';
 import 'package:solar/core/theming/font_styles.dart';
 
 class TextAndTextFeild extends StatelessWidget {
   const TextAndTextFeild(
-      {super.key, required this.hintText, required this.name});
+      {super.key,
+      required this.hintText,
+      required this.name,
+      this.textDirection});
   final String hintText;
+  final TextDirection? textDirection;
   final String name;
   @override
   Widget build(BuildContext context) {
     return Column(
-      textDirection: TextDirection.rtl,
+      textDirection: textDirection ?? TextDirection.ltr,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(

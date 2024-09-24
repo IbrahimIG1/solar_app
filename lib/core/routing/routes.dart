@@ -1,7 +1,6 @@
 class Routes {
   static const String onBoardingScreen = '/onBoardingScreen';
   //* Home 
-  static const String appScreen = '/appScreen';
   static const String homeScreen = '/homeScreen';
   //* New Price 
   static const String priceOffersScreen = '/priceOffersScreen';

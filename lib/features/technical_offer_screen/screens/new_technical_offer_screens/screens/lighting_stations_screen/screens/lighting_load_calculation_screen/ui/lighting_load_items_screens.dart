@@ -4,9 +4,9 @@ import 'package:solar/core/helper/extensions.dart';
 import 'package:solar/core/helper/spacing.dart';
 import 'package:solar/core/widgets/dialog.dart';
 import 'package:solar/core/widgets/main_image.dart';
-import 'package:solar/features/home/screens/technical_offer_screen/screens/new_technical_offer/screens/lighting_stations/screens/lighting_load_calculation/logic/cubit/lighting_calculation_cubit.dart';
-import 'package:solar/features/home/screens/technical_offer_screen/screens/new_technical_offer/screens/lighting_stations/screens/lighting_load_calculation/logic/cubit/lighting_calculation_state.dart';
-import 'package:solar/features/home/screens/technical_offer_screen/screens/new_technical_offer/screens/lighting_stations/screens/lighting_load_calculation/ui/widgets/lighting_calculator_list.dart';
+import 'package:solar/features/technical_offer_screen/screens/new_technical_offer_screens/screens/lighting_stations_screen/screens/lighting_load_calculation_screen/logic/cubit/lighting_calculation_cubit.dart';
+import 'package:solar/features/technical_offer_screen/screens/new_technical_offer_screens/screens/lighting_stations_screen/screens/lighting_load_calculation_screen/logic/cubit/lighting_calculation_state.dart';
+import 'package:solar/features/technical_offer_screen/screens/new_technical_offer_screens/screens/lighting_stations_screen/screens/lighting_load_calculation_screen/ui/widgets/lighting_calculator_list.dart';
 
 class LightingLoadItems extends StatelessWidget {
   const LightingLoadItems({super.key});

@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solar/core/routing/app_router.dart';
 import 'package:solar/core/routing/routes.dart';
-import 'package:solar/features/home/ui/home_screen.dart';
-import 'package:solar/features/main_screen/main_screen.dart';
+import 'package:solar/features/home_screen/home_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
