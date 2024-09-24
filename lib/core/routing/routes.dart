@@ -14,7 +14,10 @@ class Routes {
   static const String newTechnicalOffers = '/newTechnicalOffers';
   static const String technicalLightingStations = '/technicalLightingStations';
   static const String inverterAndBatteryCalculation = '/inverterAndBatteryCalculation';
+  static const String lightingLoadItem = '/LightingloadItem';
   static const String lightingLoadCalculation = '/LightingloadCalculation';
+
+  
 
   
 }

@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solar/core/helper/extensions.dart';
 import 'package:solar/core/helper/spacing.dart';
 import 'package:solar/core/routing/routes.dart';
-import 'package:solar/core/widgets/widgets/main_image.dart';
-import 'package:solar/core/widgets/widgets/main_item.dart';
+import 'package:solar/core/widgets/main_image.dart';
+import 'package:solar/core/widgets/main_item.dart';
 
 class PriceOffersScreen extends StatelessWidget {
   const PriceOffersScreen({super.key});

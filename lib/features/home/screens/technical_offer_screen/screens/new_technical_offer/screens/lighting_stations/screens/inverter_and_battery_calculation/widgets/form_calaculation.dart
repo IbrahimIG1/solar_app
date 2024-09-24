@@ -3,6 +3,7 @@ import 'package:outlined_text/outlined_text.dart';
 import 'package:solar/core/helper/spacing.dart';
 import 'package:solar/core/theming/colors_manager.dart';
 import 'package:solar/core/theming/font_styles.dart';
+import 'package:solar/core/widgets/app_button.dart';
 import 'package:solar/features/categories_details/widgets/text_and_drop_down_button.dart';
 import 'package:solar/features/categories_details/widgets/text_and_text_feild.dart';
 
@@ -34,21 +35,7 @@ class FormCalaculation extends StatelessWidget {
           ),
           verticalSpace(20),
           Center(
-              child: ElevatedButton(
-            style: ButtonStyle(
-                backgroundColor:
-                    WidgetStateProperty.all(ColorsManager.lightGray)),
-            onPressed: () {},
-            child: OutlinedText(
-                text: Text(
-                  'احسب',
-                  style: TextStyles.font25BlackRegular
-                      .copyWith(color: Colors.white),
-                ),
-                strokes: [
-                  OutlinedTextStroke(color: Colors.black, width: 2),
-                ]),
-          ))
+              child: appButton(txt: "احفظ"))
         ],
       ),
     );

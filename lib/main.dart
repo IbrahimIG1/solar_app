@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       designSize: const Size(360, 800),
       minTextAdapt: true,
       splitScreenMode: true,
-      child: Directionality(
+      builder: (context, child) => Directionality(
         textDirection: TextDirection.rtl,
         child: MaterialApp(
             title: 'Flutter Demo',
