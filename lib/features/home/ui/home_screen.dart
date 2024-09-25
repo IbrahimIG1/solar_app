@@ -43,6 +43,14 @@ class HomeScreen extends StatelessWidget {
         'ar_name': "قاعدة العملاء",
         'width': 90.w,
         'height': 94.91.h,
+      },
+      {
+        "id": "customer Base",
+        'icon': 'assets/images/home_screen/dollar_icon.png',
+        'e_name': "Price Management",
+        'ar_name': "إدارة الأسعار",
+        'width': 90.w,
+        'height': 90.h,
       }
     ];
     List<String> screens = [
@@ -50,6 +58,7 @@ class HomeScreen extends StatelessWidget {
       Routes.technicalOfferScreen,
       "Routes.maintenanceScreen",
       "Routes.customerBaseScreen",
+      "Routes.PriceManagement",
     ];
     return Scaffold(
       body: SafeArea(

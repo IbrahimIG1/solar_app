@@ -25,11 +25,12 @@ class ItemCard extends StatelessWidget {
         ),
         color: Colors.white,
         child: Container(
-          padding: const EdgeInsets.all(50),
+          padding: EdgeInsets.all(25.w),
+          // color: Colors.red,
           child: Center(
             child: Image.asset(
               data[index]['icon'],
-              //   width: data[index]['width'],
+              width: data[index]['width'],
               //   height: data[index]['height'],
             ),
           ),

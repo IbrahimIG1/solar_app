@@ -8,6 +8,8 @@ class Routes {
   static const String newPriceOffersScreen = '/newPriceOffersScreen';
   static const String lightingStationsCategoriesScreen = '/lightingStationsCategoriesScreen';
   static const String categoriesDetailsScreen = '/categoriesDetailsScreen';
+  static const String customerScreen = '/customerScreen';
+
 
   //* Technical Offers 
   static const String technicalOfferScreen = '/technicalOfferScreen';

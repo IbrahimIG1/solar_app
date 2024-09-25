@@ -1,29 +1,40 @@
-
 import 'package:solar/core/database/database_services.dart';
 import 'package:solar/core/helper/api_error_handler.dart';
 import 'package:solar/core/helper/api_result.dart';
 
-class LightingLoadCalculationRepo {
-  final DatabaseServices? _databaseServices;
+class LightingRepo {
+  final DbServices _databaseServices;
 
-  LightingLoadCalculationRepo(this._databaseServices);
-
-  Future<ApiResult<void>> addData(String table, Map<String, dynamic> data) async {
+  LightingRepo(this._databaseServices);
+  String tableName = "lighting_items_table";
+  Future<DataResult<void>> addLightingData(
+      String itemName, String itemImage) async {
     try {
-      await _databaseServices!.addData(table, data);
-      return ApiResult.success(null); // No data to return, success
+      final response = _databaseServices.addLightingItimeInDatabase(
+          tableName: tableName, itemName: itemName, itemImage: itemImage);
+      return DataResult.success(response); // No data to return, success
     } catch (error) {
-      return ApiResult.failure(ApiErrorHandler.handleException(error));
+      return DataResult.failure(ErrorHandler.handleException(error));
     }
   }
 
-
- Future<ApiResult<List<Map<String, dynamic>>>> getData(String table) async {
+  Future<DataResult<List<Map<String, dynamic>>>> getLightingData() async {
     try {
-      final data = await _databaseServices!.getData(table);
-      return ApiResult.success(data);
+      final data =
+          await _databaseServices.getDataFromDatabase(tableName: tableName);
+      return DataResult.success(data);
     } catch (error) {
-      return ApiResult.failure(ApiErrorHandler.handleException(error));
+      return DataResult.failure(ErrorHandler.handleException(error));
+    }
+  }
+
+  DataResult<void> deleteLightingData(int id) {
+    try {
+      final responce =
+          _databaseServices.deleteDatabase(tableName: tableName, id: id);
+      return DataResult.success(responce);
+    } catch (error) {
+      return DataResult.failure(ErrorHandler.handleException(error));
     }
   }
 }

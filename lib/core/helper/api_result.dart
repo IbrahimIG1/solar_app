@@ -1,22 +1,22 @@
 // Base class for API result
 import 'package:solar/core/models/data_error_model.dart';
 
-abstract class ApiResult<T> {
-  const ApiResult();
+abstract class DataResult<T> {
+  const DataResult();
 
   // Factory method to create a success or failure
-  factory ApiResult.success(T data) => Success(data);
-  factory ApiResult.failure(ApiErrorModel error) => Failure(error);
+  factory DataResult.success(T data) => Success(data);
+  factory DataResult.failure(ErrorModel error) => Failure(error);
 
   // This method can be overridden to handle both success and failure cases.
   void when({
     required void Function(T data) success,
-    required void Function(ApiErrorModel error) failure,
+    required void Function(ErrorModel error) failure,
   });
 }
 
 // Success subclass
-class Success<T> extends ApiResult<T> {
+class Success<T> extends DataResult<T> {
   final T data;
 
   Success(this.data) : super();
@@ -24,22 +24,22 @@ class Success<T> extends ApiResult<T> {
   @override
   void when({
     required void Function(T data) success,
-    required void Function(ApiErrorModel error) failure,
+    required void Function(ErrorModel error) failure,
   }) {
     success(data); // Call the success function with the data
   }
 }
 
 // Failure subclass
-class Failure<T> extends ApiResult<T> {
-  final ApiErrorModel dataErrorModel;
+class Failure<T> extends DataResult<T> {
+  final ErrorModel dataErrorModel;
 
   Failure(this.dataErrorModel) : super();
 
   @override
   void when({
     required void Function(T data) success,
-    required void Function(ApiErrorModel error) failure,
+    required void Function(ErrorModel error) failure,
   }) {
     failure(dataErrorModel); // Call the failure function with the error
   }

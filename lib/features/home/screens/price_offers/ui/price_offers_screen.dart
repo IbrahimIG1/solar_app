@@ -43,12 +43,11 @@ class PriceOffersScreen extends StatelessWidget {
       "Routes.maintenanceScreen",
     ];
     return Scaffold(
-      body: SafeArea(
-          child: Column(
+        body: SafeArea(
+      child: Column(
         children: [
           MainImage(
             arrowBacFunc: () {
-              print('clicked');
               context.pop();
             },
           ),
@@ -71,7 +70,7 @@ class PriceOffersScreen extends StatelessWidget {
             ),
           )
         ],
-      )),
-    );
+      ),
+    ));
   }
 }

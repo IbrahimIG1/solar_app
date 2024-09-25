@@ -10,7 +10,6 @@ import 'package:solar/features/home/screens/technical_offer_screen/screens/new_t
 
 class LightingLoadItems extends StatelessWidget {
   const LightingLoadItems({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,12 +28,9 @@ class LightingLoadItems extends StatelessWidget {
       ),
       floatingActionButton:
           BlocConsumer<LightingCalculationCubit, LightingCalculationState>(
-        listener: (context, state) {
-          // TODO: implement listener
-        },
+        listener: (context, state) {},
         builder: (context, state) {
-          LightingCalculationCubit cubit =
-              LightingCalculationCubit.get(context);
+          var cubit = LightingCalculationCubit.get(context);
           return FloatingActionButton(
             onPressed: () {
               showDialog(
@@ -44,8 +40,9 @@ class LightingLoadItems extends StatelessWidget {
                         nameController: cubit.nameController,
                         addImage: cubit.getImage,
                         saveData: () {
-                          cubit.insertDatabase(
-                              cubit.nameController.text, cubit.imagePath ?? "");
+                          cubit.addLightingData(
+                              itemName: cubit.nameController.text,
+                              itemImage: cubit.imagePath ?? "");
                         });
                   });
             },

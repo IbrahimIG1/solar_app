@@ -125,11 +125,15 @@ class LightingStationsCategoriesScreen extends StatelessWidget {
                 crossAxisCount: 2,
                 mainAxisSpacing: 16.h,
                 crossAxisSpacing: 18.w,
-                children: List.generate(data.length, (index) {
+                children: List.generate(data.length, (int index) {
                   return ItemCard(
                     onTap: () {
-                      context.pushNamed(Routes.categoriesDetailsScreen,
-                          arguments: data[index]);
+                      if (index < data.length - 1) {
+                        context.pushNamed(Routes.categoriesDetailsScreen,
+                            arguments: data[index]);
+                      } else {
+                        context.pushNamed(Routes.customerScreen);
+                      }
                     },
                     index: index,
                     data: data,

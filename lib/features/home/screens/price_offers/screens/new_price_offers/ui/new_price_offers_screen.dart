@@ -45,7 +45,6 @@ class NewPriceOffers extends StatelessWidget {
           children: [
             MainImage(
               arrowBacFunc: () {
-                print('clicked');
                 context.pop();
               },
             ),
