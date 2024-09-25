@@ -15,7 +15,7 @@ class FormCalaculation extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const TextAndTextFeild(
-            textDirection: TextDirection.rtl,
+            // textDirection: TextDirection.rtl,
             hintText: "أدخل قدرة الماتور بالحصان",
             name: "Load(Wh)",
           ),

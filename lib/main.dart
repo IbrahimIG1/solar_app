@@ -6,6 +6,8 @@ import 'package:solar/features/home_screen/home_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  //* To Fix text hidden bug in Screen_Util package in release mode
+  await ScreenUtil.ensureScreenSize();
   // await SentryFlutter.init(
   //   (options) {
   //     options.dsn =

@@ -34,7 +34,7 @@ class TextAndTextFeild extends StatelessWidget {
                 borderRadius: BorderRadius.circular(15.0),
               ),
               hintText: hintText,
-              hintStyle: TextStyles.font25GreyRegular),
+              hintStyle: TextStyles.font16GreyRegular),
         ),
       ],
     );

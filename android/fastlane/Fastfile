@@ -29,7 +29,7 @@ platform :android do
             android_artifact_type: "APK",
             android_artifact_path: "../build/app/outputs/flutter-apk/app-release.apk",
             testers: "ibrahim13elgammal@gmail.com, mohamedfawzi8898@gmail.com",
-            release_notes: "Refactor Text in UI - Added Database to app"
+            release_notes: "- Fix text hidden bug in release mode. ✅"
         )
   end
 end

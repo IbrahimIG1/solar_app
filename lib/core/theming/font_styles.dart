@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solar/core/theming/font_weight_helper.dart';
 
 class TextStyles {
-  // balck
+  //* balck
   static TextStyle font25BlackRegular = TextStyle(
     fontSize: 25.sp,
     fontWeight: FontWeightHelper.regular,
@@ -14,7 +14,7 @@ class TextStyles {
     fontWeight: FontWeightHelper.regular,
     color: Colors.black,
   );
-  // grey
+  //* grey
   static TextStyle font25GreyRegular = TextStyle(
     fontSize: 25.sp,
     fontWeight: FontWeightHelper.regular,
@@ -25,7 +25,15 @@ class TextStyles {
     fontWeight: FontWeightHelper.regular,
     color: Colors.grey,
   );
-   static TextStyle font20WhiteRegular = TextStyle(
+
+  static TextStyle font16GreyRegular = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: Colors.grey,
+  );
+
+  //* white
+  static TextStyle font20WhiteRegular = TextStyle(
     fontSize: 20.sp,
     fontWeight: FontWeightHelper.regular,
     color: Colors.white,
