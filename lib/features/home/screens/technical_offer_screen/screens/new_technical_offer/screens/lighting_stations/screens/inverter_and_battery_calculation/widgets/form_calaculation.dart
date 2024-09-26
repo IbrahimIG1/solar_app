@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:solar/core/helper/spacing.dart';
 import 'package:solar/core/theming/font_styles.dart';
 import 'package:solar/core/widgets/app_button.dart';
-import 'package:solar/features/categories_details/widgets/text_and_drop_down_button.dart';
-import 'package:solar/features/categories_details/widgets/text_and_text_field.dart';
+import 'package:solar/features/home/screens/price_offers/screens/new_price_offers/screens/lighting_stations_categories/ui/screens/categories_details/widgets/text_and_drop_down_button.dart';
+import 'package:solar/features/home/screens/price_offers/screens/new_price_offers/screens/lighting_stations_categories/ui/screens/categories_details/widgets/text_and_text_field.dart';
 
 class FormCalaculation extends StatelessWidget {
   const FormCalaculation({super.key});

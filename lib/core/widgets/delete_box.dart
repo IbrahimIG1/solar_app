@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:solar/core/helper/extensions.dart';
 import 'package:solar/core/helper/spacing.dart';
 import 'package:solar/core/theming/font_styles.dart';
+import 'package:solar/core/widgets/app_button.dart';
 
-class DialogDone extends StatelessWidget {
-  const DialogDone({super.key, this.color, this.icon});
-  final Color? color;
-  final IconData? icon;
+class DeleteBox extends StatelessWidget {
+  const DeleteBox({super.key, required this.deleteFunc});
+  final Function deleteFunc;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,24 +18,21 @@ class DialogDone extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
-          CircleAvatar(
-            backgroundColor: Colors.green,
-            child: Icon(
-              icon ?? Icons.check,
-              size: 35,
-              color: color ?? Colors.white,
-            ),
+          Icon(
+            Icons.delete,
+            size: 35.w,
+            color: Colors.red,
           ),
           verticalSpace(10.w),
-          Text(
-            "Done",
-            style: TextStyles.font16BlackRegular,
-          ),
-          verticalSpace(10.w),
-          const LinearProgressIndicator(
-            // valueColor: Colors.blue,
-            backgroundColor: Colors.blue,
-          ),
+          AppTextButton(
+              backgroundColor: Colors.red,
+              textStyle: TextStyles.font20WhiteRegular,
+              text: 'Delete',
+              onpressed: () {
+                deleteFunc();
+                context.pop();
+              }),
+              
         ],
       ),
     );

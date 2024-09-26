@@ -16,19 +16,17 @@ class PersonalInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Container(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(name, style: TextStyles.font16BlackBold),
-            verticalSpace(5),
-            Text(address, style: TextStyles.font16BlackBold),
-            verticalSpace(5),
-            Text(stationType, style: TextStyles.font16BlackBold),
-            verticalSpace(5),
-            Text(phone, style: TextStyles.font16BlackBold),
-          ],
-        ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(name, style: TextStyles.font16BlackBold),
+          verticalSpace(5),
+          Text(address, style: TextStyles.font16BlackBold),
+          verticalSpace(5),
+          Text(stationType, style: TextStyles.font16BlackBold),
+          verticalSpace(5),
+          Text(phone, style: TextStyles.font16BlackBold),
+        ],
       ),
     );
   }

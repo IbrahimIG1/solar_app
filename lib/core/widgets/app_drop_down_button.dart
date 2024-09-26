@@ -10,13 +10,14 @@ class AppDropDownButton extends StatelessWidget {
       this.lable,
       this.lableStyle});
   final List<String> data;
+
   final String? lable;
   final TextStyle? lableStyle;
   final Function(String value) onSelecte;
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration:const BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.white,
         // borderRadius: BorderRadius.circular(20),
       ),

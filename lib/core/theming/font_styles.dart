@@ -51,4 +51,16 @@ class TextStyles {
     fontWeight: FontWeightHelper.regular,
     color: Colors.white,
   );
+   static TextStyle font20WhiteBold = TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: Colors.white,
+  );
+
+  //* red
+  static TextStyle font20RedBold = TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: Colors.red,
+  );
 }

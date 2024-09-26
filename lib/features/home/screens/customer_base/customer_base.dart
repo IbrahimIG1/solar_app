@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solar/core/helper/extensions.dart';
-import 'package:solar/core/theming/font_styles.dart';
+import 'package:solar/core/widgets/delete_box.dart';
 import 'package:solar/features/home/screens/customer_base/widgets/customer_item.dart';
 import 'package:solar/features/home/screens/customer_screen/logic/cubit/customer_cubit.dart';
 import 'package:solar/features/home/screens/customer_screen/logic/cubit/customer_state.dart';
@@ -15,7 +15,6 @@ class CustomerBaseScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'Customer Data',
-          style: TextStyles.font16BlackBold,
         ),
       ),
       body: SafeArea(
@@ -23,7 +22,23 @@ class CustomerBaseScreen extends StatelessWidget {
           children: [
             Expanded(
                 child: BlocConsumer<CustomerCubit, CustomerState>(
-              listener: (context, state) {},
+              listener: (context, state) {
+                // if (state is GetCustomerDataLoadingState) {
+                //   showDialog(
+                //     context: context,
+                //     builder: (context) {
+                //       return Container(
+                //         color: Colors.white,
+                //         child: Center(
+                //           child: CircularProgressIndicator(
+                //             color: Colors.blue,
+                //           ),
+                //         ),
+                //       );
+                //     },
+                //   );
+                // }
+              },
               builder: (context, state) {
                 var cubit = CustomerCubit.get(context);
                 if (cubit.customersList.isNullOrEmpty()) {
@@ -34,8 +49,22 @@ class CustomerBaseScreen extends StatelessWidget {
                   return ListView.builder(
                     itemCount: cubit.customersList.length,
                     itemBuilder: (context, index) {
-                      return CustomerItem(
-                        data: cubit.customersList[index],
+                      return GestureDetector(
+                        onLongPress: () {
+                          showDialog(
+                              context: context,
+                              builder: (context) {
+                                return Center(
+                                  child: DeleteBox(deleteFunc: () {
+                                    cubit.delete(
+                                        cubit.customersList[index]['id']);
+                                  }),
+                                );
+                              });
+                        },
+                        child: CustomerItem(
+                          data: cubit.customersList[index],
+                        ),
                       );
                     },
                   );

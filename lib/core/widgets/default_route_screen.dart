@@ -18,8 +18,6 @@ class DefaultRouteScreen extends StatelessWidget {
             style: TextStyles.font25BlackRegular,
           ),
           AppTextButton(
-              textStyle:
-                  TextStyles.font16GreyMeduim.copyWith(color: Colors.white),
               text: "Go Back",
               onpressed: () {
                 context.pop();

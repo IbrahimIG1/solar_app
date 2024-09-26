@@ -35,3 +35,8 @@ final class DeleteCustomerDataErrorState extends CustomerState {
   final ErrorModel error;
   DeleteCustomerDataErrorState(this.error);
 }
+
+
+
+
+

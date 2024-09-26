@@ -22,23 +22,7 @@ class CustomerFormButton extends StatelessWidget {
         text: "حفظ",
         onpressed: () {
           if (formKey.currentState!.validate()) {
-            // showDialog(
-            //   context: context,
-            //   builder: (context) => AlertDialog(
-            //     content: Column(
-            //       mainAxisSize: MainAxisSize.min,
-            //       children: [
-            //         Text("Name is : ${nameController.text}"),
-            //         Text("Address is : ${addressController.text}"),
-            //         Text("Phone is : ${phoneController.text}"),
-            //         Text("Station is : ${stationController.text}"),
-            //         Text("Offer Expire is : ${offerExpireController.text}"),
-            //       ],
-            //     ),
-            //   ),
-            // );
             addCustomer();
-            print('save');
             return;
           }
         });

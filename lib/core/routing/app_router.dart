@@ -7,7 +7,8 @@ import 'package:solar/features/home/screens/customer_base/customer_base.dart';
 import 'package:solar/features/home/screens/customer_screen/logic/cubit/customer_cubit.dart';
 import 'package:solar/features/home/screens/customer_screen/customer_screen.dart';
 import 'package:solar/features/home/screens/price_offers/screens/new_price_offers/screens/lighting_stations_categories/ui/categories_screen.dart';
-import 'package:solar/features/categories_details/Lighting_categories_calculation_form_screen.dart';
+import 'package:solar/features/home/screens/price_offers/screens/new_price_offers/screens/lighting_stations_categories/ui/screens/categories_details/Lighting_categories_calculation_form_screen.dart';
+import 'package:solar/features/home/screens/price_offers/screens/new_price_offers/screens/lighting_stations_categories/ui/screens/categories_details/logic/cubit/lighting_categories_calculation_cubit.dart';
 import 'package:solar/features/home/screens/technical_offer_screen/screens/new_technical_offer/screens/lighting_stations/screens/inverter_and_battery_calculation/inverter_and_battery_calculation.dart';
 import 'package:solar/features/home/screens/technical_offer_screen/screens/new_technical_offer/screens/lighting_stations/screens/lighting_load_calculation/logic/cubit/lighting_calculation_cubit.dart';
 import 'package:solar/features/home/screens/technical_offer_screen/screens/new_technical_offer/screens/lighting_stations/screens/lighting_load_calculation/ui/lighting_load_items.dart';
@@ -48,12 +49,18 @@ class AppRouter {
         );
       case Routes.lightingStationsCategoriesScreen:
         return MaterialPageRoute(
-          builder: (_) => const LightingStationsCategoriesScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) => LightingCategoriesCalculationCubit(),
+            child: const LightingStationsCategoriesScreen(),
+          ),
         );
       case Routes.categoriesDetailsScreen:
         return MaterialPageRoute(
-          builder: (_) => LightingCategoriesCalculationFormScreen(
-            list: arguments as Map,
+          builder: (_) => BlocProvider(
+            create: (context) => LightingCategoriesCalculationCubit(),
+            child: LightingCategoriesCalculationScreen(
+              data: arguments as Map<String, dynamic>,
+            ),
           ),
         );
       //* Technical Offer

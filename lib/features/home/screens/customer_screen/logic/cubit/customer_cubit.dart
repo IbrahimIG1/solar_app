@@ -17,6 +17,7 @@ class CustomerCubit extends Cubit<CustomerState> {
   final formKey = GlobalKey<FormState>();
 
   DateTime selectedDate = DateTime.now();
+  bool loading = false;
 
   Future<void> pickeDateOfferExpire(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -33,6 +34,7 @@ class CustomerCubit extends Cubit<CustomerState> {
   }
 
   void addCustomer() async {
+    emit(AddCustomerDataLoadingState());
     CustomerModel customerModel = CustomerModel(
         nameController.text,
         phoneController.text,
@@ -47,6 +49,7 @@ class CustomerCubit extends Cubit<CustomerState> {
       stationController.text = "";
       offerExpireController.text = "";
       addressController.text = "";
+      getCustomerData();
       emit(AddCustomerDataSuccessState());
     }, failure: (error) {
       emit(AddCustomerDataErrorState(error));
@@ -55,13 +58,25 @@ class CustomerCubit extends Cubit<CustomerState> {
 
   List<Map<String, dynamic>> customersList = [];
   void getCustomerData() async {
-    customersList=[];
+    emit(GetCustomerDataLoadingState());
+    customersList = [];
     final response = await customerRepo.getCustomer();
     response.when(success: (data) {
+      
       customersList = data;
       emit(GetCustomerDataSuccessState());
     }, failure: (error) {
       emit(GetCustomerDataErrorState(error));
+    });
+  }
+
+  void delete(int id) async {
+    final response = await customerRepo.deleteCustomer(id: id);
+    response.when(success: (data) {
+      getCustomerData();
+      // emit(DeleteCustomerDataSuccessState());
+    }, failure: (error) {
+      emit(DeleteCustomerDataErrorState(error));
     });
   }
 }
