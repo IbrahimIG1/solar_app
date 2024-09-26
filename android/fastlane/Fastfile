@@ -29,7 +29,11 @@ platform :android do
             android_artifact_type: "APK",
             android_artifact_path: "../build/app/outputs/flutter-apk/app-release.apk",
             testers: "ibrahim13elgammal@gmail.com, mohamedfawzi8898@gmail.com",
-            release_notes: "Refactor Text in UI - Added Database to app"
+            release_notes: "- refactor some issus.
+            - add customer screen form.
+            - handle customer form screen data in cubit state management.
+            - refactor add item code mecanism by added repo and database services class.
+            - refactor error handler."
         )
   end
 end

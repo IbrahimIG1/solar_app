@@ -57,7 +57,7 @@ class HomeScreen extends StatelessWidget {
       Routes.priceOffersScreen,
       Routes.technicalOfferScreen,
       "Routes.maintenanceScreen",
-      "Routes.customerBaseScreen",
+      Routes.customerBaseScreen,
       "Routes.PriceManagement",
     ];
     return Scaffold(

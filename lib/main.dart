@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solar/core/helper/di.dart';
 import 'package:solar/core/routing/app_router.dart';
 import 'package:solar/core/routing/routes.dart';
-import 'package:solar/features/home/ui/home_screen.dart';
+import 'package:solar/core/theming/app_theme_data.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,18 +34,14 @@ class MyApp extends StatelessWidget {
       builder: (context, child) => Directionality(
         textDirection: TextDirection.rtl,
         child: MaterialApp(
-            title: 'Flutter Demo',
-            theme: ThemeData(
-              scaffoldBackgroundColor: const Color(
-                0xffede5d9,
-              ),
-              colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-              useMaterial3: true,
-            ),
-            debugShowCheckedModeBanner: false,
-            initialRoute: Routes.homeScreen,
-            onGenerateRoute: AppRouter().generateRoute,
-            home: const HomeScreen()),
+          
+          title: 'Flutter Demo',
+          theme: appThemeData(),
+          debugShowCheckedModeBanner: false,
+          initialRoute: Routes.homeScreen,
+          onGenerateRoute: AppRouter().generateRoute,
+          // home: const HomeScreen(),
+        ),
       ),
     );
   }

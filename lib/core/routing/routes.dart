@@ -1,25 +1,24 @@
 class Routes {
   static const String onBoardingScreen = '/onBoardingScreen';
-  //* Home 
-  static const String appScreen = '/appScreen';
+  //* Home
   static const String homeScreen = '/homeScreen';
-  //* New Price 
+  //* New Price
   static const String priceOffersScreen = '/priceOffersScreen';
   static const String newPriceOffersScreen = '/newPriceOffersScreen';
-  static const String lightingStationsCategoriesScreen = '/lightingStationsCategoriesScreen';
+  static const String lightingStationsCategoriesScreen =
+      '/lightingStationsCategoriesScreen';
   static const String categoriesDetailsScreen = '/categoriesDetailsScreen';
-  static const String customerScreen = '/customerScreen';
+  static const String customerFormScreen = '/customerFormScreen';
 
-
-  //* Technical Offers 
+  //* Technical Offers
   static const String technicalOfferScreen = '/technicalOfferScreen';
   static const String newTechnicalOffers = '/newTechnicalOffers';
   static const String technicalLightingStations = '/technicalLightingStations';
-  static const String inverterAndBatteryCalculation = '/inverterAndBatteryCalculation';
-  static const String lightingLoadItem = '/LightingloadItem';
-  static const String lightingLoadCalculation = '/LightingloadCalculation';
+  static const String inverterAndBatteryCalculation =
+      '/inverterAndBatteryCalculation';
+  static const String lightingLoadItem = '/lightingLoadItem';
+  static const String lightingLoadCalculation = '/lightingLoadCalculation';
 
-  
-
-  
+  //* Customer Database
+  static const String customerBaseScreen = '/cutomerBaseScreen';
 }

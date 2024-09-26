@@ -26,6 +26,7 @@ class LightingCalculationCubit extends Cubit<LightingCalculationState> {
 
   List<Map<String, dynamic>> itemsList = [];
   void getLightingData() async {
+    itemsList = [];
     final response = await lightingRepo.getLightingData();
     response.when(success: (data) {
       itemsList = data;

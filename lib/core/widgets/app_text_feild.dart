@@ -8,12 +8,11 @@ class AppTextFormFeild extends StatelessWidget {
   final InputBorder? foucedBorder;
   final String hintText;
   final TextStyle? hintTextStyle;
-  final TextStyle? lableStyle;
+  // final TextStyle? lableStyle;
   final Widget? suffixIcon;
   final bool? isObscure;
   final Color? backGroundColor;
   final TextEditingController? controller;
-  final String? lable;
   final Function(String?) validator;
 
   const AppTextFormFeild(
@@ -28,8 +27,7 @@ class AppTextFormFeild extends StatelessWidget {
       this.backGroundColor,
       this.controller,
       required this.validator,
-      this.lable,
-      this.lableStyle});
+});
 
   @override
   Widget build(BuildContext context) {
@@ -37,8 +35,8 @@ class AppTextFormFeild extends StatelessWidget {
       textDirection: TextDirection.rtl,
       controller: controller,
       decoration: InputDecoration(
-          label: Text(lable ?? "",
-              style: lableStyle ?? TextStyles.font16GreyMeduim),
+          // label: Text(lable ?? "",
+          //     style: lableStyle ?? TextStyles.font16GreyMeduim),
           hintTextDirection: TextDirection.rtl,
           isDense: true,
           hintText: hintText,

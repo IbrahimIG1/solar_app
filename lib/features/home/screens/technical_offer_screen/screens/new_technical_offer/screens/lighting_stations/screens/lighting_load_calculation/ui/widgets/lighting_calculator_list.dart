@@ -21,10 +21,8 @@ class LightingCalculatorList extends StatelessWidget {
           builder: (context, state) {
             LightingCalculationCubit cubit =
                 LightingCalculationCubit.get(context);
-
             List<Map<String, dynamic>> data = cubit.itemsList;
-
-            if (data.isEmpty) {
+            if (cubit.itemsList.isEmpty) {
               cubit.getLightingData();
               return const Center(child: Text("No Data Yet!, Please Add Data"));
             } else {

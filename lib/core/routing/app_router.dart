@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solar/core/helper/di.dart';
-import 'package:solar/core/helper/extensions.dart';
 import 'package:solar/core/routing/routes.dart';
-import 'package:solar/core/theming/font_styles.dart';
-import 'package:solar/core/widgets/app_button.dart';
-import 'package:solar/features/home/screens/cusomer_screen/persone_screen.dart';
+import 'package:solar/core/widgets/default_route_screen.dart';
+import 'package:solar/features/home/screens/customer_base/customer_base.dart';
+import 'package:solar/features/home/screens/customer_screen/logic/cubit/customer_cubit.dart';
+import 'package:solar/features/home/screens/customer_screen/customer_screen.dart';
 import 'package:solar/features/home/screens/price_offers/screens/new_price_offers/screens/lighting_stations_categories/ui/categories_screen.dart';
 import 'package:solar/features/categories_details/Lighting_categories_calculation_form_screen.dart';
 import 'package:solar/features/home/screens/technical_offer_screen/screens/new_technical_offer/screens/lighting_stations/screens/inverter_and_battery_calculation/inverter_and_battery_calculation.dart';
@@ -18,7 +18,6 @@ import 'package:solar/features/home/ui/home_screen.dart';
 import 'package:solar/features/home/screens/price_offers/ui/price_offers_screen.dart';
 import 'package:solar/features/home/screens/technical_offer_screen/ui/technical_offer_screen.dart';
 import 'package:solar/features/home/screens/price_offers/screens/new_price_offers/ui/new_price_offers_screen.dart';
-import 'package:solar/features/main_screen/main_screen.dart';
 
 class AppRouter {
   Route? generateRoute(RouteSettings settings) {
@@ -26,17 +25,16 @@ class AppRouter {
     final arguments = settings.arguments;
 
     switch (settings.name) {
-      case Routes.appScreen:
-        return MaterialPageRoute(
-          builder: (_) => const AppScreen(),
-        );
       case Routes.homeScreen:
         return MaterialPageRoute(
           builder: (_) => const HomeScreen(),
         );
-      case Routes.customerScreen:
+      case Routes.customerFormScreen:
         return MaterialPageRoute(
-          builder: (_) => const CustomerScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) => CustomerCubit(getIt()),
+            child: const CustomerFormScreen(),
+          ),
         );
 
       //* New Price Offers
@@ -88,28 +86,18 @@ class AppRouter {
             itemData: arguments as Map<String, dynamic>,
           ),
         );
+
+      //* customer Base
+      case Routes.customerBaseScreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => CustomerCubit(getIt()),
+            child: CustomerBaseScreen(),
+          ),
+        );
       default:
         return MaterialPageRoute(
-          builder: (context) => Scaffold(
-            body: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Screen Will Created Soon!😉',
-                    style: TextStyles.font25BlackRegular,
-                  ),
-                  AppTextButton(
-                      textStyle: TextStyles.font16GreyMeduim
-                          .copyWith(color: Colors.white),
-                      text: "Go Back",
-                      onpressed: () {
-                        context.pop();
-                      })
-                ],
-              ),
-            ),
-          ),
+          builder: (context) => Scaffold(body: DefaultRouteScreen()),
         );
     }
   }

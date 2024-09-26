@@ -1,3 +1,4 @@
+import 'package:solar/core/constance/constance.dart';
 import 'package:solar/core/database/database_services.dart';
 import 'package:solar/core/helper/api_error_handler.dart';
 import 'package:solar/core/helper/api_result.dart';
@@ -6,7 +7,7 @@ class LightingRepo {
   final DbServices _databaseServices;
 
   LightingRepo(this._databaseServices);
-  String tableName = "lighting_items_table";
+  static const String tableName = lightingItemsTableName;
   Future<DataResult<void>> addLightingData(
       String itemName, String itemImage) async {
     try {

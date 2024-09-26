@@ -132,7 +132,7 @@ class LightingStationsCategoriesScreen extends StatelessWidget {
                         context.pushNamed(Routes.categoriesDetailsScreen,
                             arguments: data[index]);
                       } else {
-                        context.pushNamed(Routes.customerScreen);
+                        context.pushNamed(Routes.customerFormScreen);
                       }
                     },
                     index: index,
