@@ -33,28 +33,50 @@ class MainImage extends StatelessWidget {
               ),
               image: DecorationImage(
                   image: image.isNullOrEmpty()
-                      ? AssetImage('assets/images/public_icons/main_image.png')
+                      ? const AssetImage(
+                          'assets/images/public_icons/main_image.png')
                       : FileImage(File(image!)),
                   fit: BoxFit.contain)),
         ),
       ),
-      Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: GestureDetector(
-          onTap: () {
-            arrowBacFunc();
-          },
-          child: Container(
-            width: 50.w,
-            height: 40.h,
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage(
-                        'assets/images/public_icons/arrow_back_image.png')),
-                borderRadius: BorderRadius.all(Radius.circular(10))),
+      Positioned(
+        left: 0,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: GestureDetector(
+            onTap: () {
+              arrowBacFunc();
+            },
+            child: Container(
+              width: 50.w,
+              height: 40.h,
+              decoration: const BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage(
+                          'assets/images/public_icons/arrow_back_image.png')),
+                  borderRadius: BorderRadius.all(Radius.circular(10))),
+            ),
           ),
         ),
-      )
+      ),
+      Positioned(
+        right: 0,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: GestureDetector(
+            onTap: () {},
+            child: Container(
+              width: 50.w,
+              height: 40.h,
+              child: Icon(
+                Icons.menu,
+                size: 35.w,
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ),
+      ),
     ]);
   }
 }

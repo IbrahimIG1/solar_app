@@ -12,8 +12,7 @@ class DbFactory {
     if (_database == null) {
       print("in section null");
 
-      _database =
-          await _openData(databaseName: "app_data");
+      _database = await _openData(databaseName: "app_data");
       return _database!;
     } else {
       print("in section not null");
@@ -23,8 +22,7 @@ class DbFactory {
   }
 
 //* Open Databae
-  Future<Database> _openData(
-      {required String databaseName}) async {
+  Future<Database> _openData({required String databaseName}) async {
     print("Start _openData Database");
 
     String databasesPath = await getDatabasesPath();
@@ -41,14 +39,15 @@ class DbFactory {
   }
 
   /// create the items table in database [ name , image]
-  Future<void> _createItemsTable(
-      {required Database db}) async {
+  Future<void> _createItemsTable({required Database db}) async {
     print("Start _create Items Table Database");
-    
+
     //* Items table
     await db.execute(
         'CREATE TABLE $lightingItemsTableName (id INTEGER PRIMARY KEY, name TEXT, image TEXT)');
     await db.execute(
         'CREATE TABLE $customerTableName (id INTEGER PRIMARY KEY, name TEXT, address TEXT, phone TEXT, station_type TEXT, offer_expiry_date TEXT)');
+    await db.execute(
+        'CREATE TABLE $categoryDetailsTableName (id INTEGER PRIMARY KEY, type TEXT, capacity TEXT, price TEXT, categoryName TEXT)');
   }
 }

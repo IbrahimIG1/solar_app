@@ -52,13 +52,10 @@ class MainItem extends StatelessWidget {
                     height: data[index]['height'],
                   ),
                 ),
-                Text(
-                  data[index]['e_name'],
-                  style: TextStyles.font25BlackRegular,
-                ),
+               
                 OutlinedText(
                     text: Text(
-                      data[index]['ar_name'],
+                      data[index]['name'],
                       style: TextStyles.font20WhiteRegular,
                     ),
                     strokes: [

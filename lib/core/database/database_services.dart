@@ -1,4 +1,5 @@
 import 'package:solar/core/database/database_factory.dart';
+import 'package:solar/core/models/category_details_model.dart';
 import 'package:solar/core/models/customer_model.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -7,6 +8,8 @@ class DbServices {
   final DbFactory dbFactory;
 
 //* Add Tables in Database
+
+//* Add Lighting Itime in Database
   void addLightingItimeInDatabase({
     required String itemName,
     required String tableName,
@@ -19,6 +22,7 @@ class DbServices {
     );
   }
 
+//* Add Customer Information in Database
   void addCustomerInfoInDatabase({
     required CustomerModel customerModel,
     required String tableName,
@@ -27,6 +31,19 @@ class DbServices {
     database.transaction(
       (txn) => txn.rawInsert(
         'INSERT INTO $tableName(name, address, phone, station_type, offer_expiry_date) VALUES("${customerModel.customerName}","${customerModel.customerAddress}","${customerModel.customerPhone}","${customerModel.stationType}","${customerModel.offerExpiryDate}")',
+      ),
+    );
+  }
+
+  //* Add Category Details in Database
+  void addCategoryDetailsInDatabase({
+    required CategoryDetailsModel categoryDetailsModel,
+    required String tableName,
+  }) async {
+    final Database database = await dbFactory.createDatabase();
+    database.transaction(
+      (txn) => txn.rawInsert(
+        'INSERT INTO $tableName(type, capacity, price, categoryName) VALUES("${categoryDetailsModel.type}","${categoryDetailsModel.capacity}","${categoryDetailsModel.price}","${categoryDetailsModel.categoryName}")',
       ),
     );
   }

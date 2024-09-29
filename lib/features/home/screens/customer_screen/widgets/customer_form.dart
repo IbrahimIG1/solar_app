@@ -8,6 +8,7 @@ import 'package:solar/features/home/screens/customer_screen/logic/cubit/customer
 import 'package:solar/features/home/screens/customer_screen/logic/cubit/customer_state.dart';
 import 'package:solar/features/home/screens/customer_screen/widgets/customer_form_button.dart';
 import 'package:solar/features/home/screens/customer_screen/widgets/customer_text_field.dart';
+import 'package:solar/generated/l10n.dart';
 
 class CustomerForm extends StatelessWidget {
   const CustomerForm({super.key});
@@ -52,27 +53,27 @@ class CustomerForm extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 CustomerTextField(
-                  lable: "Customer name",
+                  lable: S.current.customer_name,
                   controller: cubit.nameController,
                   validator: (value) {
                     if (value.isNullOrEmpty()) {
                       return "Please Enter Customer name";
                     }
                   },
-                  hintText: "اسم العميل",
+                  hintText: S.current.customer_name,
                 ),
                 CustomerTextField(
-                  lable: "Customer address",
+                  lable: S.current.customer_address,
                   controller: cubit.addressController,
                   validator: (value) {
                     if (value.isNullOrEmpty()) {
                       return "Please Enter Customer address";
                     }
                   },
-                  hintText: "العنوان",
+                  hintText: S.current.customer_address,
                 ),
                 CustomerTextField(
-                  lable: "Phone number",
+                  lable: S.current.phone_number,
                   keyboardType: TextInputType.phone,
                   controller: cubit.phoneController,
                   validator: (value) {
@@ -80,22 +81,22 @@ class CustomerForm extends StatelessWidget {
                       return "Please Phone number";
                     }
                   },
-                  hintText: "رقم التليفون",
+                  hintText: S.current.phone_number,
                 ),
                 CustomerTextField(
                   controller: cubit.stationController,
-                  lable: "Station type",
+                  lable: S.current.station_type,
                   validator: (value) {
                     if (value.isNullOrEmpty()) {
                       return "Please Station type";
                     }
                   },
-                  hintText: "نوع المحطة",
+                  hintText: S.current.station_type,
                 ),
                 CustomerTextField(
                   readOnly: true,
                   controller: cubit.offerExpireController,
-                  lable: "Offer expiry date",
+                  lable: S.current.offer_expiry_date,
                   suffixIcon: IconButton(
                     onPressed: () {
                       cubit.pickeDateOfferExpire(context);
@@ -110,7 +111,7 @@ class CustomerForm extends StatelessWidget {
                       return "Please Offer expiry date";
                     }
                   },
-                  hintText: "تاريخ انتهاء العرض",
+                  hintText: S.current.offer_expiry_date,
                 ),
                 verticalSpace(20),
                 CustomerFormButton(

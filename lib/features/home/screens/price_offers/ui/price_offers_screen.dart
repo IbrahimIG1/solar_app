@@ -5,6 +5,7 @@ import 'package:solar/core/helper/spacing.dart';
 import 'package:solar/core/routing/routes.dart';
 import 'package:solar/core/widgets/main_image.dart';
 import 'package:solar/core/widgets/main_item.dart';
+import 'package:solar/generated/l10n.dart';
 
 class PriceOffersScreen extends StatelessWidget {
   const PriceOffersScreen({super.key});
@@ -15,24 +16,21 @@ class PriceOffersScreen extends StatelessWidget {
       {
         "id": "Price offers-2",
         'icon': 'assets/images/price_offers_screen/new_price.png',
-        'e_name': "New Price offers",
-        'ar_name': "عرض سعر جديد",
+        'name': S.current.new_price_offers,
         'width': 69.98.w,
         'height': 69.95.h,
       },
       {
         "id": "Price offers issued",
         'icon': 'assets/images/price_offers_screen/price_offer.png',
-        'e_name': "Price offers issued",
-        'ar_name': "عروض الاسعار الصادره",
+        'name': S.current.price_offers_issued,
         'width': 61.16.w,
         'height': 69.31.h,
       },
       {
         "id": "Maintenance-2",
         'icon': 'assets/images/price_offers_screen/stor_management.png',
-        'e_name': "Maintenance",
-        'ar_name': "ادارة المخزن",
+        'name': S.current.maintenance,
         'width': 82.w,
         'height': 68.h,
       }

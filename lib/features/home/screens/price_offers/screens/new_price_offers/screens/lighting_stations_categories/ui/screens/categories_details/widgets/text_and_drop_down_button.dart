@@ -3,21 +3,21 @@ import 'package:solar/core/theming/font_styles.dart';
 import 'package:solar/core/widgets/app_drop_down_button.dart';
 
 class TextAndDropDownButton extends StatefulWidget {
-  const TextAndDropDownButton({super.key, required this.name});
+  const TextAndDropDownButton(
+      {super.key, required this.name, required this.items});
   final String name;
+  final List<String> items;
   @override
   State<TextAndDropDownButton> createState() => _TextAndDropDownButtonState();
 }
 
 class _TextAndDropDownButtonState extends State<TextAndDropDownButton> {
   String? selectedValue;
-  List<String> items = ['Option 1', 'Option 2', 'Option 3', 'Option 4'];
-
 
   @override
   Widget build(BuildContext context) {
     // String dropdownValue = items.first;
-    String? dropdownValue;
+    // String? dropdownValue;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -26,9 +26,9 @@ class _TextAndDropDownButtonState extends State<TextAndDropDownButton> {
           style: TextStyles.font25BlackRegular,
         ),
         AppDropDownButton(
-            data: items,
+            data: widget.items,
             onSelecte: (selectedValue) {
-              dropdownValue = selectedValue;
+              // dropdownValue = selectedValue;
             })
       ],
     );

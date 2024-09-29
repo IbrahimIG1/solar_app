@@ -10,6 +10,11 @@ class FormCalaculation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<String> typeNamesList = [
+    "type-1",
+    "type-2",
+    "type-3",
+  ];
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Column(
@@ -21,15 +26,20 @@ class FormCalaculation extends StatelessWidget {
             name: "Load(Wh)",
           ),
           verticalSpace(20),
-          const TextAndDropDownButton(
+           TextAndDropDownButton(
+            items: typeNamesList,
             name: 'Inverter Type',
           ),
           verticalSpace(20),
-          const TextAndDropDownButton(
+           TextAndDropDownButton(
+            items: typeNamesList,
+
             name: 'Panel Type',
           ),
           verticalSpace(20),
-          const TextAndDropDownButton(
+           TextAndDropDownButton(
+            items: typeNamesList,
+
             name: 'Panel (Wh)',
           ),
           verticalSpace(20),

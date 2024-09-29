@@ -2,6 +2,7 @@ class Routes {
   static const String onBoardingScreen = '/onBoardingScreen';
   //* Home
   static const String homeScreen = '/homeScreen';
+  static const String priceManagement = '/priceManagement';
   //* New Price
   static const String priceOffersScreen = '/priceOffersScreen';
   static const String newPriceOffersScreen = '/newPriceOffersScreen';

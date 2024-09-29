@@ -1,0 +1,39 @@
+{
+    "price_offers" : "Price Offers",
+    "technical_offer" : "Technical Offer",
+    "maintenance":"Maintenance",
+    "customer_base":"Customer Base",
+    "price_management":"Price Management",
+    "new_price_offers":"New Price Offers",
+    "new_technical_offers":"New Technical Offers",
+    "price_offers_issued":"Price Offers Issued",
+    "technical_offers_issued":"Technical Offers Issued",
+    "store_management":"store management",
+    "lighting_stations": "lighting stations",
+    "irrigation_stations":"irrigation stations",
+    "surface_irrigation_station": "surface irrigation station",
+    "deep_irrigation_station":"deep irrigation station",
+    "categories":"categories",
+    "lighting_load_calculation":"lighting load calculation",
+    "calculation_inverter_and_batteries":"calculation inverter and batteries",
+    "add_item":"add item",
+    "add_image":"add image",
+    "save":"save",
+    "cancle":"cancle",
+    "customers_data":"customers data",
+    "table_info":"table information",
+    "customer_name":"customer name",
+    "customer_address":"customer address",
+    "phone_number":"phone number",
+    "station_type":"station type",
+    "offer_expiry_date":"offer expiry date",
+    "no_data_yet":"No Data Yet!, Please Add Data",
+    "extract_pdf":"Extract Pdf",
+    "prices_database":"Prices Database"
+
+
+
+
+
+
+}

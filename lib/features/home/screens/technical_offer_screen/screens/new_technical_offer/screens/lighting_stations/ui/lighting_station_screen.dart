@@ -5,6 +5,7 @@ import 'package:solar/core/helper/spacing.dart';
 import 'package:solar/core/routing/routes.dart';
 import 'package:solar/core/widgets/main_image.dart';
 import 'package:solar/core/widgets/main_item.dart';
+import 'package:solar/generated/l10n.dart';
 
 class TechLightingStationScreen extends StatelessWidget {
   const TechLightingStationScreen({super.key});
@@ -15,16 +16,14 @@ class TechLightingStationScreen extends StatelessWidget {
       {
         "id": "Lighting load calculation",
         'icon': 'assets/images/technical_offers/home_power_icon.png',
-        'e_name': "",
-        'ar_name': "حساب احمال الانارة",
+        'name': S.current.lighting_load_calculation,
         'width': 110.w,
         'height': 90.h,
       },
       {
         "id": "inverter and battery calculation",
         'icon': 'assets/images/technical_offers/inventer_and_pattery_group.png',
-        'e_name': "",
-        'ar_name': "حساب الالواح والانفرتر والبطارية",
+        'name': S.current.calculation_inverter_and_batteries,
         'width': 306.w,
         'height': 90.h,
       },

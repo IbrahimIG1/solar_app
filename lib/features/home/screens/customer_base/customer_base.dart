@@ -5,6 +5,7 @@ import 'package:solar/core/widgets/delete_box.dart';
 import 'package:solar/features/home/screens/customer_base/widgets/customer_item.dart';
 import 'package:solar/features/home/screens/customer_screen/logic/cubit/customer_cubit.dart';
 import 'package:solar/features/home/screens/customer_screen/logic/cubit/customer_state.dart';
+import 'package:solar/generated/l10n.dart';
 
 class CustomerBaseScreen extends StatelessWidget {
   const CustomerBaseScreen({super.key});
@@ -14,7 +15,7 @@ class CustomerBaseScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Customer Data',
+          S.current.customers_data,
         ),
       ),
       body: SafeArea(
@@ -43,8 +44,8 @@ class CustomerBaseScreen extends StatelessWidget {
                 var cubit = CustomerCubit.get(context);
                 if (cubit.customersList.isNullOrEmpty()) {
                   cubit.getCustomerData();
-                  return const Center(
-                      child: Text("No Data Yet!, Please Add Data"));
+                  return  Center(
+                      child: Text(S.current.no_data_yet));
                 } else {
                   return ListView.builder(
                     itemCount: cubit.customersList.length,

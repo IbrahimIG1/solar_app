@@ -15,29 +15,29 @@ class AppTextFormFeild extends StatelessWidget {
   final TextEditingController? controller;
   final Function(String?) validator;
 
-  const AppTextFormFeild(
-      {super.key,
-      this.contentPadding,
-      this.enableBorder,
-      this.foucedBorder,
-      required this.hintText,
-      this.hintTextStyle,
-      this.suffixIcon,
-      this.isObscure,
-      this.backGroundColor,
-      this.controller,
-      required this.validator,
-});
+  const AppTextFormFeild({
+    super.key,
+    this.contentPadding,
+    this.enableBorder,
+    this.foucedBorder,
+    required this.hintText,
+    this.hintTextStyle,
+    this.suffixIcon,
+    this.isObscure,
+    this.backGroundColor,
+    this.controller,
+    required this.validator,
+  });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      textDirection: TextDirection.rtl,
+      textDirection: TextDirection.ltr,
       controller: controller,
       decoration: InputDecoration(
           // label: Text(lable ?? "",
           //     style: lableStyle ?? TextStyles.font16GreyMeduim),
-          hintTextDirection: TextDirection.rtl,
+          hintTextDirection: TextDirection.ltr,
           isDense: true,
           hintText: hintText,
           hintStyle: hintTextStyle ?? TextStyles.font16GreyMeduim,

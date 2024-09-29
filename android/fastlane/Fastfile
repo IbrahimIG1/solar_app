@@ -29,14 +29,9 @@ platform :android do
             android_artifact_type: "APK",
             android_artifact_path: "../build/app/outputs/flutter-apk/app-release.apk",
             testers: "ibrahim13elgammal@gmail.com, mohamedfawzi8898@gmail.com",
-            release_notes: "- create cutomer Database.
-            - create cutomer Base Screen ui.
-            - change some styles.
-            - edite save item button.
-            - show cutomer data in Maintenance screen.
-            - handle customer data (add-get-delete).
-            - refactor error handler.
-            - handle items calculation form data.
+            release_notes: "- add arabic language.
+            - work on added prices management table (not completed yet).
+            - create button to pdf extracting.
             "
         )
   end

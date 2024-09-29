@@ -6,8 +6,9 @@ import 'package:solar/core/widgets/default_route_screen.dart';
 import 'package:solar/features/home/screens/customer_base/customer_base.dart';
 import 'package:solar/features/home/screens/customer_screen/logic/cubit/customer_cubit.dart';
 import 'package:solar/features/home/screens/customer_screen/customer_screen.dart';
+import 'package:solar/features/home/screens/price_management/price_management.dart';
 import 'package:solar/features/home/screens/price_offers/screens/new_price_offers/screens/lighting_stations_categories/ui/categories_screen.dart';
-import 'package:solar/features/home/screens/price_offers/screens/new_price_offers/screens/lighting_stations_categories/ui/screens/categories_details/Lighting_categories_calculation_form_screen.dart';
+import 'package:solar/features/home/screens/price_offers/screens/new_price_offers/screens/lighting_stations_categories/ui/screens/categories_details/lighting_categories_calculation_form_screen.dart';
 import 'package:solar/features/home/screens/price_offers/screens/new_price_offers/screens/lighting_stations_categories/ui/screens/categories_details/logic/cubit/lighting_categories_calculation_cubit.dart';
 import 'package:solar/features/home/screens/technical_offer_screen/screens/new_technical_offer/screens/lighting_stations/screens/inverter_and_battery_calculation/inverter_and_battery_calculation.dart';
 import 'package:solar/features/home/screens/technical_offer_screen/screens/new_technical_offer/screens/lighting_stations/screens/lighting_load_calculation/logic/cubit/lighting_calculation_cubit.dart';
@@ -37,6 +38,14 @@ class AppRouter {
             child: const CustomerFormScreen(),
           ),
         );
+      case Routes.priceManagement:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) =>
+                LightingCategoriesCalculationCubit(getIt())..getTableData(),
+            child: const PriceManagement(),
+          ),
+        );
 
       //* New Price Offers
       case Routes.priceOffersScreen:
@@ -50,14 +59,15 @@ class AppRouter {
       case Routes.lightingStationsCategoriesScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) => LightingCategoriesCalculationCubit(),
+            create: (context) => LightingCategoriesCalculationCubit(getIt()),
             child: const LightingStationsCategoriesScreen(),
           ),
         );
       case Routes.categoriesDetailsScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) => LightingCategoriesCalculationCubit(),
+            create: (context) => LightingCategoriesCalculationCubit(getIt())
+              ..getDetailsDataFromDatabase(arguments),
             child: LightingCategoriesCalculationScreen(
               data: arguments as Map<String, dynamic>,
             ),
