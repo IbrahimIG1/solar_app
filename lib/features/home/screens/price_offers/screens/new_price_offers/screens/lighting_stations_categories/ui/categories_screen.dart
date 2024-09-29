@@ -1,145 +1,92 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solar/core/helper/extensions.dart';
-import 'package:solar/core/helper/spacing.dart';
+import 'package:solar/core/models/app_categories.dart';
 import 'package:solar/core/routing/routes.dart';
+import 'package:solar/core/widgets/app_button.dart';
+import 'package:solar/features/home/screens/price_offers/screens/new_price_offers/screens/lighting_stations_categories/ui/screens/categories_details/logic/cubit/lighting_categories_calculation_cubit.dart';
+import 'package:solar/features/home/screens/price_offers/screens/new_price_offers/screens/lighting_stations_categories/ui/screens/categories_details/logic/cubit/lighting_categories_calculation_state.dart';
 import 'package:solar/features/home/screens/price_offers/screens/new_price_offers/screens/lighting_stations_categories/ui/widgets/item_card.dart';
-import '../../../../../../../../../core/widgets/main_image.dart';
+import 'package:solar/generated/l10n.dart';
 
-class LightingStationsCategoriesScreen extends StatelessWidget {
+class LightingStationsCategoriesScreen extends StatefulWidget {
   const LightingStationsCategoriesScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    List<Map<String, dynamic>> data = [
-      {
-        'first_name': 'Panel Type',
-        'second_name': "panel watt",
-        'thired_name': "Number of panels",
-        'forth_name': "panal Type",
-        'first_choose': "اللوح",
-        'second_choose': "وات اللوح",
-        'thired_choose': "عدد الالواح",
-        'icon': 'assets/images/categories_icons/sun_electric.png',
-        'width': 130.w,
-        'height': 92.28.h,
-      },
-      {
-        'first_name': 'Inverter Type',
-        'second_name': "Inverter capacity",
-        'thired_name': "Inverter price",
-        'forth_name': "panal Type",
-        'first_choose': "الشاسيه",
-        'second_choose': "معدن الشاسيه",
-        'thired_choose': "سعر الانفرتر",
-        'icon': 'assets/images/categories_icons/power_generator.png',
-        'width': 96.w,
-        'height': 112.h,
-      },
-      {
-        'first_name': 'Chassis type',
-        'second_name': "Type of chassis metal",
-        'thired_name': "Chassis price",
-        'forth_name': "panal Type",
-        'first_choose': "اللوح",
-        'second_choose': "وات",
-        'thired_choose': "سعر الشاسية",
-        'icon': 'assets/images/categories_icons/sun_battery.png',
-        'width': 110.w,
-        'height': 92.48.h,
-      },
-      {
-        'first_name': 'Panel Type',
-        'second_name': "panel watt",
-        'thired_name': "Number of panels",
-        'forth_name': "panal Type",
-        'first_choose': "اللوح",
-        'second_choose': "وات اللوح",
-        'thired_choose': "عدد الالواح",
-        'icon': 'assets/images/categories_icons/stand_sun.png',
-        'width': 130.w,
-        'height': 106.41.h,
-      },
-      {
-        'first_name': 'Panel Type',
-        'second_name': "panel watt",
-        'thired_name': "Number of panels",
-        'forth_name': "panal Type",
-        'first_choose': "اللوح",
-        'second_choose': "وات اللوح",
-        'thired_choose': "عدد الالواح",
-        'icon': 'assets/images/categories_icons/sun_system.png',
-        'width': 120.w,
-        'height': 115.12.h,
-      },
-      {
-        'first_name': 'Panel Type',
-        'second_name': "panel watt",
-        'thired_name': "Number of panels",
-        'forth_name': "panal Type",
-        'first_choose': "اللوح",
-        'second_choose': "وات اللوح",
-        'thired_choose': "عدد الالواح",
-        'icon': 'assets/images/categories_icons/car_electric.png',
-        'width': 144.22.w,
-        'height': 140.22.h,
-      },
-      // {
-      //   'first_name': 'Panel Type',
-      //   'second_name': "panel watt",
-      //   'thired_name': "Number of panels",
-      //   'forth_name': "panal Type",
-      //   'first_choose': "اللوح",
-      //   'second_choose': "وات",
-      //   'thired_choose': "عدد الالواح",
-      //   'icon': 'assets/images/categories_icons/settings.png',
-      //   'width': 100.w,
-      //   'height': 100.h,
-      // },
-      {
-        'first_name': 'Panel Type',
-        'second_name': "panel watt",
-        'thired_name': "Number of panels",
-        'forth_name': "panal Type",
-        'first_choose': "اللوح",
-        'second_choose': "وات",
-        'thired_choose': "عدد الالواح",
-        'icon': 'assets/images/categories_icons/profile.png',
-        'width': 95.22.w,
-        'height': 100.h,
-      },
-    ];
+  State<LightingStationsCategoriesScreen> createState() =>
+      _LightingStationsCategoriesScreenState();
+}
 
+class _LightingStationsCategoriesScreenState
+    extends State<LightingStationsCategoriesScreen> {
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          title: Text(S.current.categories),
+        ),
         body: SafeArea(
-      child: Column(
-        children: [
-          MainImage(arrowBacFunc: () {
-            context.pop();
-          }),
-          verticalSpace(30),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: GridView.count(
-                crossAxisCount: 2,
-                mainAxisSpacing: 16.h,
-                crossAxisSpacing: 18.w,
-                children: List.generate(data.length, (index) {
-                  return ItemCard(
-                    onTap: () {
-                      context.pushNamed(Routes.categoriesDetailsScreen,
-                          arguments: data[index]);
-                    },
-                    index: index,
-                    data: data,
-                  );
-                }),
-              ),
+          child: Padding(
+            padding: EdgeInsets.only(top: 20.h),
+            child: Column(
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: GridView.count(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 16.h,
+                      crossAxisSpacing: 18.w,
+                      children: List.generate(
+                          AppCategories.lightingItemsData.length, (int index) {
+                        return ItemCard(
+                          isDone: AppCategories.lightingItemsData[index]
+                              ['is_done'],
+                          onTap: () async {
+                            if (index <
+                                AppCategories.lightingItemsData.length - 1) {
+                              //* i'm await on push because i wait the result in navigate.pop(is_done)
+                              //* to active the check is done on item
+                              final result = await context.pushNamed(
+                                  Routes.categoriesDetailsScreen,
+                                  arguments:
+                                      AppCategories.lightingItemsData[index]);
+                              if (result != null) {
+                                setState(() {
+                                  AppCategories.lightingItemsData[index]
+                                      ['is_done'] = result;
+                                });
+                              }
+                            } else {
+                              context.pushNamed(Routes.customerFormScreen);
+                            }
+                          },
+                          index: index,
+                          data: AppCategories.lightingItemsData[index],
+                        );
+                      }),
+                    ),
+                  ),
+                ),
+                BlocConsumer<LightingCategoriesCalculationCubit,
+                    LightingCategoriesCalculationState>(
+                  listener: (context, state) {},
+                  builder: (context, state) {
+                    var cubit = LightingCategoriesCalculationCubit.get(context);
+                    return AppTextButton(
+                      text: S.current.extract_pdf,
+                      onpressed: () {
+                        cubit.pdfGenerate();
+                      },
+                      backgroundColor: Colors.green,
+                      buttonWidth: double.infinity,
+                    );
+                  },
+                ),
+              ],
             ),
-          )
-        ],
-      ),
-    ));
+          ),
+        ));
   }
 }

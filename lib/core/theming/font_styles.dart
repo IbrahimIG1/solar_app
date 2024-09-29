@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solar/core/theming/font_weight_helper.dart';
 
 class TextStyles {
-  // balck
+  //* balck
   static TextStyle font25BlackRegular = TextStyle(
     fontSize: 25.sp,
     fontWeight: FontWeightHelper.regular,
@@ -14,7 +14,17 @@ class TextStyles {
     fontWeight: FontWeightHelper.regular,
     color: Colors.black,
   );
-  // grey
+  static TextStyle font16BlackRegular = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: Colors.black,
+  );
+  static TextStyle font16BlackBold = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: Colors.black,
+  );
+  //* grey
   static TextStyle font25GreyRegular = TextStyle(
     fontSize: 25.sp,
     fontWeight: FontWeightHelper.regular,
@@ -25,9 +35,32 @@ class TextStyles {
     fontWeight: FontWeightHelper.regular,
     color: Colors.grey,
   );
-   static TextStyle font20WhiteRegular = TextStyle(
+  static TextStyle font16GreyMeduim = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeightHelper.medium,
+    color: Colors.grey,
+  );
+  static TextStyle font18GreyMeduim = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeightHelper.medium,
+    color: Colors.grey,
+  );
+  //* white
+  static TextStyle font20WhiteRegular = TextStyle(
     fontSize: 20.sp,
     fontWeight: FontWeightHelper.regular,
     color: Colors.white,
+  );
+   static TextStyle font20WhiteBold = TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: Colors.white,
+  );
+
+  //* red
+  static TextStyle font20RedBold = TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: Colors.red,
   );
 }

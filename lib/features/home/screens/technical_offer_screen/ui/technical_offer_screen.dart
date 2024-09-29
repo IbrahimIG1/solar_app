@@ -5,6 +5,7 @@ import 'package:solar/core/helper/spacing.dart';
 import 'package:solar/core/routing/routes.dart';
 import 'package:solar/core/widgets/main_image.dart';
 import 'package:solar/core/widgets/main_item.dart';
+import 'package:solar/generated/l10n.dart';
 
 
 class TechnicalOfferScreen extends StatelessWidget {
@@ -16,24 +17,21 @@ class TechnicalOfferScreen extends StatelessWidget {
       {
         "id": "New Technical offer",
         'icon': 'assets/images/price_offers_screen/new_price.png',
-        'e_name': "New Technical offer",
-        'ar_name': "عرض فني جديد",
+        'name': S.current.new_technical_offers,
         'width': 69.98.w,
         'height': 69.95.h,
       },
       {
         "id": "Technical offers issued",
         'icon': 'assets/images/price_offers_screen/price_offer.png',
-        'e_name': "Technical offers issued",
-        'ar_name': 'العروض الفنية الصادرة',
+        'name': S.current.technical_offers_issued,
         'width': 61.16.w,
         'height': 69.31.h,
       },
       {
         "id": "Store Management",
         'icon': 'assets/images/price_offers_screen/stor_management.png',
-        'e_name': "Store Management",
-        'ar_name': "ادارة المخزون",
+        'name': S.current.store_management,
         'width': 82.w,
         'height': 68.h,
       }

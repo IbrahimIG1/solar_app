@@ -1,11 +1,11 @@
-class ApiErrorModel {
+class ErrorModel {
   final String? message;
   final String?
       code; // Optional code for categorizing errors (e.g., Firebase error codes)
   final Map<String, dynamic>?
       errors; // Optional flag to indicate critical errors
 
-  ApiErrorModel({
+  ErrorModel({
     this.message,
     this.code,
     this.errors,

@@ -5,6 +5,7 @@ import 'package:solar/core/helper/spacing.dart';
 import 'package:solar/core/routing/routes.dart';
 import 'package:solar/core/widgets/main_image.dart';
 import 'package:solar/core/widgets/main_item.dart';
+import 'package:solar/generated/l10n.dart';
 
 class NewPriceOffers extends StatelessWidget {
   const NewPriceOffers({super.key});
@@ -14,22 +15,19 @@ class NewPriceOffers extends StatelessWidget {
     List<Map<String, dynamic>> data = [
       {
         'icon': 'assets/images/sections_screen/light_icon.png',
-        'e_name': "Lighting stations",
-        'ar_name': "محطات انارة",
+        'name': S.current.lighting_stations,
         'width': 102.w,
         'height': 140.22.h,
       },
       {
         'icon': 'assets/images/sections_screen/surrface.png',
-        'e_name': "Surface irrigation stations",
-        'ar_name': "محطات ري سطحي",
+        'name': S.current.surface_irrigation_station,
         'width': 144.22.w,
         'height': 140.22.h,
       },
       {
         'icon': 'assets/images/sections_screen/deep.png',
-        'e_name': "Deep irrigation stations",
-        'ar_name': "محطات ري عميق",
+        'name': S.current.deep_irrigation_station,
         'width': 144.22.w,
         'height': 140.22.h,
       }
@@ -45,7 +43,6 @@ class NewPriceOffers extends StatelessWidget {
           children: [
             MainImage(
               arrowBacFunc: () {
-                print('clicked');
                 context.pop();
               },
             ),

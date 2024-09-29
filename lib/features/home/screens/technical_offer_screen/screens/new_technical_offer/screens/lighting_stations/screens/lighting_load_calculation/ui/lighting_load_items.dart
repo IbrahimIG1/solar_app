@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solar/core/helper/extensions.dart';
 import 'package:solar/core/helper/spacing.dart';
-import 'package:solar/core/widgets/dialog.dart';
+import 'package:solar/features/home/screens/technical_offer_screen/screens/new_technical_offer/screens/lighting_stations/screens/lighting_load_calculation/ui/widgets/add_item_dialog.dart';
 import 'package:solar/core/widgets/main_image.dart';
 import 'package:solar/features/home/screens/technical_offer_screen/screens/new_technical_offer/screens/lighting_stations/screens/lighting_load_calculation/logic/cubit/lighting_calculation_cubit.dart';
 import 'package:solar/features/home/screens/technical_offer_screen/screens/new_technical_offer/screens/lighting_stations/screens/lighting_load_calculation/logic/cubit/lighting_calculation_state.dart';
@@ -10,7 +10,6 @@ import 'package:solar/features/home/screens/technical_offer_screen/screens/new_t
 
 class LightingLoadItems extends StatelessWidget {
   const LightingLoadItems({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,23 +28,21 @@ class LightingLoadItems extends StatelessWidget {
       ),
       floatingActionButton:
           BlocConsumer<LightingCalculationCubit, LightingCalculationState>(
-        listener: (context, state) {
-          // TODO: implement listener
-        },
+        listener: (context, state) {},
         builder: (context, state) {
-          LightingCalculationCubit cubit =
-              LightingCalculationCubit.get(context);
+          var cubit = LightingCalculationCubit.get(context);
           return FloatingActionButton(
             onPressed: () {
               showDialog(
                   context: context,
                   builder: (context) {
-                    return AppDialog(
+                    return AddLightingItemDialog(
                         nameController: cubit.nameController,
                         addImage: cubit.getImage,
                         saveData: () {
-                          cubit.insertDatabase(
-                              cubit.nameController.text, cubit.imagePath ?? "");
+                          cubit.addLightingData(
+                              itemName: cubit.nameController.text,
+                              itemImage: cubit.imagePath ?? "");
                         });
                   });
             },

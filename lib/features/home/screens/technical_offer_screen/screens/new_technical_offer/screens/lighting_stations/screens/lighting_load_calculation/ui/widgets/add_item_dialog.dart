@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:solar/core/helper/extensions.dart';
 import 'package:solar/core/helper/spacing.dart';
 
-class AppDialog extends StatelessWidget {
-  const AppDialog({
+class AddLightingItemDialog extends StatelessWidget {
+  const AddLightingItemDialog({
     super.key,
     required this.nameController,
     required this.addImage,
@@ -43,6 +44,7 @@ class AppDialog extends StatelessWidget {
           onPressed: () {
             print("Add Image press");
             saveData();
+            context.pop();
           },
         ),
         ElevatedButton(

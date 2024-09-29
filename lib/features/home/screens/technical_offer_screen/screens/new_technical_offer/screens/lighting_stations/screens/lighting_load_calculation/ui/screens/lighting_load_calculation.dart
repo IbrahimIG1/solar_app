@@ -7,9 +7,10 @@ import 'package:solar/features/home/screens/technical_offer_screen/screens/new_t
 class LightingLoadCalculationScreen extends StatelessWidget {
   const LightingLoadCalculationScreen({
     super.key,
-    required this.itemData,
+    required this.itemData,  this.formKey,
   });
   final Map<String, dynamic> itemData;
+  final Key? formKey;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,12 +19,13 @@ class LightingLoadCalculationScreen extends StatelessWidget {
               child: Column(
         children: [
           MainImage(
-              image: itemData['icon'],
+              image: itemData['image'],
               arrowBacFunc: () {
                 context.pop();
               }),
           verticalSpace(30),
           FormLightingCalculaion(
+            formKey: formKey,
             name: itemData['name'],
           ),
         ],
