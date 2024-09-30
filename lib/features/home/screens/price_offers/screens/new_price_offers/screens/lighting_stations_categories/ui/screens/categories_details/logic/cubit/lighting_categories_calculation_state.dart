@@ -5,11 +5,20 @@ sealed class LightingCategoriesCalculationState {}
 final class LightingCategoriesCalculationInitial
     extends LightingCategoriesCalculationState {}
 
+
+//* Done check State
 final class IsDoneLightingCategories
     extends LightingCategoriesCalculationState {}
 
-//* Categories Details states
+//* PDF State
+final class PdfSaveDataToGenerate
+    extends LightingCategoriesCalculationState {}
+//* Save Value Selected
+final class SaveValueSeleted
+    extends LightingCategoriesCalculationState {}
 
+
+//* Categories Details states
 final class AddCategoriesDetailsLoading
     extends LightingCategoriesCalculationState {}
 
@@ -43,3 +52,7 @@ final class AddRowInTableError extends LightingCategoriesCalculationState {
 }
 
 final class AddRowInTableLoading extends LightingCategoriesCalculationState {}
+
+
+final class ResetCategoriesData
+    extends LightingCategoriesCalculationState {}

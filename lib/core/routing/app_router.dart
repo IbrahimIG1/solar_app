@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:solar/core/helper/di.dart';
+import 'package:solar/core/di/di.dart';
 import 'package:solar/core/routing/routes.dart';
 import 'package:solar/core/widgets/default_route_screen.dart';
 import 'package:solar/features/home/screens/customer_base/customer_base.dart';
@@ -41,8 +41,8 @@ class AppRouter {
       case Routes.priceManagement:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) =>
-                LightingCategoriesCalculationCubit(getIt())..getTableData(),
+            create: (context) => LightingCategoriesCalculationCubit(getIt())
+              ..getPricesTableData(),
             child: const PriceManagement(),
           ),
         );

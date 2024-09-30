@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:solar/core/helper/di.dart';
+import 'package:solar/core/di/di.dart';
 import 'package:solar/core/routing/app_router.dart';
 import 'package:solar/core/routing/routes.dart';
 import 'package:solar/core/theming/app_theme_data.dart';

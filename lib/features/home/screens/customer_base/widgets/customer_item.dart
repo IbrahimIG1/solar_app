@@ -15,9 +15,12 @@ class CustomerItem extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(10.w),
         decoration: BoxDecoration(
-            color: Colors.white, borderRadius: BorderRadius.circular(20)),
+            color: Colors.red, borderRadius: BorderRadius.circular(20)),
         child: Row(
           children: [
+            // Container(
+            //   child: Text(data['offer_expiry_date']),
+            // ),
             DateCircle(
               txt: data['offer_expiry_date'],
             ),

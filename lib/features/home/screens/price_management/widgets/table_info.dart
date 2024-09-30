@@ -7,8 +7,6 @@ class TableInfo extends StatelessWidget {
   final List<TableRow> tableData;
   @override
   Widget build(BuildContext context) {
-   
-
     return Table(
       border: TableBorder.all(
         borderRadius: BorderRadius.only(
@@ -23,32 +21,16 @@ class TableInfo extends StatelessWidget {
         // 3: FractionColumnWidth(.1),
       },
       children: [
-        // First row (header row)
-        // TableRow(
-        //   children: [
-        //     buildTableCell('Type Name', isHeader: true),
-        //     buildTableCell('Capacity', isHeader: true),
-        //     buildTableCell('Price', isHeader: true),
-        //     // buildTableCell('Price', isHeader: true),
-        //   ],
-        // ),
-        TableRow(children: [
-          buildTableCell("Name", isHeader: true),
+        TableRow(
+          
+          children: [
+          buildTableCell("Type", isHeader: true),
           buildTableCell("Capacity", isHeader: true),
           buildTableCell("Price", isHeader: true),
         ]),
         // Remaining 3 rows (data rows)
-        for (int row = 1; row <= tableData.length; row++)
-          //   TableRow(
-          //     children: [
-
-          //       tableData[row-1];
-          //     ],
-          //   ),
-          tableData[row - 1]
+        for (int row = 1; row <= tableData.length; row++) tableData[row - 1]
       ],
     );
   }
-
-  
 }

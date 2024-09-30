@@ -11,41 +11,41 @@ class FormCalaculation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<String> typeNamesList = [
-    "type-1",
-    "type-2",
-    "type-3",
-  ];
+      "type-1",
+      "type-2",
+      "type-3",
+    ];
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-           TextAndTextFeild(
-            validator: (value){},
+          TextAndTextFeild(
+            validator: (value) {},
             hintText: "أدخل قدرة الماتور بالحصان",
             name: "Load(Wh)",
           ),
           verticalSpace(20),
-           TextAndDropDownButton(
+          TextAndDropDownButton(
+            selectedValue: "",
             items: typeNamesList,
             name: 'Inverter Type',
           ),
           verticalSpace(20),
-           TextAndDropDownButton(
+          TextAndDropDownButton(
+            selectedValue: "",
             items: typeNamesList,
-
             name: 'Panel Type',
           ),
           verticalSpace(20),
-           TextAndDropDownButton(
+          TextAndDropDownButton(
             items: typeNamesList,
-
+            selectedValue: "",
             name: 'Panel (Wh)',
           ),
           verticalSpace(20),
           Center(
               child: AppTextButton(
-
                   textStyle: TextStyles.font25BlackRegular
                       .copyWith(color: Colors.white),
                   text: 'حفظ',

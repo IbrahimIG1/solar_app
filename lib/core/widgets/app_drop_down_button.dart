@@ -8,10 +8,13 @@ class AppDropDownButton extends StatelessWidget {
       required this.data,
       required this.onSelecte,
       this.lable,
-      this.lableStyle});
+      this.lableStyle,
+      this.isCapacity,
+      this.valueSelected});
   final List<String> data;
-
+  final Function? valueSelected;
   final String? lable;
+  final bool? isCapacity;
   final TextStyle? lableStyle;
   final Function(String value) onSelecte;
   @override
@@ -23,6 +26,7 @@ class AppDropDownButton extends StatelessWidget {
       ),
       width: double.infinity,
       child: DropdownMenu<String>(
+        // controller: cubit.dropDownCapacityController,
         textStyle: TextStyles.font16GreyMeduim,
         // inputDecorationTheme: InputDecorationTheme(border: InputBorder.none,
         // ),
@@ -38,13 +42,9 @@ class AppDropDownButton extends StatelessWidget {
         ),
         expandedInsets: EdgeInsets.zero, // to get parnt width
         initialSelection: data.first,
-        onSelected: (newValue) {
-          onSelecte(newValue!);
-          // print('choosed is $newValue');
-          // print('dropdownValue is $dropdownValue');
-          // setState(() {
-          //   dropdownValue = newValue;
-          // });
+
+        onSelected: (value) {
+          onSelecte(value!);
         },
         dropdownMenuEntries:
             data.map<DropdownMenuEntry<String>>((String value) {

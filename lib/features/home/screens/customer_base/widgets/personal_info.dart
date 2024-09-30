@@ -19,6 +19,7 @@ class PersonalInfo extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          
           Text(name, style: TextStyles.font16BlackBold),
           verticalSpace(5),
           Text(address, style: TextStyles.font16BlackBold),

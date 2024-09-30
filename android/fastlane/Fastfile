@@ -29,9 +29,12 @@ platform :android do
             android_artifact_type: "APK",
             android_artifact_path: "../build/app/outputs/flutter-apk/app-release.apk",
             testers: "ibrahim13elgammal@gmail.com, mohamedfawzi8898@gmail.com",
-            release_notes: "- add arabic language.
-            - work on added prices management table (not completed yet).
-            - create button to pdf extracting.
+            release_notes: "- handle green check when lighting item save done.
+            - added price management item in table.
+            - create price management table add dialog.
+            - added price management table in database.
+            - connection with price management table & lighting form drop down list.
+            - handle some issus in pdf printer (it was in test mode).
             "
         )
   end
