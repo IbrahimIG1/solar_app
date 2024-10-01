@@ -29,7 +29,10 @@
     "offer_expiry_date":"تاريخ انتهاء العرض",
     "no_data_yet":"لا يوجد بيانات! من فضلك أدخل البيانات",
     "extract_pdf":"pdf استخراج ملف",
-    "prices_database":"قاعدة بيانات الاسعار"
+    "prices_database":"قاعدة بيانات الاسعار",
+    "name":"اسم",
+    "address":"عنوان",
+    "phone":"رقم الهاتف"
 
 
 }

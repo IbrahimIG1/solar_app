@@ -24,6 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "add_image": MessageLookupByLibrary.simpleMessage("اضافة صورة"),
         "add_item": MessageLookupByLibrary.simpleMessage("اضافة عنصر"),
+        "address": MessageLookupByLibrary.simpleMessage("عنوان"),
         "calculation_inverter_and_batteries":
             MessageLookupByLibrary.simpleMessage(
                 "حساب الالواح والانفرتر والبطايات"),
@@ -45,6 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "lighting_stations":
             MessageLookupByLibrary.simpleMessage("محطات الانارة"),
         "maintenance": MessageLookupByLibrary.simpleMessage("الصيانة"),
+        "name": MessageLookupByLibrary.simpleMessage("اسم"),
         "new_price_offers":
             MessageLookupByLibrary.simpleMessage("عرض سعر جديد"),
         "new_technical_offers":
@@ -53,6 +55,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "لا يوجد بيانات! من فضلك أدخل البيانات"),
         "offer_expiry_date":
             MessageLookupByLibrary.simpleMessage("تاريخ انتهاء العرض"),
+        "phone": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
         "phone_number": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
         "price_management":
             MessageLookupByLibrary.simpleMessage("ادارة الاسعار"),

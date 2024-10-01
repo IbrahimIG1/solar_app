@@ -24,6 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "add_image": MessageLookupByLibrary.simpleMessage("add image"),
         "add_item": MessageLookupByLibrary.simpleMessage("add item"),
+        "address": MessageLookupByLibrary.simpleMessage("addredd"),
         "calculation_inverter_and_batteries":
             MessageLookupByLibrary.simpleMessage(
                 "calculation inverter and batteries"),
@@ -45,6 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "lighting_stations":
             MessageLookupByLibrary.simpleMessage("lighting stations"),
         "maintenance": MessageLookupByLibrary.simpleMessage("Maintenance"),
+        "name": MessageLookupByLibrary.simpleMessage("name"),
         "new_price_offers":
             MessageLookupByLibrary.simpleMessage("New Price Offers"),
         "new_technical_offers":
@@ -53,6 +55,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "No Data Yet!, Please Add Data"),
         "offer_expiry_date":
             MessageLookupByLibrary.simpleMessage("offer expiry date"),
+        "phone": MessageLookupByLibrary.simpleMessage("phone"),
         "phone_number": MessageLookupByLibrary.simpleMessage("phone number"),
         "price_management":
             MessageLookupByLibrary.simpleMessage("Price Management"),

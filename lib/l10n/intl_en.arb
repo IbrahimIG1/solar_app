@@ -29,7 +29,10 @@
     "offer_expiry_date":"offer expiry date",
     "no_data_yet":"No Data Yet!, Please Add Data",
     "extract_pdf":"Extract Pdf",
-    "prices_database":"Prices Database"
+    "prices_database":"Prices Database",
+    "name":"name",
+    "address":"addredd",
+    "phone":"phone"
 
 
 
