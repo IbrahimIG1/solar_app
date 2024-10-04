@@ -36,6 +36,9 @@ class AddItemPricingDialog extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             AppDropDownButton(
+                // valueSelected: () {
+                  
+                // },
                 data: data,
                 onSelecte: (value) {
                   categoryNameAdminController.text = value;

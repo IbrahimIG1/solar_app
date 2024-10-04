@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:solar/core/helper/current_language.dart';
 import 'package:solar/core/helper/spacing.dart';
 import 'package:solar/core/theming/font_styles.dart';
 
@@ -15,19 +16,35 @@ class PersonalInfo extends StatelessWidget {
   final String phone;
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return Container(
+      padding: EdgeInsets.only(
+          right: isArabic() ? 15 : 0, left: isArabic() ? 0 : 15),
+      decoration: BoxDecoration(
+          color: Colors.white, borderRadius: BorderRadius.circular(20)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(name, style: TextStyles.font16BlackBold),
+          //* person name
+          personeInfoItem(name, Icons.person),
           verticalSpace(5),
-          Text(address, style: TextStyles.font16BlackBold),
+          //* person address
+          personeInfoItem(address, Icons.location_on_outlined),
           verticalSpace(5),
-          Text(stationType, style: TextStyles.font16BlackBold),
+          //* person stationType
+          personeInfoItem(stationType, Icons.bubble_chart_outlined),
           verticalSpace(5),
-          Text(phone, style: TextStyles.font16BlackBold),
+          //* person phone
+          personeInfoItem(phone, Icons.phone),
         ],
       ),
     );
   }
+
+  //* persone information icon & text
+  Row personeInfoItem(String text, IconData icon) => Row(
+        children: [
+          Icon(icon),
+          Text(": $text", style: TextStyles.font12BlackMedium),
+        ],
+      );
 }

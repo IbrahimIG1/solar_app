@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:solar/core/helper/extensions.dart';
-import 'package:solar/core/widgets/main_image.dart';
 import 'package:solar/features/home/screens/customer_screen/widgets/customer_form.dart';
 
 class CustomerFormScreen extends StatelessWidget {
@@ -9,16 +7,12 @@ class CustomerFormScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Customer Form'),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Column(
-            children: [
-              MainImage(arrowBacFunc: () {
-                context.pop();
-              }),
-             CustomerForm()
-            ],
-          ),
+          child: CustomerForm(),
         ),
       ),
     );

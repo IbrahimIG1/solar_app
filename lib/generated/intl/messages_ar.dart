@@ -24,6 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "add_image": MessageLookupByLibrary.simpleMessage("اضافة صورة"),
         "add_item": MessageLookupByLibrary.simpleMessage("اضافة عنصر"),
+        "address": MessageLookupByLibrary.simpleMessage("عنوان"),
         "calculation_inverter_and_batteries":
             MessageLookupByLibrary.simpleMessage(
                 "حساب الالواح والانفرتر والبطايات"),
@@ -37,6 +38,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("بيانات العملاء"),
         "deep_irrigation_station":
             MessageLookupByLibrary.simpleMessage("محطات ري عميق"),
+        "enter_hourse_power":
+            MessageLookupByLibrary.simpleMessage("أدخل قدرة الماتور بالحصان"),
+        "enter_item_name":
+            MessageLookupByLibrary.simpleMessage("أدخل اسم الجهاز"),
         "extract_pdf": MessageLookupByLibrary.simpleMessage("pdf استخراج ملف"),
         "irrigation_stations":
             MessageLookupByLibrary.simpleMessage("محطات الرى"),
@@ -45,14 +50,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "lighting_stations":
             MessageLookupByLibrary.simpleMessage("محطات الانارة"),
         "maintenance": MessageLookupByLibrary.simpleMessage("الصيانة"),
+        "name": MessageLookupByLibrary.simpleMessage("اسم"),
         "new_price_offers":
             MessageLookupByLibrary.simpleMessage("عرض سعر جديد"),
         "new_technical_offers":
             MessageLookupByLibrary.simpleMessage("عرض فنى جديد"),
         "no_data_yet": MessageLookupByLibrary.simpleMessage(
             "لا يوجد بيانات! من فضلك أدخل البيانات"),
+        "number_of_operating_hours":
+            MessageLookupByLibrary.simpleMessage("عدد ساعات التشغيل"),
         "offer_expiry_date":
             MessageLookupByLibrary.simpleMessage("تاريخ انتهاء العرض"),
+        "phone": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
         "phone_number": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
         "price_management":
             MessageLookupByLibrary.simpleMessage("ادارة الاسعار"),
@@ -70,6 +79,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "table_info": MessageLookupByLibrary.simpleMessage("جدول البيانات"),
         "technical_offer": MessageLookupByLibrary.simpleMessage("العرض الفني"),
         "technical_offers_issued":
-            MessageLookupByLibrary.simpleMessage("العروض الفنية الصادرة")
+            MessageLookupByLibrary.simpleMessage("العروض الفنية الصادرة"),
+        "unit_power": MessageLookupByLibrary.simpleMessage("قدرة الوحدة"),
+        "units_number": MessageLookupByLibrary.simpleMessage("عدد الوحدات")
       };
 }

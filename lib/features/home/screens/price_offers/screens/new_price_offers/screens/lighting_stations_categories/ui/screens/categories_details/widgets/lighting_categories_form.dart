@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solar/core/helper/extensions.dart';
 import 'package:solar/core/helper/spacing.dart';
+import 'package:solar/core/theming/font_styles.dart';
 import 'package:solar/core/widgets/app_button.dart';
+import 'package:solar/core/widgets/app_drop_down_button.dart';
 import 'package:solar/features/home/screens/price_offers/screens/new_price_offers/screens/lighting_stations_categories/ui/screens/categories_details/logic/cubit/lighting_categories_calculation_cubit.dart';
 import 'package:solar/features/home/screens/price_offers/screens/new_price_offers/screens/lighting_stations_categories/ui/screens/categories_details/logic/cubit/lighting_categories_calculation_state.dart';
-import 'package:solar/features/home/screens/price_offers/screens/new_price_offers/screens/lighting_stations_categories/ui/screens/categories_details/widgets/text_and_drop_down_button.dart';
 import 'package:solar/features/home/screens/price_offers/screens/new_price_offers/screens/lighting_stations_categories/ui/screens/categories_details/widgets/text_and_text_field.dart';
 
 class LightingCategoriesForm extends StatelessWidget {
@@ -16,8 +17,7 @@ class LightingCategoriesForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<LightingCategoriesCalculationCubit,
         LightingCategoriesCalculationState>(
-      listener: (context, state) {
-      },
+      listener: (context, state) {},
       builder: (context, state) {
         var cubit = LightingCategoriesCalculationCubit.get(context);
         final GlobalKey<FormState> formKey = cubit.formKey;
@@ -28,17 +28,30 @@ class LightingCategoriesForm extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                TextAndDropDownButton(
-                  items: cubit.typeNamesList,
-                  name: data['first_name'],
+                Text(
+                  data['first_name'],
+                  style: TextStyles.font25BlackRegular,
                 ),
+                AppDropDownButton(
+                    data: cubit.typeNamesList,
+                    onSelecte: (value) {
+                      cubit.dropDownTypeValue = value;
+                      cubit.valueSelected();
+                    }),
                 verticalSpace(20),
-                TextAndDropDownButton(
-                  items: cubit.capaciyNamesList,
-                  name: data['second_name'],
+                Text(
+                  data['second_name'],
+                  style: TextStyles.font25BlackRegular,
                 ),
+                AppDropDownButton(
+                    data: cubit.capaciyNamesList,
+                    onSelecte: (value) {
+                      cubit.dropDownCapacityValue = value;
+                      cubit.valueSelected();
+                    }),
                 verticalSpace(20),
                 TextAndTextFeild(
+                  keboardType: TextInputType.number,
                   controller: cubit.priceController,
                   validator: (value) {
                     if (value.isNullOrEmpty()) {
@@ -50,6 +63,7 @@ class LightingCategoriesForm extends StatelessWidget {
                 ),
                 verticalSpace(20),
                 TextAndTextFeild(
+                  keboardType: TextInputType.number,
                   controller: cubit.categoryNameController,
                   validator: (value) {
                     if (value.isNullOrEmpty()) {
@@ -65,7 +79,7 @@ class LightingCategoriesForm extends StatelessWidget {
                       text: 'Save',
                       onpressed: () {
                         if (formKey.currentState!.validate()) {
-                          cubit.savePdf(data, context);
+                          cubit.savePdfContent(data, context);
                           print("ckiked");
                         }
                       }),

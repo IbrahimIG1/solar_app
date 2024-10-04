@@ -49,5 +49,7 @@ class DbFactory {
         'CREATE TABLE $customerTableName (id INTEGER PRIMARY KEY, name TEXT, address TEXT, phone TEXT, station_type TEXT, offer_expiry_date TEXT)');
     await db.execute(
         'CREATE TABLE $categoryDetailsTableName (id INTEGER PRIMARY KEY, type TEXT, capacity TEXT, price TEXT, categoryName TEXT)');
+    await db.execute(
+        'CREATE TABLE $pdfsTableName (id INTEGER PRIMARY KEY, type TEXT, capacity TEXT, price TEXT, categoryName TEXT)');
   }
 }

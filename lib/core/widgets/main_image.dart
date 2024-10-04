@@ -1,13 +1,9 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:solar/core/helper/extensions.dart';
 
 class MainImage extends StatelessWidget {
-  const MainImage({super.key, required this.arrowBacFunc, this.image});
+  const MainImage({super.key, required this.arrowBacFunc});
   final Function arrowBacFunc;
-  final String? image;
   @override
   Widget build(BuildContext context) {
     return Stack(children: [
@@ -23,26 +19,24 @@ class MainImage extends StatelessWidget {
           ),
         ),
         child: Container(
-          height: 208.h,
+          height: .15.sh,
           // width: double.infinity,
           decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(20.r),
-                bottomRight: Radius.circular(20.r),
-              ),
-              image: DecorationImage(
-                  image: image.isNullOrEmpty()
-                      ? const AssetImage(
-                          'assets/images/public_icons/main_image.png')
-                      : FileImage(File(image!)),
-                  fit: BoxFit.contain)),
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(20.r),
+              bottomRight: Radius.circular(20.r),
+            ),
+            image: DecorationImage(
+                image: const AssetImage('assets/images/public_icons/logo.jpg'),
+                fit: BoxFit.contain),
+          ),
         ),
       ),
       Positioned(
         left: 0,
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: EdgeInsets.all(8.0.h),
           child: GestureDetector(
             onTap: () {
               arrowBacFunc();

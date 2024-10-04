@@ -5,11 +5,17 @@ sealed class LightingCategoriesCalculationState {}
 final class LightingCategoriesCalculationInitial
     extends LightingCategoriesCalculationState {}
 
+//* Done check State
 final class IsDoneLightingCategories
     extends LightingCategoriesCalculationState {}
 
-//* Categories Details states
+//* PDF State
+final class PdfSaveDataToGenerate extends LightingCategoriesCalculationState {}
 
+//* Save Value Selected
+final class SaveValueSeleted extends LightingCategoriesCalculationState {}
+
+//* Categories Details states
 final class AddCategoriesDetailsLoading
     extends LightingCategoriesCalculationState {}
 
@@ -36,10 +42,24 @@ final class GetCategoriesDetailsLoading
 
 //* Categories Details states
 final class AddRowInTableSuccess extends LightingCategoriesCalculationState {}
-
 final class AddRowInTableError extends LightingCategoriesCalculationState {
   final ErrorModel errorModel;
   AddRowInTableError(this.errorModel);
 }
 
 final class AddRowInTableLoading extends LightingCategoriesCalculationState {}
+
+final class ResetCategoriesData extends LightingCategoriesCalculationState {}
+
+//* Get All Pdf State
+final class GetAllPdfSuccess extends LightingCategoriesCalculationState {}
+final class GetAllPdfError extends LightingCategoriesCalculationState {}
+
+//* Open Pdf State
+final class OpenPdfSuccess extends LightingCategoriesCalculationState {}
+final class OpenPdfError extends LightingCategoriesCalculationState {
+  final ErrorModel errorModel;
+  OpenPdfError(this.errorModel);
+}
+
+

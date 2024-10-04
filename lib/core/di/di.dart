@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:solar/core/database/database_factory.dart';
 import 'package:solar/core/database/database_services.dart';
+import 'package:solar/core/helper/shared_prefrence.dart';
 import 'package:solar/features/home/screens/customer_screen/logic/cubit/customer_cubit.dart';
 import 'package:solar/features/home/screens/customer_screen/logic/repo/customer_repo.dart';
 import 'package:solar/features/home/screens/price_offers/screens/new_price_offers/screens/lighting_stations_categories/ui/screens/categories_details/logic/cubit/lighting_categories_calculation_cubit.dart';
@@ -12,6 +13,8 @@ import '../../features/home/screens/price_offers/screens/new_price_offers/screen
 final getIt = GetIt.instance;
 
 Future<void> setUp() async {
+  //* initial SharedPrefHelper
+  await SharedPref.initSharedPreference();
   final DbFactory dbFactory = DbFactory();
   await dbFactory.createDatabase();
 
@@ -21,11 +24,13 @@ Future<void> setUp() async {
   //* repos
   getIt.registerLazySingleton<LightingRepo>(() => LightingRepo(getIt()));
   getIt.registerLazySingleton<CustomerRepo>(() => CustomerRepo(getIt()));
-  getIt.registerLazySingleton<LightingCategoriesCalculationRepo>(() => LightingCategoriesCalculationRepo(getIt()));
+  getIt.registerLazySingleton<LightingCategoriesCalculationRepo>(
+      () => LightingCategoriesCalculationRepo(getIt()));
 
   //* cubits
   getIt.registerFactory<LightingCalculationCubit>(
       () => LightingCalculationCubit(getIt()));
   getIt.registerFactory<CustomerCubit>(() => CustomerCubit(getIt()));
-  getIt.registerFactory<LightingCategoriesCalculationCubit>(() => LightingCategoriesCalculationCubit(getIt()));
+  getIt.registerFactory<LightingCategoriesCalculationCubit>(
+      () => LightingCategoriesCalculationCubit(getIt()));
 }

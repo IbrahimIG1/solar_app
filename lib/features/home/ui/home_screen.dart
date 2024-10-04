@@ -63,7 +63,7 @@ class HomeScreen extends StatelessWidget {
           MainImage(
             arrowBacFunc: () {},
           ),
-          verticalSpace(30),
+          verticalSpace(10),
           Expanded(
             child: ListView.builder(
               itemCount: data.length,

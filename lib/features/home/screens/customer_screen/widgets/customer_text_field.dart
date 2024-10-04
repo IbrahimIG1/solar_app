@@ -62,7 +62,7 @@ class CustomerTextField extends StatelessWidget {
                 OutlineInputBorder(
                   borderSide: const BorderSide(
                     width: 1.3,
-                    color: ColorsManager.mainBlue,
+                    color: ColorsManager.mainColor,
                   ),
                   borderRadius: BorderRadius.circular(25.0),
                 ),

@@ -25,31 +25,21 @@ class CustomerBaseScreen extends StatelessWidget {
                 child: BlocConsumer<CustomerCubit, CustomerState>(
               listener: (context, state) {
                 // if (state is GetCustomerDataLoadingState) {
-                //   showDialog(
-                //     context: context,
-                //     builder: (context) {
-                //       return Container(
-                //         color: Colors.white,
-                //         child: Center(
-                //           child: CircularProgressIndicator(
-                //             color: Colors.blue,
-                //           ),
-                //         ),
-                //       );
-                //     },
-                //   );
+                //   loadingDialog(context);
                 // }
               },
               builder: (context, state) {
                 var cubit = CustomerCubit.get(context);
                 if (cubit.customersList.isNullOrEmpty()) {
                   cubit.getCustomerData();
-                  return  Center(
-                      child: Text(S.current.no_data_yet));
+                  return Center(child: Text(S.current.no_data_yet));
                 } else {
                   return ListView.builder(
                     itemCount: cubit.customersList.length,
                     itemBuilder: (context, index) {
+                      // cubit.customersList.sort((a, b) =>
+                      //     DateTime.parse(a['offer_expiry_date']).compareTo(
+                      //         DateTime.parse(b['offer_expiry_date'])));
                       return GestureDetector(
                         onLongPress: () {
                           showDialog(

@@ -37,7 +37,7 @@ class PriceOffersScreen extends StatelessWidget {
     ];
     List<String> screens = [
       Routes.newPriceOffersScreen,
-      "Routes.priceOffersIssused",
+      Routes.priceOffersIssuedScreen,
       "Routes.maintenanceScreen",
     ];
     return Scaffold(
