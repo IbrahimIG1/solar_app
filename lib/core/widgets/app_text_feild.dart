@@ -14,6 +14,7 @@ class AppTextFormFeild extends StatelessWidget {
   final Color? backGroundColor;
   final TextEditingController? controller;
   final Function(String?) validator;
+  final TextInputType? keyboardType;
 
   const AppTextFormFeild({
     super.key,
@@ -26,7 +27,7 @@ class AppTextFormFeild extends StatelessWidget {
     this.isObscure,
     this.backGroundColor,
     this.controller,
-    required this.validator,
+    required this.validator, this.keyboardType,
   });
 
   @override
@@ -34,9 +35,11 @@ class AppTextFormFeild extends StatelessWidget {
     return TextFormField(
       textDirection: TextDirection.ltr,
       controller: controller,
+      keyboardType: keyboardType,
       decoration: InputDecoration(
           // label: Text(lable ?? "",
           //     style: lableStyle ?? TextStyles.font16GreyMeduim),
+          
           hintTextDirection: TextDirection.ltr,
           isDense: true,
           hintText: hintText,
@@ -45,7 +48,7 @@ class AppTextFormFeild extends StatelessWidget {
               OutlineInputBorder(
                 borderSide: const BorderSide(
                   width: 1.3,
-                  color: ColorsManager.mainBlue,
+                  color: ColorsManager.mainColor,
                 ),
                 borderRadius: BorderRadius.circular(25.0),
               ),

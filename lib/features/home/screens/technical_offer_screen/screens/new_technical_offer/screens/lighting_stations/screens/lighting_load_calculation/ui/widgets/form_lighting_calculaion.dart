@@ -3,6 +3,7 @@ import 'package:solar/core/helper/spacing.dart';
 import 'package:solar/core/theming/font_styles.dart';
 import 'package:solar/core/widgets/app_button.dart';
 import 'package:solar/features/home/screens/price_offers/screens/new_price_offers/screens/lighting_stations_categories/ui/screens/categories_details/widgets/text_and_text_field.dart';
+import 'package:solar/generated/l10n.dart';
 
 class FormLightingCalculaion extends StatelessWidget {
   const FormLightingCalculaion({super.key, required this.name, this.formKey});
@@ -18,21 +19,21 @@ class FormLightingCalculaion extends StatelessWidget {
             children: [
               TextAndTextFeild(
                   validator: (value) {},
-                  textDirection: TextDirection.rtl,
-                  hintText: "أدخل قدرة الماتور بالحصان",
-                  name: 'عدد الوحدات'),
+                  // textDirection: TextDirection.rtl,
+                  hintText: S.current.enter_hourse_power,
+                  name: S.current.units_number),
               verticalSpace(20),
               TextAndTextFeild(
                   validator: (value) {},
-                  textDirection: TextDirection.rtl,
-                  hintText: "أدخل قدرة الماتور بالحصان",
-                  name: 'قدرة الوحدة'),
+                  // textDirection: TextDirection.rtl,
+                  hintText: S.current.enter_hourse_power,
+                  name: S.current.unit_power),
               verticalSpace(20),
               TextAndTextFeild(
                   validator: (value) {},
-                  textDirection: TextDirection.rtl,
-                  hintText: "أدخل قدرة الماتور بالحصان",
-                  name: 'عدد ساعات التشغيل'),
+                  // textDirection: TextDirection.rtl,
+                  hintText: S.current.number_of_operating_hours,
+                  name: S.current.number_of_operating_hours),
               verticalSpace(20),
               AppTextButton(
                   textStyle: TextStyles.font25BlackRegular

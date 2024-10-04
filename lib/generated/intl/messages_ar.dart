@@ -38,6 +38,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("بيانات العملاء"),
         "deep_irrigation_station":
             MessageLookupByLibrary.simpleMessage("محطات ري عميق"),
+        "enter_hourse_power":
+            MessageLookupByLibrary.simpleMessage("أدخل قدرة الماتور بالحصان"),
+        "enter_item_name":
+            MessageLookupByLibrary.simpleMessage("أدخل اسم الجهاز"),
         "extract_pdf": MessageLookupByLibrary.simpleMessage("pdf استخراج ملف"),
         "irrigation_stations":
             MessageLookupByLibrary.simpleMessage("محطات الرى"),
@@ -53,6 +57,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("عرض فنى جديد"),
         "no_data_yet": MessageLookupByLibrary.simpleMessage(
             "لا يوجد بيانات! من فضلك أدخل البيانات"),
+        "number_of_operating_hours":
+            MessageLookupByLibrary.simpleMessage("عدد ساعات التشغيل"),
         "offer_expiry_date":
             MessageLookupByLibrary.simpleMessage("تاريخ انتهاء العرض"),
         "phone": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
@@ -73,6 +79,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "table_info": MessageLookupByLibrary.simpleMessage("جدول البيانات"),
         "technical_offer": MessageLookupByLibrary.simpleMessage("العرض الفني"),
         "technical_offers_issued":
-            MessageLookupByLibrary.simpleMessage("العروض الفنية الصادرة")
+            MessageLookupByLibrary.simpleMessage("العروض الفنية الصادرة"),
+        "unit_power": MessageLookupByLibrary.simpleMessage("قدرة الوحدة"),
+        "units_number": MessageLookupByLibrary.simpleMessage("عدد الوحدات")
       };
 }

@@ -1,5 +1,10 @@
+import 'dart:io';
+import 'package:open_file/open_file.dart';
+import 'package:pdf/widgets.dart' as pw;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:solar/core/constance/constance.dart';
 import 'package:solar/core/helper/shared_prefrence.dart';
 import 'package:solar/core/models/app_categories.dart';
@@ -59,16 +64,17 @@ class LightingCategoriesCalculationCubit
   List<TableRow> tableData = [];
 
 //* add Details Data From Database to show it in drop down button in form
+  CategoryDetailsModel? categoryDetailsModel;
   void addDetailsDataToDatabase() async {
     emit(AddCategoriesDetailsLoading());
-    CategoryDetailsModel categoryDetailsModel = CategoryDetailsModel(
+    categoryDetailsModel = CategoryDetailsModel(
       type: typeAdminController.text,
       capacity: capacityAdminController.text,
       price: priceAdminController.text,
       categoryName: categoryNameAdminController.text,
     );
     final response = await lightingCategoriesRepo.addLightinDetailsData(
-        categoryDetailsModel: categoryDetailsModel);
+        categoryDetailsModel: categoryDetailsModel!);
     response.when(success: (data) {
       emit(AddCategoriesDetailsSuccess());
       getPricesTableData();
@@ -77,7 +83,7 @@ class LightingCategoriesCalculationCubit
     });
   }
 
-  //* this function will show prices data in from prices table to drowp down button list. 
+  //* this function will show prices data in from prices table to drowp down button list.
   void getDetailsDataFromDatabase(Map<String, dynamic> itemData) async {
     emit(GetCategoriesDetailsLoading());
     final response =
@@ -142,7 +148,7 @@ class LightingCategoriesCalculationCubit
 
   //* save data in shared prefrence becuse if i don't i will get only last saved item.
   //* so i save it to get all of items before extract pdf.
-  void savePdf(Map<String, dynamic> item, BuildContext context) {
+  void savePdfContent(Map<String, dynamic> item, BuildContext context) {
     pdfData = [
       {
         "name": dropDownTypeValue,
@@ -167,9 +173,11 @@ class LightingCategoriesCalculationCubit
     return pdfData;
   }
 
-  //* pdf generate
+  //* pdf generate (extract)
   void pdfGenerate() async {
-printOrSave(pdfData: await getPdfData()).then((value) {
+    printOrSave(
+      pdfData: await getPdfData(),
+    ).then((value) {
       resetToDefault();
       emit(ResetCategoriesData());
     });
@@ -194,5 +202,45 @@ printOrSave(pdfData: await getPdfData()).then((value) {
 //* only emit after select value from drop down button to save the new data
   void valueSelected() {
     emit(SaveValueSeleted());
+  }
+
+  //* pdf functions
+  void savePdfInBasicDirectory(String pdfName) async {
+    await requirestPermissions();
+    // Get the directory to save the PDF file
+    final directory = await getApplicationDocumentsDirectory();
+    final filePath = '${directory.path}/$pdfName.pdf';
+
+    // Save the PDF file to the directory
+    final file = File(filePath);
+    await file.writeAsBytes(await pw.Document().save());
+
+    print("PDF saved at $filePath");
+  }
+
+  //* requist storage permissions to save pdf
+  requirestPermissions() async {
+    var status = await Permission.storage.status;
+    if (!status.isGranted) {
+      await Permission.storage.request();
+    }
+  }
+
+  List<FileSystemEntity> pdfFiles = []; // save all pdf extracted to show it in screen
+  //* Get all pdf from the directory i saved in it
+  void getAllPdf() async {
+    final directory = await getApplicationDocumentsDirectory();
+    final dir = Directory(directory.path);
+    // List all PDF files in the directory
+    final files =
+        dir.listSync().where((file) => file.path.endsWith('.pdf')).toList();
+    print("dir is >>>> $dir");
+    pdfFiles = files;
+    emit(GetAllPdfSuccess());
+  }
+  //* Open pdf file From All Screen PDF In app
+  void openPdf(String filePath) async {
+    // OpenFile is package open_file
+    OpenFile.open(filePath); // Open the file if it exists
   }
 }

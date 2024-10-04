@@ -32,7 +32,14 @@
     "prices_database":"قاعدة بيانات الاسعار",
     "name":"اسم",
     "address":"عنوان",
-    "phone":"رقم الهاتف"
+    "phone":"رقم الهاتف",
+    "enter_hourse_power":"أدخل قدرة الماتور بالحصان",
+    "units_number":"عدد الوحدات",
+    "unit_power":"قدرة الوحدة",
+    "number_of_operating_hours":"عدد ساعات التشغيل",
+    "enter_item_name":"أدخل اسم الجهاز"
+    
+    
 
 
 }

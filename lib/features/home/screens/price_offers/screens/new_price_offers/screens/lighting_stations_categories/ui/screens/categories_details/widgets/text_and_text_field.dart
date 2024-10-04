@@ -9,13 +9,14 @@ class TextAndTextFeild extends StatelessWidget {
     required this.name,
     this.textDirection,
     this.controller,
-    required this.validator,
+    required this.validator, this.keboardType,
   });
   final String hintText;
   final String name;
   final TextEditingController? controller;
   final TextDirection? textDirection;
   final Function(String?) validator;
+  final TextInputType? keboardType;
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +26,11 @@ class TextAndTextFeild extends StatelessWidget {
       children: [
         Text(
           name,
-          style: TextStyles.font25BlackRegular,
+          style: TextStyles.font20BlackRegular,
         ),
         // verticalSpace(10),
         AppTextFormFeild(
+          keyboardType:keboardType ?? TextInputType.name,
           hintText: hintText,
           validator: (value) {
             return validator(value);

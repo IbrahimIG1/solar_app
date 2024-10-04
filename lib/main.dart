@@ -11,6 +11,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await setUp();
+  await ScreenUtil.ensureScreenSize();
+
   // await SentryFlutter.init(
   //   (options) {
   //     options.dsn =

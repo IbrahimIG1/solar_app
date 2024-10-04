@@ -32,7 +32,12 @@
     "prices_database":"Prices Database",
     "name":"name",
     "address":"addredd",
-    "phone":"phone"
+    "phone":"phone",
+    "enter_hourse_power":"Enter the motor's horsepower",
+    "units_number":"Units Number",
+    "unit_power":"Unit power",
+    "number_of_operating_hours":"Number of operating hours",
+    "enter_item_name":"enter item name"
 
 
 

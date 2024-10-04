@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solar/core/helper/extensions.dart';
 import 'package:solar/core/helper/spacing.dart';
+import 'package:solar/generated/l10n.dart';
 
 class AddLightingItemDialog extends StatelessWidget {
   const AddLightingItemDialog({
@@ -17,43 +18,109 @@ class AddLightingItemDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text('Add Item'),
+      title: Text(S.current.add_item),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           TextField(
             controller: nameController,
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
                 isDense: false,
-                border: OutlineInputBorder(),
-                hintText: "Enter Item Name"),
+                border: const OutlineInputBorder(),
+                hintText: S.current.enter_item_name),
           ),
           verticalSpace(10.h),
           ElevatedButton(
-            child: const Text("Add Image"),
+            child: Text(S.current.add_image),
             onPressed: () {
-              print("Add Image press");
               addImage();
             },
           ),
         ],
       ),
       actions: <Widget>[
-        ElevatedButton(
-          child: const Text('save Data'),
-          onPressed: () {
-            print("Add Image press");
-            saveData();
-            context.pop();
-          },
-        ),
-        ElevatedButton(
-          child: const Text('Cancle'),
-          onPressed: () {
-            Navigator.pop(context);
-          },
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            ElevatedButton(
+              child: Text(S.current.save),
+              onPressed: () {
+                saveData();
+                context.pop();
+              },
+            ),
+            ElevatedButton(
+              child: Text(S.current.cancle),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
         ),
       ],
     );
   }
 }
+// import 'package:flutter/material.dart';
+// import 'package:flutter_screenutil/flutter_screenutil.dart';
+// import 'package:solar/core/helper/extensions.dart';
+// import 'package:solar/core/helper/spacing.dart';
+// import 'package:solar/generated/l10n.dart';
+
+// appShowBottomSheet(BuildContext context) => showBottomSheet(
+//     context: context,
+//     sheetAnimationStyle: AnimationStyle(
+//       duration: const Duration(seconds: 3),
+//       reverseDuration: const Duration(seconds: 1),
+//     ),
+//     builder: (BuildContext context) {
+//       return SizedBox(
+//         height: .35.sh,
+//         width: 1.sw,
+//         child: Center(
+//           child: Column(
+//             mainAxisSize: MainAxisSize.min,
+//             children: [
+//               Container(
+//                 decoration: BoxDecoration(
+//                   color: Colors.red,
+//                     shape: BoxShape.circle,
+//                     image: DecorationImage(image: AssetImage(''))),
+//               ),
+//               TextField(
+//                 // controller: nameController,
+//                 decoration: InputDecoration(
+//                     isDense: false,
+//                     border: const OutlineInputBorder(),
+//                     hintText: S.current.enter_item_name),
+//               ),
+//               verticalSpace(10.h),
+//               ElevatedButton(
+//                 child: Text(S.current.add_image),
+//                 onPressed: () {
+//                   // addImage();
+//                 },
+//               ),
+//               Row(
+//                 mainAxisAlignment: MainAxisAlignment.spaceAround,
+//                 children: [
+//                   ElevatedButton(
+//                     child: Text(S.current.save),
+//                     onPressed: () {
+//                       // saveData();
+//                       context.pop();
+//                     },
+//                   ),
+//                   ElevatedButton(
+//                     child: Text(S.current.cancle),
+//                     onPressed: () {
+//                       Navigator.pop(context);
+//                     },
+//                   ),
+//                 ],
+//               ),
+//             ],
+//           ),
+//         ),
+//       );
+//     });

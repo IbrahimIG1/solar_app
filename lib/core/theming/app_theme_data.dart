@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:solar/core/theming/colors_manager.dart';
 import 'package:solar/core/theming/font_styles.dart';
 
 ThemeData appThemeData() => ThemeData(
@@ -8,7 +9,7 @@ ThemeData appThemeData() => ThemeData(
         titleTextStyle: TextStyles.font20WhiteBold,
         iconTheme: IconThemeData(color: Colors.white),
         systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: Colors.grey),
-        backgroundColor: Colors.blue,
+        backgroundColor: ColorsManager.mainColor,
       ),
       scaffoldBackgroundColor: Colors.white,
       // const Color(

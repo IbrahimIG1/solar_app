@@ -38,6 +38,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("customers data"),
         "deep_irrigation_station":
             MessageLookupByLibrary.simpleMessage("deep irrigation station"),
+        "enter_hourse_power": MessageLookupByLibrary.simpleMessage(
+            "Enter the motor\'s horsepower"),
+        "enter_item_name":
+            MessageLookupByLibrary.simpleMessage("enter item name"),
         "extract_pdf": MessageLookupByLibrary.simpleMessage("Extract Pdf"),
         "irrigation_stations":
             MessageLookupByLibrary.simpleMessage("irrigation stations"),
@@ -53,6 +57,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("New Technical Offers"),
         "no_data_yet": MessageLookupByLibrary.simpleMessage(
             "No Data Yet!, Please Add Data"),
+        "number_of_operating_hours":
+            MessageLookupByLibrary.simpleMessage("Number of operating hours"),
         "offer_expiry_date":
             MessageLookupByLibrary.simpleMessage("offer expiry date"),
         "phone": MessageLookupByLibrary.simpleMessage("phone"),
@@ -74,6 +80,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "technical_offer":
             MessageLookupByLibrary.simpleMessage("Technical Offer"),
         "technical_offers_issued":
-            MessageLookupByLibrary.simpleMessage("Technical Offers Issued")
+            MessageLookupByLibrary.simpleMessage("Technical Offers Issued"),
+        "unit_power": MessageLookupByLibrary.simpleMessage("Unit power"),
+        "units_number": MessageLookupByLibrary.simpleMessage("Units Number")
       };
 }

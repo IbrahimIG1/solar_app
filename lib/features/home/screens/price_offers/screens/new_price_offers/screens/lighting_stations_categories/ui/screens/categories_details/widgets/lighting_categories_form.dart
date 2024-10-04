@@ -51,6 +51,7 @@ class LightingCategoriesForm extends StatelessWidget {
                     }),
                 verticalSpace(20),
                 TextAndTextFeild(
+                  keboardType: TextInputType.number,
                   controller: cubit.priceController,
                   validator: (value) {
                     if (value.isNullOrEmpty()) {
@@ -62,6 +63,7 @@ class LightingCategoriesForm extends StatelessWidget {
                 ),
                 verticalSpace(20),
                 TextAndTextFeild(
+                  keboardType: TextInputType.number,
                   controller: cubit.categoryNameController,
                   validator: (value) {
                     if (value.isNullOrEmpty()) {
@@ -77,7 +79,7 @@ class LightingCategoriesForm extends StatelessWidget {
                       text: 'Save',
                       onpressed: () {
                         if (formKey.currentState!.validate()) {
-                          cubit.savePdf(data, context);
+                          cubit.savePdfContent(data, context);
                           print("ckiked");
                         }
                       }),

@@ -62,7 +62,8 @@ class CustomerCubit extends Cubit<CustomerState> {
     customersList = [];
     final response = await customerRepo.getCustomer();
     response.when(success: (data) {
-      
+      // data.sort((a, b) => DateTime.parse(a['offer_expiry_date'].toString())
+      //     .compareTo(DateTime.parse(b['offer_expiry_date'].toString())));
       customersList = data;
       emit(GetCustomerDataSuccessState());
     }, failure: (error) {

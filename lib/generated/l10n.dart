@@ -389,6 +389,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Enter the motor's horsepower`
+  String get enter_hourse_power {
+    return Intl.message(
+      'Enter the motor\'s horsepower',
+      name: 'enter_hourse_power',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Units Number`
+  String get units_number {
+    return Intl.message(
+      'Units Number',
+      name: 'units_number',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unit power`
+  String get unit_power {
+    return Intl.message(
+      'Unit power',
+      name: 'unit_power',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Number of operating hours`
+  String get number_of_operating_hours {
+    return Intl.message(
+      'Number of operating hours',
+      name: 'number_of_operating_hours',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `enter item name`
+  String get enter_item_name {
+    return Intl.message(
+      'enter item name',
+      name: 'enter_item_name',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

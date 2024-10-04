@@ -29,10 +29,9 @@ platform :android do
             android_artifact_type: "APK",
             android_artifact_path: "../build/app/outputs/flutter-apk/app-release.apk",
             testers: "ibrahim13elgammal@gmail.com, mohamedfawzi8898@gmail.com",
-            release_notes: "- design pdf screen.
-            - show all data in pdf.
-            - refactor some sections in code.
-            - reset data after extract pdf.
+            release_notes: 
+            "
+            - Fix Text Hide Error.
             "
         )
   end

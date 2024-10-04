@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solar/core/helper/extensions.dart';
 import 'package:solar/core/theming/font_styles.dart';
+import 'package:solar/core/widgets/dialogs/done_and_error_dialogs.dart';
 import 'package:solar/features/home/screens/price_management/widgets/dialog_add_items_pricing.dart';
 import 'package:solar/features/home/screens/price_management/widgets/table_info.dart';
 import 'package:solar/features/home/screens/price_offers/screens/new_price_offers/screens/lighting_stations_categories/ui/screens/categories_details/logic/cubit/lighting_categories_calculation_cubit.dart';
@@ -15,7 +16,13 @@ class PriceManagement extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<LightingCategoriesCalculationCubit,
         LightingCategoriesCalculationState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state is AddCategoriesDetailsSuccess) {
+          doneDialog(context);
+        } else if (state is AddCategoriesDetailsError) {
+          errorDialog(context);
+        }
+      },
       builder: (context, state) {
         var cubit = LightingCategoriesCalculationCubit.get(context);
 
@@ -53,6 +60,7 @@ class PriceManagement extends StatelessWidget {
                     builder: (context) {
                       return AddItemPricingDialog(
                         saveData: () {
+                          print("i'm here");
                           cubit.addDetailsDataToDatabase();
                         },
                         data: cubit.categoriesName,
