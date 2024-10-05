@@ -52,19 +52,14 @@ class MainItem extends StatelessWidget {
                     height: data[index]['height'],
                   ),
                 ),
-
-                Text(
-                  data[index]['name'],
-                  style: TextStyles.font16BlackBold,
-                ),
-                // OutlinedText(
-                //     text: Text(
-                //       data[index]['name'],
-                //       style: TextStyles.font20WhiteRegular,
-                //     ),
-                //     strokes: [
-                //       OutlinedTextStroke(color: Colors.black, width: 2.w),
-                //     ]),
+                OutlinedText(
+                    text: Text(
+                      data[index]['name'],
+                      style: TextStyles.font20WhiteRegular,
+                    ),
+                    strokes: [
+                      OutlinedTextStroke(color: Colors.black, width: 2.w),
+                    ]),
               ],
             ),
           ),

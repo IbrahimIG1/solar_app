@@ -1,10 +1,6 @@
 import 'dart:async';
-import 'dart:io';
-import 'package:path_provider/path_provider.dart';
 import 'package:pdf/pdf.dart';
-import 'package:pdf/widgets.dart';
 import 'package:printing/printing.dart';
-import 'package:intl/intl.dart';
 import 'package:solar/core/widgets/pdf_design/pdf_design.dart';
 
 // Future<Uint8List> generatePdf({
@@ -35,9 +31,11 @@ import 'package:solar/core/widgets/pdf_design/pdf_design.dart';
 
 //* layout Pdf to user save or print the pdf file
 Future<void> printOrSave({required List<Map<String, dynamic>> pdfData}) async {
+  final sum = pdfData.fold(0.0,
+      (total, current) => total + double.parse(current['price'].toString()));
+  print("sum in printOrSave $sum");
   Printing.layoutPdf(
-    onLayout: (PdfPageFormat format) async =>
-        await PdfDesign.generatePdf(format: format, pdfData: pdfData),
+    onLayout: (PdfPageFormat format) async => await PdfDesign.generatePdf(
+        format: format, pdfData: pdfData, prices: sum),
   );
 }
-

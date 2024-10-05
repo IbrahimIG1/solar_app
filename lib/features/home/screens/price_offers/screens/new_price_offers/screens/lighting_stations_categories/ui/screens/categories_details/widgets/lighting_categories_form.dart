@@ -79,7 +79,7 @@ class LightingCategoriesForm extends StatelessWidget {
                       text: 'Save',
                       onpressed: () {
                         if (formKey.currentState!.validate()) {
-                          cubit.savePdfContent(data, context);
+                          cubit.savePdfContent(context);
                           print("ckiked");
                         }
                       }),

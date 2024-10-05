@@ -6,15 +6,16 @@ import 'package:path_provider/path_provider.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:pdf/widgets.dart';
-import 'package:solar/core/widgets/pdf_design/footer/pdf_footer.dart';
 import 'package:solar/core/widgets/pdf_design/header/pdf_header.dart';
 import 'package:solar/core/widgets/pdf_design/header/widgets/company_info.dart';
 import 'package:solar/core/widgets/pdf_design/pdf_content/table_pdf.dart';
+import 'package:solar/core/widgets/pdf_design/pdf_content/total_price_table.dart';
 
 class PdfDesign {
   static Future<Uint8List> generatePdf(
       {PdfPageFormat? format,
-      required List<Map<String, dynamic>> pdfData}) async {
+      required List<Map<String, dynamic>> pdfData,
+      required double prices}) async {
     final pdf = Document();
     pdf.addPage(
       pw.Page(
@@ -29,9 +30,11 @@ class PdfDesign {
                     txt:
                         "This Table has your prices information calculation:-"),
                 pw.SizedBox(height: 10.h),
-                buildTable(data: pdfData),
-                pw.Divider(height: 25.h),
-                pdfFooter(),
+                buildTable(data: pdfData, prices: prices),
+                pw.SizedBox(height: 10.h),
+                totalPriceTable(prices: prices),
+                // pw.Divider(height: 25.h),
+                // pdfFooter(),
               ]);
         },
       ),

@@ -37,7 +37,8 @@
     "units_number":"عدد الوحدات",
     "unit_power":"قدرة الوحدة",
     "number_of_operating_hours":"عدد ساعات التشغيل",
-    "enter_item_name":"أدخل اسم الجهاز"
+    "enter_item_name":"أدخل اسم الجهاز",
+    "pound":"ج.م"
     
     
 

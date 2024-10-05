@@ -439,6 +439,16 @@ class S {
       args: [],
     );
   }
+
+  /// `LE`
+  String get pound {
+    return Intl.message(
+      'LE',
+      name: 'pound',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

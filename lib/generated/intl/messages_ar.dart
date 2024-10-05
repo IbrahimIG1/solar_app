@@ -63,6 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تاريخ انتهاء العرض"),
         "phone": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
         "phone_number": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
+        "pound": MessageLookupByLibrary.simpleMessage("ج.م"),
         "price_management":
             MessageLookupByLibrary.simpleMessage("ادارة الاسعار"),
         "price_offers": MessageLookupByLibrary.simpleMessage("عرض أسعار"),

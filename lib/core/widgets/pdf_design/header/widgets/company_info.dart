@@ -44,12 +44,12 @@ pw.Container cellTitleText({required String txt}) {
   );
 }
 
-pw.Container cellText({required String txt}) {
+pw.Container cellText({required String txt,pw.TextStyle? textStyle}) {
   return pw.Container(
     padding: pw.EdgeInsets.all(8.h),
     child: pw.Text(
       txt,
-      style: pw.TextStyle(fontSize: 12.sp, fontWeight: pw.FontWeight.normal),
+      style: textStyle??pw.TextStyle(fontSize: 12.sp, fontWeight: pw.FontWeight.normal),
     ),
   );
 }
