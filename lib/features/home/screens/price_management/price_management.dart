@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solar/core/helper/extensions.dart';
 import 'package:solar/core/theming/font_styles.dart';
-import 'package:solar/core/widgets/dialogs/done_and_error_dialogs.dart';
+import 'package:solar/core/widgets/dialogs/dialogs_status.dart';
 import 'package:solar/features/home/screens/price_management/widgets/dialog_add_items_pricing.dart';
 import 'package:solar/features/home/screens/price_management/widgets/table_info.dart';
 import 'package:solar/features/home/screens/price_offers/screens/new_price_offers/screens/lighting_stations_categories/ui/screens/categories_details/logic/cubit/lighting_categories_calculation_cubit.dart';

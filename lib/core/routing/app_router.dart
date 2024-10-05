@@ -10,7 +10,6 @@ import 'package:solar/features/home/screens/price_management/price_management.da
 import 'package:solar/features/home/screens/price_offers/screens/new_price_offers/screens/lighting_stations_categories/ui/categories_screen.dart';
 import 'package:solar/features/home/screens/price_offers/screens/new_price_offers/screens/lighting_stations_categories/ui/screens/categories_details/lighting_categories_calculation_form_screen.dart';
 import 'package:solar/features/home/screens/price_offers/screens/new_price_offers/screens/lighting_stations_categories/ui/screens/categories_details/logic/cubit/lighting_categories_calculation_cubit.dart';
-import 'package:solar/features/home/screens/price_offers/screens/price_offers_issued/local_pdf_screen.dart';
 import 'package:solar/features/home/screens/price_offers/screens/price_offers_issued/price_offers_issued_screen.dart';
 import 'package:solar/features/home/screens/technical_offer_screen/screens/new_technical_offer/screens/lighting_stations/screens/inverter_and_battery_calculation/inverter_and_battery_calculation.dart';
 import 'package:solar/features/home/screens/technical_offer_screen/screens/new_technical_offer/screens/lighting_stations/screens/lighting_load_calculation/logic/cubit/lighting_calculation_cubit.dart';
@@ -61,10 +60,6 @@ class AppRouter {
       case Routes.priceOffersIssuedScreen:
         return MaterialPageRoute(
           builder: (_) => const PriceOffersIssuedScreen(),
-        );
-      case Routes.localPdfScreen:
-        return MaterialPageRoute(
-          builder: (_) =>  LocalPdfScreen(pdfPath: arguments as String),
         );
       //* ../new price offers screens
       case Routes.lightingStationsCategoriesScreen:

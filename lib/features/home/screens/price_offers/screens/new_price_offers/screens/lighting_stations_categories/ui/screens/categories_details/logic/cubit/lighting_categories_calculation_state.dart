@@ -62,4 +62,10 @@ final class OpenPdfError extends LightingCategoriesCalculationState {
   OpenPdfError(this.errorModel);
 }
 
+//* Delete Pdf State
+final class DeletePdfSuccess extends LightingCategoriesCalculationState {}
+final class DeletePdfError extends LightingCategoriesCalculationState {
+  final DeletePdfError errorModel;
+  DeletePdfError(this.errorModel);
+}
 
