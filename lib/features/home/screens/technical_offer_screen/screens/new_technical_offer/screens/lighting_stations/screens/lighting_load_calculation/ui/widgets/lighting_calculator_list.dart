@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solar/core/helper/extensions.dart';
 import 'package:solar/core/routing/routes.dart';
 import 'package:solar/core/widgets/delete_box.dart';
+import 'package:solar/core/widgets/dialogs/dialogs_status.dart';
 import 'package:solar/features/home/screens/technical_offer_screen/screens/new_technical_offer/screens/lighting_stations/screens/lighting_load_calculation/logic/cubit/lighting_calculation_cubit.dart';
 import 'package:solar/features/home/screens/technical_offer_screen/screens/new_technical_offer/screens/lighting_stations/screens/lighting_load_calculation/logic/cubit/lighting_calculation_state.dart';
 import 'package:solar/features/home/screens/technical_offer_screen/screens/new_technical_offer/screens/lighting_stations/screens/lighting_load_calculation/ui/widgets/lighting_calcolator_item.dart';
@@ -33,13 +34,11 @@ class LightingCalculatorList extends StatelessWidget {
                 children: List.generate(data.length, (index) {
                   return GestureDetector(
                       onLongPress: () {
-                        showDialog(
-                          context: context,
-                          builder: (context) {
-                            return DeleteBox(deleteFunc: () {
-                              cubit.deleteData(id: data[index]['id']);
-                              context.pop();
-                            });
+                        deleteDialog(
+                          context,
+                          () {
+                            cubit.deleteData(id: data[index]['id']);
+                            context.pop();
                           },
                         );
                       },

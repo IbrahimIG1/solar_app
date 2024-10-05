@@ -19,7 +19,7 @@ class MainImage extends StatelessWidget {
           ),
         ),
         child: Container(
-          height: .15.sh,
+          height: .25.sh,
           // width: double.infinity,
           decoration: BoxDecoration(
             color: Colors.white,
@@ -28,7 +28,8 @@ class MainImage extends StatelessWidget {
               bottomRight: Radius.circular(20.r),
             ),
             image: DecorationImage(
-                image: const AssetImage('assets/images/public_icons/logo.jpg'),
+                image: const AssetImage(
+                    'assets/images/public_icons/companey_logo.jpg'),
                 fit: BoxFit.contain),
           ),
         ),
