@@ -21,12 +21,11 @@ class TableInfo extends StatelessWidget {
         // 3: FractionColumnWidth(.1),
       },
       children: [
-        TableRow(
-          
-          children: [
+        TableRow(children: [
           buildTableCell("Type", isHeader: true),
           buildTableCell("Capacity", isHeader: true),
           buildTableCell("Price", isHeader: true),
+          buildTableCell("Icon", isHeader: true),
         ]),
         // Remaining 3 rows (data rows)
         for (int row = 1; row <= tableData.length; row++) tableData[row - 1]

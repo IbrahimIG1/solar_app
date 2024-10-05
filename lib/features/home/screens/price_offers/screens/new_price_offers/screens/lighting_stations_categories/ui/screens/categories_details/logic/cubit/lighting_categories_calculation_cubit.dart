@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:solar/core/constance/constance.dart';
+import 'package:solar/core/helper/extensions.dart';
 import 'package:solar/core/helper/shared_prefrence.dart';
 import 'package:solar/core/models/app_categories.dart';
 import 'package:solar/core/models/category_details_model.dart';
@@ -29,7 +30,8 @@ class LightingCategoriesCalculationCubit
   final TextEditingController typeController = TextEditingController();
   final TextEditingController capacityController = TextEditingController();
   final TextEditingController priceController = TextEditingController();
-  final TextEditingController categoryNameController = TextEditingController();
+  final TextEditingController categoryNumberController =
+      TextEditingController();
   //* drop down button controllers
   String dropDownTypeValue = "No Value choise";
   String dropDownCapacityValue = "No Value choise";
@@ -120,8 +122,11 @@ class LightingCategoriesCalculationCubit
     response.when(success: (data) {
       tableData = [];
       data.forEach((element) {
-        addRowInTable(element['type'].toString(),
-            element['capacity'].toString(), element['price'].toString());
+        addRowInTable(
+            element['type'].toString(),
+            element['capacity'].toString(),
+            element['price'].toString(),
+            element['name'].toString());
       });
       emit(GetCategoriesDetailsSuccess());
     }, failure: (error) {
@@ -134,12 +139,14 @@ class LightingCategoriesCalculationCubit
     String name,
     String capacity,
     String price,
+    String icon,
   ) {
     //* this tableData has all data
     tableData.add(TableRow(children: [
       buildTableCell(name),
       buildTableCell(capacity),
       buildTableCell(price),
+      buildTableCell(icon),
     ]));
     emit(AddRowInTableSuccess());
   }
@@ -226,7 +233,8 @@ class LightingCategoriesCalculationCubit
     }
   }
 
-  List<FileSystemEntity> pdfFiles = []; // save all pdf extracted to show it in screen
+  List<FileSystemEntity> pdfFiles =
+      []; // save all pdf extracted to show it in screen
   //* Get all pdf from the directory i saved in it
   void getAllPdf() async {
     final directory = await getApplicationDocumentsDirectory();
@@ -238,9 +246,21 @@ class LightingCategoriesCalculationCubit
     pdfFiles = files;
     emit(GetAllPdfSuccess());
   }
+
   //* Open pdf file From All Screen PDF In app
   void openPdf(String filePath) async {
     // OpenFile is package open_file
     OpenFile.open(filePath); // Open the file if it exists
+  }
+
+  //* Delete Pdf from Pdf screen
+  void deletePdf(String path, BuildContext context) {
+    File(path).delete().then((value) {
+      getAllPdf();
+      context.pop();
+      emit(DeletePdfSuccess());
+      print("in then >>>> DeletePdfSuccess");
+    });
+    print(" out >>> DeletePdfSuccess");
   }
 }

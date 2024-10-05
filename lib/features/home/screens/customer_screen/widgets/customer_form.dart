@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solar/core/helper/extensions.dart';
 import 'package:solar/core/helper/spacing.dart';
-import 'package:solar/core/widgets/dialog_done.dart';
+import 'package:solar/core/widgets/dialogs/app_dialog.dart';
 import 'package:solar/features/home/screens/customer_screen/logic/cubit/customer_cubit.dart';
 import 'package:solar/features/home/screens/customer_screen/logic/cubit/customer_state.dart';
 import 'package:solar/features/home/screens/customer_screen/widgets/customer_form_button.dart';
@@ -22,7 +22,7 @@ class CustomerForm extends StatelessWidget {
             context: context,
             builder: (context) {
               return const Center(
-                  child: DialogDone(
+                  child: AppDialog(
                 status: "Done",
               ));
             },
@@ -36,7 +36,7 @@ class CustomerForm extends StatelessWidget {
             context: context,
             builder: (context) {
               return const Center(
-                child: DialogDone(
+                child: AppDialog(
                   status: "Error",
                   color: Colors.red,
                   icon: Icons.error_outline,

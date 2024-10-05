@@ -52,7 +52,7 @@ class LightingCategoriesForm extends StatelessWidget {
                 verticalSpace(20),
                 TextAndTextFeild(
                   keboardType: TextInputType.number,
-                  controller: cubit.priceController,
+                  controller: cubit.categoryNumberController,
                   validator: (value) {
                     if (value.isNullOrEmpty()) {
                       return "Please Enter the price";
@@ -64,7 +64,7 @@ class LightingCategoriesForm extends StatelessWidget {
                 verticalSpace(20),
                 TextAndTextFeild(
                   keboardType: TextInputType.number,
-                  controller: cubit.categoryNameController,
+                  controller: cubit.priceController,
                   validator: (value) {
                     if (value.isNullOrEmpty()) {
                       return "Please Enter the number";
