@@ -122,10 +122,8 @@ class LightingCategoriesCalculationCubit
     response.when(success: (data) {
       tableData = [];
       data.forEach((element) {
-        addRowInTable(
-            element['type'].toString(),
-            element['capacity'].toString(),
-            element['price'].toString()
+        addRowInTable(element['type'].toString(),
+            element['capacity'].toString(), element['price'].toString()
             // element['name'].toString()
             );
       });
@@ -156,7 +154,7 @@ class LightingCategoriesCalculationCubit
 
   //* save data in shared prefrence becuse if i don't i will get only last saved item.
   //* so i save it to get all of items before extract pdf.
-  void savePdfContent(Map<String, dynamic> item, BuildContext context) {
+  void savePdfContent(BuildContext context) {
     pdfData = [
       {
         "name": dropDownTypeValue,
@@ -184,6 +182,7 @@ class LightingCategoriesCalculationCubit
   //* pdf generate (extract)
   void pdfGenerate() async {
     printOrSave(
+      
       pdfData: await getPdfData(),
     ).then((value) {
       resetToDefault();

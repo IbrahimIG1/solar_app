@@ -63,6 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("offer expiry date"),
         "phone": MessageLookupByLibrary.simpleMessage("phone"),
         "phone_number": MessageLookupByLibrary.simpleMessage("phone number"),
+        "pound": MessageLookupByLibrary.simpleMessage("LE"),
         "price_management":
             MessageLookupByLibrary.simpleMessage("Price Management"),
         "price_offers": MessageLookupByLibrary.simpleMessage("Price Offers"),
