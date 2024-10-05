@@ -13,6 +13,7 @@ class Routes {
       '/lightingStationsCategoriesScreen';
   static const String categoriesDetailsScreen = '/categoriesDetailsScreen';
   static const String customerFormScreen = '/customerFormScreen';
+  static const String carBatteryScreen = '/carBatteryScreen';
 
 
   

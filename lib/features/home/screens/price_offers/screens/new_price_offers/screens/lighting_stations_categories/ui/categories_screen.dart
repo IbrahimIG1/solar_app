@@ -44,8 +44,15 @@ class _LightingStationsCategoriesScreenState
                           isDone: AppCategories.lightingItemsData[index]
                               ['is_done'],
                           onTap: () async {
-                            if (index <
-                                AppCategories.lightingItemsData.length - 1) {
+                            if (AppCategories.lightingItemsData[index]
+                                    ['name'] ==
+                                "persone") {
+                              context.pushNamed(Routes.customerFormScreen);
+                            } else if (AppCategories.lightingItemsData[index]
+                                    ['name'] ==
+                                "car_battrey") {
+                              context.pushNamed(Routes.carBatteryScreen);
+                            } else {
                               //* i'm await on push because i wait the result in navigate.pop(is_done)
                               //* to active the check is done on item
                               final result = await context.pushNamed(
@@ -58,8 +65,6 @@ class _LightingStationsCategoriesScreenState
                                       ['is_done'] = result;
                                 });
                               }
-                            } else {
-                              context.pushNamed(Routes.customerFormScreen);
                             }
                           },
                           index: index,
