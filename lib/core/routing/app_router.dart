@@ -7,6 +7,7 @@ import 'package:solar/features/home/screens/customer_base/customer_base.dart';
 import 'package:solar/features/home/screens/customer_screen/logic/cubit/customer_cubit.dart';
 import 'package:solar/features/home/screens/customer_screen/customer_screen.dart';
 import 'package:solar/features/home/screens/price_management/price_management.dart';
+import 'package:solar/features/home/screens/price_offers/screens/new_price_offers/screens/car_battrey.dart';
 import 'package:solar/features/home/screens/price_offers/screens/new_price_offers/screens/lighting_stations_categories/ui/categories_screen.dart';
 import 'package:solar/features/home/screens/price_offers/screens/new_price_offers/screens/lighting_stations_categories/ui/screens/categories_details/lighting_categories_calculation_form_screen.dart';
 import 'package:solar/features/home/screens/price_offers/screens/new_price_offers/screens/lighting_stations_categories/ui/screens/categories_details/logic/cubit/lighting_categories_calculation_cubit.dart';
@@ -77,6 +78,13 @@ class AppRouter {
             child: LightingCategoriesCalculationScreen(
               data: arguments as Map<String, dynamic>,
             ),
+          ),
+        );
+      case Routes.carBatteryScreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => LightingCategoriesCalculationCubit(getIt()),
+            child: CarBattrey(),
           ),
         );
       //* Technical Offer

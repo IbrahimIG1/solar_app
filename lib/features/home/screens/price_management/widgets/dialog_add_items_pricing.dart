@@ -5,7 +5,7 @@ import 'package:solar/core/helper/spacing.dart';
 import 'package:solar/core/widgets/app_drop_down_button.dart';
 import 'package:solar/core/widgets/app_text_feild.dart';
 
-class AddItemPricingDialog extends StatelessWidget {
+class AddItemPricingDialog extends StatefulWidget {
   const AddItemPricingDialog({
     super.key,
     required this.saveData,
@@ -23,6 +23,11 @@ class AddItemPricingDialog extends StatelessWidget {
   final List<String> data;
 
   @override
+  State<AddItemPricingDialog> createState() => _AddItemPricingDialogState();
+}
+
+class _AddItemPricingDialogState extends State<AddItemPricingDialog> {
+  @override
   Widget build(BuildContext context) {
     return AlertDialog(
       title: CircleAvatar(
@@ -39,23 +44,23 @@ class AddItemPricingDialog extends StatelessWidget {
                 // valueSelected: () {
                   
                 // },
-                data: data,
+                data: widget.data,
                 onSelecte: (value) {
-                  categoryNameAdminController.text = value;
+                  widget.categoryNameAdminController.text = value;
                 }),
             verticalSpace(10.h),
             AppTextFormFeild(
-                controller: typeController,
+                controller: widget.typeController,
                 hintText: "Enter Type",
                 validator: (value) {}),
             verticalSpace(10.h),
             AppTextFormFeild(
-                controller: capacityController,
+                controller: widget.capacityController,
                 hintText: "Enter capacity",
                 validator: (value) {}),
             verticalSpace(10.h),
             AppTextFormFeild(
-                controller: priceController,
+                controller: widget.priceController,
                 hintText: "Enter price",
                 validator: (value) {}),
           ],
@@ -65,7 +70,7 @@ class AddItemPricingDialog extends StatelessWidget {
         ElevatedButton(
           child: const Text('save Data'),
           onPressed: () {
-            saveData();
+            widget.saveData();
             context.pop();
           },
         ),

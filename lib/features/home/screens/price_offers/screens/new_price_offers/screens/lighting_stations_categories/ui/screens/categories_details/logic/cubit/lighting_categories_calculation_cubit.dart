@@ -125,8 +125,9 @@ class LightingCategoriesCalculationCubit
         addRowInTable(
             element['type'].toString(),
             element['capacity'].toString(),
-            element['price'].toString(),
-            element['name'].toString());
+            element['price'].toString()
+            // element['name'].toString()
+            );
       });
       emit(GetCategoriesDetailsSuccess());
     }, failure: (error) {
@@ -139,14 +140,14 @@ class LightingCategoriesCalculationCubit
     String name,
     String capacity,
     String price,
-    String icon,
+    // String icon,
   ) {
     //* this tableData has all data
     tableData.add(TableRow(children: [
       buildTableCell(name),
       buildTableCell(capacity),
       buildTableCell(price),
-      buildTableCell(icon),
+      // buildTableCell(icon),
     ]));
     emit(AddRowInTableSuccess());
   }

@@ -25,7 +25,7 @@ class TableInfo extends StatelessWidget {
           buildTableCell("Type", isHeader: true),
           buildTableCell("Capacity", isHeader: true),
           buildTableCell("Price", isHeader: true),
-          buildTableCell("Icon", isHeader: true),
+          // buildTableCell("Icon", isHeader: true),
         ]),
         // Remaining 3 rows (data rows)
         for (int row = 1; row <= tableData.length; row++) tableData[row - 1]
