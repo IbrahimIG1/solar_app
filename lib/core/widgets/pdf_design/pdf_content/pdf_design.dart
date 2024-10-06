@@ -12,7 +12,7 @@ import 'package:solar/core/widgets/pdf_design/header/widgets/company_info.dart';
 import 'package:solar/core/widgets/pdf_design/pdf_table/table_pdf.dart';
 import 'package:solar/core/widgets/pdf_design/pdf_table/total_price_table.dart';
 
-class PdfDesign {
+class PdfContent {
   static Future<Uint8List> generatePdf(
       {PdfPageFormat? format,
       required List<Map<String, dynamic>> pdfData,

@@ -37,7 +37,8 @@ platform :android do
             - added delete pdf feature when long tap on pdf file.
             - create car and battery screen form ui.
             - change app text style to out line text.
-            - 
+            - refactor delete box.
+            - change main image size.
             "
         )
   end
