@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solar/core/di/di.dart';
 import 'package:solar/core/helper/spacing.dart';
 import 'package:solar/core/theming/font_styles.dart';
 import 'package:solar/core/widgets/app_button.dart';
-import 'package:solar/core/widgets/text_and_drop_down_button.dart';
-import 'package:solar/core/widgets/text_and_text_field.dart';
+import 'package:solar/core/widgets/app_drop_down_button.dart';
+import 'package:solar/core/widgets/app_text_feild.dart';
 import 'package:solar/features/home/screens/technical_offer_screen/logic/cubit/technical_offers_cubit.dart';
 import 'package:solar/features/home/screens/technical_offer_screen/logic/cubit/technical_offers_state.dart';
 
@@ -14,10 +15,22 @@ class FormCalaculation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<String> typeNamesList = [
-      "type-1",
-      "type-2",
-      "type-3",
+    List<String> inverterType = [
+      "VEICHI",
+      "HUAWAI",
+      "INVT",
+    ];
+    List<String> panalType = [
+      "JINCO",
+      "TRINA",
+      "LOGI",
+      "JA",
+    ];
+    List<String> panalCapacity = [
+      "JINCO",
+      "TRINA",
+      "LOGI",
+      "JA",
     ];
     return RepositoryProvider(
       create: (context) => TechnicalOffersCubit(getIt()),
@@ -28,33 +41,33 @@ class FormCalaculation extends StatelessWidget {
         builder: (context, state) {
           var cubit = TechnicalOffersCubit.get(context);
           return Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: EdgeInsets.symmetric(horizontal: 15.h),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                TextAndTextFeild(
-                  validator: (value) {},
-                  hintText: "أدخل قدرة الماتور بالحصان",
-                  name: "Load(Wh)",
-                ),
+                AppTextFormFeild(
+                    keyboardType: TextInputType.number,
+                    hintText: "Load(PH) أدخل قدرة الماتور بالحصان",
+                    controller: cubit.loadWHController,
+                    validator: (value) {}),
                 verticalSpace(20),
-                TextAndDropDownButton(
-                  selectedValue: "",
-                  items: typeNamesList,
-                  name: 'Inverter Type',
+                Text(
+                  "Inverter Type",
+                  style: TextStyles.font25BlackRegular,
                 ),
+                AppDropDownButton(data: inverterType, onSelecte: (value) {}),
                 verticalSpace(20),
-                TextAndDropDownButton(
-                  selectedValue: "",
-                  items: typeNamesList,
-                  name: 'Panel Type',
+                Text(
+                  "Panel Type",
+                  style: TextStyles.font25BlackRegular,
                 ),
+                AppDropDownButton(data: panalCapacity, onSelecte: (value) {}),
                 verticalSpace(20),
-                TextAndDropDownButton(
-                  items: typeNamesList,
-                  selectedValue: "",
-                  name: 'Panel (Wh)',
+                Text(
+                  "Panel (Wh)",
+                  style: TextStyles.font25BlackRegular,
                 ),
+                AppDropDownButton(data: panalType, onSelecte: (value) {}),
                 verticalSpace(20),
                 Center(
                     child: AppTextButton(
@@ -62,7 +75,12 @@ class FormCalaculation extends StatelessWidget {
                             .copyWith(color: Colors.white),
                         text: 'حفظ',
                         onpressed: () {
-                          print(cubit.calculation(capacity: 10, wh: 10));
+                          // print(
+                          //   cubit.calculation(
+                          //     capacity: 10,
+                          //     ph: double.parse(cubit.loadWHController.text),
+                          //   ),
+                          // );
                         }))
               ],
             ),
