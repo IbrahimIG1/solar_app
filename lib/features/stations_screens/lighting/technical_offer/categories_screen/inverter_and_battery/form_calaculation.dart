@@ -64,16 +64,6 @@ class FormCalaculation extends StatelessWidget {
                       text: 'حفظ',
                       onpressed: () {
                         cubit.allCalculation();
-                        // print(cubit.inverters[0].maxInputDC);
-                        // print(cubit.inverters[0].input1DC);
-                        // print(cubit.inverters[0].input2DC);
-                        // print(cubit.inverters[0].ratedOutputCurrent);
-                        // print(cubit.inverters[0].modelInverter);
-                        // print(cubit.panals[0].imp);
-                        // print(cubit.panals[0].pmax);
-                        // print(cubit.panals[0].sccf);
-                        // print(cubit.panals[0].voc);
-                        // print(cubit.panals[0].vnip);
                       }))
             ],
           ),

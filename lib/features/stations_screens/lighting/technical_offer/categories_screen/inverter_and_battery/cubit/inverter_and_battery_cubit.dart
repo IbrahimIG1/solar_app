@@ -190,7 +190,6 @@ class InverterAndBatteryCubit extends Cubit<InverterAndBatteryState> {
     double wToPhDouble = double.parse(wToPh.toString());
     result = (wToPhDouble * ph) / 1000;
     print("قدرة الانفرتر (Inverter Capacity) >>> $result KW");
-
     return result;
   }
 
