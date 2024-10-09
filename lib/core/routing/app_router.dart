@@ -3,25 +3,27 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solar/core/di/di.dart';
 import 'package:solar/core/routing/routes.dart';
 import 'package:solar/core/widgets/default_route_screen.dart';
+import 'package:solar/features/admin/add_data_to_firebase.dart';
 import 'package:solar/features/home/screens/customer_base/customer_base.dart';
 import 'package:solar/features/home/screens/customer_screen/logic/cubit/customer_cubit.dart';
 import 'package:solar/features/home/screens/customer_screen/customer_screen.dart';
 import 'package:solar/features/home/screens/price_management/price_management.dart';
-import 'package:solar/features/home/screens/price_offers/screens/new_price_offers/screens/car_battrey.dart';
-import 'package:solar/features/home/screens/price_offers/screens/new_price_offers/screens/lighting_stations_categories/ui/categories_screen.dart';
-import 'package:solar/features/home/screens/price_offers/screens/new_price_offers/screens/lighting_stations_categories/ui/screens/categories_details/lighting_categories_calculation_form_screen.dart';
-import 'package:solar/features/home/screens/price_offers/screens/new_price_offers/screens/lighting_stations_categories/ui/screens/categories_details/logic/cubit/lighting_categories_calculation_cubit.dart';
-import 'package:solar/features/home/screens/price_offers/screens/price_offers_issued/price_offers_issued_screen.dart';
-import 'package:solar/features/home/screens/technical_offer_screen/screens/new_technical_offer/screens/lighting_stations/screens/inverter_and_battery_calculation/inverter_and_battery_calculation.dart';
-import 'package:solar/features/home/screens/technical_offer_screen/screens/new_technical_offer/screens/lighting_stations/screens/lighting_load_calculation/logic/cubit/lighting_calculation_cubit.dart';
-import 'package:solar/features/home/screens/technical_offer_screen/screens/new_technical_offer/screens/lighting_stations/screens/lighting_load_calculation/ui/lighting_load_items.dart';
-import 'package:solar/features/home/screens/technical_offer_screen/screens/new_technical_offer/screens/lighting_stations/screens/lighting_load_calculation/ui/screens/lighting_load_calculation.dart';
-import 'package:solar/features/home/screens/technical_offer_screen/screens/new_technical_offer/screens/lighting_stations/ui/lighting_station_screen.dart';
-import 'package:solar/features/home/screens/technical_offer_screen/screens/new_technical_offer/ui/new_technical_offers.dart';
-import 'package:solar/features/home/ui/home_screen.dart';
-import 'package:solar/features/home/screens/price_offers/ui/price_offers_screen.dart';
-import 'package:solar/features/home/screens/technical_offer_screen/ui/technical_offer_screen.dart';
-import 'package:solar/features/home/screens/price_offers/screens/new_price_offers/ui/new_price_offers_screen.dart';
+import 'package:solar/features/new_offers_screens/new_price_offers/screens/car_battrey.dart';
+import 'package:solar/features/stations_screens/lighting/price_offer/lighting_screen.dart';
+import 'package:solar/features/stations_screens/lighting/price_offer/categories_screen/lighting_station_categories_screen.dart';
+import 'package:solar/features/home/screens/price_offers/logic/cubit/price_offers_cubit.dart';
+import 'package:solar/features/stations_screens/lighting/technical_offer/categories_screen/inverter_and_battery/cubit/inverter_and_battery_cubit.dart';
+import 'package:solar/features/stations_screens/lighting/technical_offer/categories_screen/inverter_and_battery/inverter_and_battery_screen.dart';
+import 'package:solar/features/home/screens/technical_offer_screen/logic/cubit/technical_offers_cubit.dart';
+import 'package:solar/features/stations_screens/lighting/technical_offer/categories_screen/electrcity_load.dart/devices_screen.dart';
+import 'package:solar/features/stations_screens/lighting/technical_offer/categories_screen/electrcity_load.dart/device_form_screen/device_calculation_screen.dart';
+import 'package:solar/features/stations_screens/lighting/technical_offer/lighting_station_screen.dart';
+import 'package:solar/features/new_offers_screens/new_technical_offer/new_technical_offers.dart';
+import 'package:solar/features/home/home_screen.dart';
+import 'package:solar/features/home/screens/price_offers/price_offers_screen.dart';
+import 'package:solar/features/home/screens/technical_offer_screen/technical_offer_screen.dart';
+import 'package:solar/features/new_offers_screens/new_price_offers/new_price_offers_screen.dart';
+import 'package:solar/features/price_issud_screens/price_offers/price_offers_issued.dart';
 
 class AppRouter {
   Route? generateRoute(RouteSettings settings) {
@@ -29,6 +31,10 @@ class AppRouter {
     final arguments = settings.arguments;
 
     switch (settings.name) {
+      case Routes.adminAddData:
+        return MaterialPageRoute(
+          builder: (_) => const AddDataToFirebase(),
+        );
       case Routes.homeScreen:
         return MaterialPageRoute(
           builder: (_) => const HomeScreen(),
@@ -43,8 +49,9 @@ class AppRouter {
       case Routes.priceManagement:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) => LightingCategoriesCalculationCubit(getIt())
-              ..getPricesTableData(),
+            create: (context) =>
+                LightingCategoriesCalculationCubit(getIt(), getIt())
+                  ..getPricesTableData(),
             child: const PriceManagement(),
           ),
         );
@@ -66,16 +73,18 @@ class AppRouter {
       case Routes.lightingStationsCategoriesScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) => LightingCategoriesCalculationCubit(getIt()),
+            create: (context) =>
+                LightingCategoriesCalculationCubit(getIt(), getIt()),
             child: const LightingStationsCategoriesScreen(),
           ),
         );
       case Routes.categoriesDetailsScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) => LightingCategoriesCalculationCubit(getIt())
-              ..getDetailsDataFromDatabase(arguments),
-            child: LightingCategoriesCalculationScreen(
+            create: (context) =>
+                LightingCategoriesCalculationCubit(getIt(), getIt())
+                  ..getDetailsDataFromDatabase(arguments),
+            child: LightingStationCategoriesScreen(
               data: arguments as Map<String, dynamic>,
             ),
           ),
@@ -83,7 +92,8 @@ class AppRouter {
       case Routes.carBatteryScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) => LightingCategoriesCalculationCubit(getIt()),
+            create: (context) =>
+                LightingCategoriesCalculationCubit(getIt(), getIt()),
             child: CarBattrey(),
           ),
         );
@@ -102,18 +112,21 @@ class AppRouter {
         );
       case Routes.inverterAndBatteryCalculation:
         return MaterialPageRoute(
-          builder: (_) => const InverterAndBatteryCalculation(),
+          builder: (_) => BlocProvider(
+            create: (context) => InverterAndBatteryCubit(getIt()),
+            child: const InverterAndBatteryScreen(),
+          ),
         );
       case Routes.lightingLoadItem:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) => LightingCalculationCubit(getIt()),
-            child: const LightingLoadItems(),
+            create: (context) => TechnicalOffersCubit(getIt()),
+            child: const DevicesSceen(),
           ),
         );
       case Routes.lightingLoadCalculation:
         return MaterialPageRoute(
-          builder: (_) => LightingLoadCalculationScreen(
+          builder: (_) => DeviceCalculationScreen(
             itemData: arguments as Map<String, dynamic>,
           ),
         );

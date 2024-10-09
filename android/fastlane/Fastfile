@@ -31,7 +31,14 @@ platform :android do
             testers: "ibrahim13elgammal@gmail.com, mohamedfawzi8898@gmail.com",
             release_notes: 
             "
-            - Fix Text Hide Error.
+            - save pdf in all pdf sceen.
+            - save pdf by time when saved.
+            - open pdf from screen app.
+            - added delete pdf feature when long tap on pdf file.
+            - create car and battery screen form ui.
+            - change app text style to out line text.
+            - refactor delete box.
+            - change main image size.
             "
         )
   end

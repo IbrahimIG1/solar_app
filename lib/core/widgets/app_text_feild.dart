@@ -13,6 +13,8 @@ class AppTextFormFeild extends StatelessWidget {
   final bool? isObscure;
   final Color? backGroundColor;
   final TextEditingController? controller;
+  final FocusNode? focusNode;
+  final TextInputAction? textInputAction;
   final Function(String?) validator;
   final TextInputType? keyboardType;
 
@@ -27,7 +29,10 @@ class AppTextFormFeild extends StatelessWidget {
     this.isObscure,
     this.backGroundColor,
     this.controller,
-    required this.validator, this.keyboardType,
+    required this.validator,
+    this.keyboardType,
+    this.focusNode,
+    this.textInputAction,
   });
 
   @override
@@ -35,11 +40,13 @@ class AppTextFormFeild extends StatelessWidget {
     return TextFormField(
       textDirection: TextDirection.ltr,
       controller: controller,
+      focusNode: focusNode ?? FocusNode(),
+      textInputAction: textInputAction ?? TextInputAction.done,
       keyboardType: keyboardType,
       decoration: InputDecoration(
           // label: Text(lable ?? "",
           //     style: lableStyle ?? TextStyles.font16GreyMeduim),
-          
+
           hintTextDirection: TextDirection.ltr,
           isDense: true,
           hintText: hintText,

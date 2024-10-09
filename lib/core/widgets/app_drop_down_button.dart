@@ -44,7 +44,7 @@ class AppDropDownButton extends StatelessWidget {
         initialSelection: data.first,
 
         onSelected: (value) {
-          onSelecte(value!);
+          onSelecte(value ?? data.first);
         },
         dropdownMenuEntries:
             data.map<DropdownMenuEntry<String>>((String value) {
