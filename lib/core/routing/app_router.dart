@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solar/core/di/di.dart';
 import 'package:solar/core/routing/routes.dart';
 import 'package:solar/core/widgets/default_route_screen.dart';
+import 'package:solar/features/admin/add_data_to_firebase.dart';
 import 'package:solar/features/home/screens/customer_base/customer_base.dart';
 import 'package:solar/features/home/screens/customer_screen/logic/cubit/customer_cubit.dart';
 import 'package:solar/features/home/screens/customer_screen/customer_screen.dart';
@@ -11,6 +12,7 @@ import 'package:solar/features/new_offers_screens/new_price_offers/screens/car_b
 import 'package:solar/features/stations_screens/lighting/price_offer/lighting_screen.dart';
 import 'package:solar/features/stations_screens/lighting/price_offer/categories_screen/lighting_station_categories_screen.dart';
 import 'package:solar/features/home/screens/price_offers/logic/cubit/price_offers_cubit.dart';
+import 'package:solar/features/stations_screens/lighting/technical_offer/categories_screen/inverter_and_battery/cubit/inverter_and_battery_cubit.dart';
 import 'package:solar/features/stations_screens/lighting/technical_offer/categories_screen/inverter_and_battery/inverter_and_battery_screen.dart';
 import 'package:solar/features/home/screens/technical_offer_screen/logic/cubit/technical_offers_cubit.dart';
 import 'package:solar/features/stations_screens/lighting/technical_offer/categories_screen/electrcity_load.dart/devices_screen.dart';
@@ -29,6 +31,10 @@ class AppRouter {
     final arguments = settings.arguments;
 
     switch (settings.name) {
+      case Routes.adminAddData:
+        return MaterialPageRoute(
+          builder: (_) => const AddDataToFirebase(),
+        );
       case Routes.homeScreen:
         return MaterialPageRoute(
           builder: (_) => const HomeScreen(),
@@ -106,7 +112,10 @@ class AppRouter {
         );
       case Routes.inverterAndBatteryCalculation:
         return MaterialPageRoute(
-          builder: (_) => const InverterAndBatteryScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) => InverterAndBatteryCubit(getIt()),
+            child: const InverterAndBatteryScreen(),
+          ),
         );
       case Routes.lightingLoadItem:
         return MaterialPageRoute(

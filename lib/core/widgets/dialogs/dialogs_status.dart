@@ -64,3 +64,4 @@ deleteDialog(BuildContext context, Function deleteFunc) => showDialog(context: c
         );
       },
     );
+

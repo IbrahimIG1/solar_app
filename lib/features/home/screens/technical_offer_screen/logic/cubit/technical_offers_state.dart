@@ -50,3 +50,13 @@ final class ChooseStateLoading extends TechnicalOffersState {}
 final class ChooseStateSuccess extends TechnicalOffersState {}
 
 final class ChooseStateError extends TechnicalOffersState {}
+
+//* FireStore States
+final class AddPanalDataLoading extends TechnicalOffersState {}
+
+final class AddPanalDataSuccess extends TechnicalOffersState {}
+
+final class AddPanalDataError extends TechnicalOffersState {
+  ErrorModel error;
+  AddPanalDataError(this.error);
+}
