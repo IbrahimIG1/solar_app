@@ -113,7 +113,8 @@ class AppRouter {
       case Routes.inverterAndBatteryCalculation:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) => InverterAndBatteryCubit(getIt()),
+            create: (context) =>
+                InverterAndBatteryCubit(getIt(), getIt())..getData(),
             child: const InverterAndBatteryScreen(),
           ),
         );

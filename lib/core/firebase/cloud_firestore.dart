@@ -1,19 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:solar/core/constance/constance.dart';
 import 'package:solar/core/firebase/firebase_factory.dart';
 
-abstract class PanalServices {
+abstract class FirebaseServices {
   Future<void> addData(
       {required String collection,
       required String docUid,
-      required String collectionName,
-      // required Map<String, dynamic> typesNames,
-      required String collectionNameUid,
       required Map<String, dynamic> data});
-  Future<QuerySnapshot<Map<String, dynamic>>> getAllData({
-    required String collectionName,
-    required String docUid,
-    required String collection,
-  });
+  Future<QuerySnapshot<Map<String, dynamic>>> getData({required String collection});
   // Stream<QuerySnapshot<Map<String, dynamic>>> getDataStream(String collection);
   Future<Map<String, dynamic>?> getDataById(String collection, String docId);
   Future<void> updateData(
@@ -21,7 +15,7 @@ abstract class PanalServices {
   Future<void> deleteDataById(String collection, String docId);
 }
 
-class CloudFirestoreServicesImp implements PanalServices {
+class CloudFirestoreServicesImp implements FirebaseServices {
   final FirebaseFactory firebaseFactory;
 
   CloudFirestoreServicesImp(this.firebaseFactory);
@@ -30,38 +24,25 @@ class CloudFirestoreServicesImp implements PanalServices {
   @override
   Future<void> addData({
     required String collection,
-    required String collectionName,
-    required String collectionNameUid,
     required String docUid,
     required Map<String, dynamic> data,
-    // required Map<String, dynamic> typesNames,
   }) async {
     FirebaseFirestore firestore = firebaseFactory.getFirebaseFirestore();
-    // await firestore.collection(collection).doc(docUid).set(typesNames);
-    // print("Data Name is >>>>>>> $typesNames");
 
-    await firestore
+    return await firestore
         .collection(collection)
         .doc(docUid)
-        .collection(collectionName)
-        .doc(collectionNameUid)
-        .set(data);
-    // return await firestore.collection(collection).doc(docUid).set(data);
+        .set(data, SetOptions(merge: true));
   }
 
   //* Method to get all documents from a Firestore collection
   @override
-  Future<QuerySnapshot<Map<String, dynamic>>> getAllData(
-      {required String collectionName,
-      required String docUid,
-      required String collection}) async {
+  Future<QuerySnapshot<Map<String, dynamic>>> getData(
+      {required String collection}) async {
     FirebaseFirestore firestore = firebaseFactory.getFirebaseFirestore();
-    QuerySnapshot<Map<String, dynamic>> querySnapshot = await firestore
-        .collection(collection)
-        .doc(docUid)
-        .collection(collectionName)
-        .get();
-    print("Get Data in factory >> ${querySnapshot.docs.first.data()}");
+    QuerySnapshot<Map<String, dynamic>> querySnapshot =
+        await firestore.collection(collection).get();
+
     return querySnapshot;
   }
 

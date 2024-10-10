@@ -1,26 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:solar/core/constance/constance.dart';
+import 'package:solar/core/helper/extensions.dart';
 import 'package:solar/core/models/inverter_model/inverter_data_model.dart';
 import 'package:solar/core/models/inverter_model/inverter_model.dart';
 import 'package:solar/core/models/panal_model/panal_data_model.dart';
 import 'package:solar/core/models/panal_model/panal_model.dart';
 import 'package:solar/features/admin/add_data_to_firebase.dart';
 import 'package:solar/features/admin/cubit/admin_state.dart';
-import 'package:solar/features/home/screens/technical_offer_screen/logic/repo/firebase_repo.dart';
+import 'package:solar/features/home/screens/technical_offer_screen/logic/repo/inverters_repo.dart';
+import 'package:solar/features/home/screens/technical_offer_screen/logic/repo/panals_repo.dart';
 
 class AdminCubit extends Cubit<AdminState> {
-  final FirebaseRepo firebaseRepo;
+  final PanalsRepo panalsRepo;
+  final InverterRepo inverterRepo;
 
-  AdminCubit(this.firebaseRepo) : super(AdminInitial());
+  AdminCubit(this.panalsRepo, this.inverterRepo) : super(AdminInitial());
 
   static AdminCubit get(context) => BlocProvider.of(context);
 
   DeviceType? selectedDevice = DeviceType.panel;
   void changeRadioButtonValue(DeviceType? value) {
     selectedDevice = value;
-    panalTypeDropdownValue = "";
+    dropdownValue = "";
     emit(ChangeRadioButtonsSuccess());
   }
 
@@ -30,7 +32,7 @@ class AdminCubit extends Cubit<AdminState> {
   TextEditingController vmpController = TextEditingController();
   TextEditingController vocController = TextEditingController();
   TextEditingController impController = TextEditingController();
-  String panalTypeDropdownValue = "";
+  String dropdownValue = "";
 
   //* form key
   final formKey = GlobalKey<FormState>();
@@ -56,81 +58,80 @@ class AdminCubit extends Cubit<AdminState> {
     "Solar Fabrik",
     "Lesso",
   ];
+
   //* Lists to save all values on the same panal type
-  List pmax = [];
-  List isc = [];
-  List vmp = [];
-  List voc = [];
-  List imp = [];
+  List<double> pmax = [];
+  List<double> isc = [];
+  List<double> vmp = [];
+  List<double> voc = [];
+  List<double> imp = [];
 
   //* Add Panals Data on FireStore
   Future<void> addPanalsData({required PanalModel panalModel}) async {
     emit(AddDataLoading());
-    pmax.add(pmaxController.text);
-    isc.add(iscController.text);
-    vmp.add(vmpController.text);
-    voc.add(vocController.text);
-    imp.add(impController.text);
-    print("AddPanalData Start");
-    PanalDataModel panalDataModel =
-        PanalDataModel(pmax: pmax, voc: voc, isc: isc, vmp: vmp, imp: imp);
-    PanalModel panalModel = PanalModel(panalTypeDropdownValue, panalDataModel);
-    final response = await firebaseRepo.addPanals(
-        // typesNames: {"Types": panalTypeList},
-        docUid: selectedDevice == DeviceType.panel ? panalUid : inverterUid,
-        collection: selectedDevice == DeviceType.panel
-            ? panalCollection
-            : inverterCollection,
-        panalsData: panalModel.data.toMap(),
-        collectionName: panalModel.name);
+    pmax.add(double.parse(pmaxController.text));
+    isc.add(double.parse(iscController.text));
+    vmp.add(double.parse(vmpController.text));
+    voc.add(double.parse(vocController.text));
+    imp.add(double.parse(impController.text));
+    print("Add Panal Data Start");
+    PanalDataModel panalDataModel = PanalDataModel(
+        name: dropdownValue,
+        pmax: pmax,
+        voc: voc,
+        isc: isc,
+        vmp: vmp,
+        imp: imp);
+    PanalModel panalModel = PanalModel(panalDataModel);
+    panals = {};
+    final response = await panalsRepo.addData(
+      docUid: panalModel.data.name,
+      data: panalModel.toMap(),
+    );
     response.when(success: (data) {
-      print("AddPanalDataSuccess");
+      print("Add Panal Data Success");
       resetCotrollersData();
       emit(AddPanalDataSuccess());
     }, failure: (error) {
-      print("AddPanalDataError >> $error");
+      print("Add Panal Data Error >> $error");
 
       emit(AddPanalDataError(error));
     });
   }
 
   //* Lists to save all values on the same panal type
-  List modelInverter = [];
-  List input1DC = [];
-  List input2DC = [];
-  List maxInputDC = [];
-  List ratedOutputCurrent = [];
+  List<double> modelInverter = [];
+  List<double> input1DC = [];
+  List<double> input2DC = [];
+  List<double> maxInputDC = [];
+  List<double> ratedOutputCurrent = [];
 //* Add Panals Data on FireStore
   Future<void> addInvertersData({required InverterModel invetrerModel}) async {
     emit(AddDataLoading());
-    modelInverter.add(pmaxController.text);
-    input1DC.add(iscController.text);
-    input2DC.add(vmpController.text);
-    maxInputDC.add(vocController.text);
-    ratedOutputCurrent.add(impController.text);
-    print("IddinvetrerData Start");
+    modelInverter.add(double.parse(pmaxController.text));
+    input1DC.add(double.parse(vocController.text));
+    input2DC.add(double.parse(iscController.text));
+    maxInputDC.add(double.parse(vmpController.text));
+    ratedOutputCurrent.add(double.parse(impController.text));
+    print("add invetrer Data Start");
     InverterDataModel invetrerDataModel = InverterDataModel(
+        name: dropdownValue,
         modelInverter: modelInverter,
         input1DC: input1DC,
         input2DC: input2DC,
         maxInputDC: maxInputDC,
         ratedOutputCurrent: ratedOutputCurrent);
-    InverterModel invetrerModel =
-        InverterModel(panalTypeDropdownValue, invetrerDataModel);
-    final response = await firebaseRepo.addPanals(
-        // typesNames: {"Types": inverterTypeList},
-        docUid: selectedDevice == DeviceType.panel ? panalUid : inverterUid,
-        collection: selectedDevice == DeviceType.panel
-            ? panalCollection
-            : inverterCollection,
-        panalsData: invetrerModel.data.toMap(),
-        collectionName: invetrerModel.name);
+    InverterModel inverterModel = InverterModel(invetrerDataModel);
+    final response = await inverterRepo.addData(
+      docUid: inverterModel.data.name,
+      data: invetrerModel.toMap(),
+    );
     response.when(success: (data) {
-      print("AddPanalDataSuccess");
+      print("Add Inverters Data Success");
       resetCotrollersData();
       emit(AddInvertersDataSuccess());
     }, failure: (error) {
-      print("AddPanalDataError >> $error");
+      print("Add Inverters Data Error >> $error");
 
       emit(AddInvertersDataError(error));
     });
@@ -138,49 +139,31 @@ class AdminCubit extends Cubit<AdminState> {
 
   //* reset all controllers after add done
   void resetCotrollersData() {
-    pmaxController.text = "";
-    iscController.text = "";
-    vmpController.text = "";
-    vocController.text = "";
-    impController.text = "";
+    pmaxController.clear();
+    iscController.clear();
+    vmpController.clear();
+    vocController.clear();
+    impController.clear();
   }
-
-  //* reset all lists after add done
-  void resetListssData() {
-    panals = [];
-    pmax = [];
-    isc = [];
-    vmp = [];
-    voc = [];
-    imp = [];
-  }
-
-//* this list hase all data about specific panal from firebase
-  List<PanalDataModel> panals = [];
 
   //* Get Data From Firebase and save it in [invertes] list
-  getPanalsData() async {
-    resetListssData();
-    print("GetPanalData Start");
+  Map panals = {};
+  Future<void> getPanalsData({
+    required String collectionName,
+  }) async {
+    resetPanalsData();
+    print(">>>>>>>>>>>>>>>> GetPanalData Start");
     emit(GetPanalDataLoading());
-    final response = await firebaseRepo.getAllpanals(
-      collection: selectedDevice == DeviceType.panel
-          ? panalCollection
-          : inverterCollection,
-      collectionName: panalTypeDropdownValue,
-      docUid: selectedDevice == DeviceType.panel
-          ? panalCollection
-          : inverterCollection,
-    );
+    final response =
+        await panalsRepo.getAllpanalssWithIds(collectionName: collectionName);
     response.when(success: (data) {
-      print("GetPanalDataSuccess");
-      for (var doc in data.docs) {
-        print("Docs data is >>>>>> ${doc.data()}");
-        panals.add(PanalDataModel.fromMap(doc.data()));
+      print("data in when func >>>>>>> $data");
+      if (!data.isNullOrEmpty()) {
+        print("data in if condition >>>>>>> ${data.isNullOrEmpty()}");
+        panals = data!;
+        getPanalsSpecificData(collectionName: collectionName);
+        print("Panals is >>>> $panals");
       }
-      print("panals is >>>>>>> ${panals[0].pmax}");
-      getSpecificData();
-
       emit(GetPanalDataSuccess());
     }, failure: (error) {
       print("GetPanalDataError >> $error");
@@ -188,16 +171,74 @@ class AdminCubit extends Cubit<AdminState> {
     });
   }
 
+//* reset data befor get to not dublicate data
+  void resetPanalsData() {
+    panals = {};
+    pmax = [];
+    isc = [];
+    vmp = [];
+    voc = [];
+    imp = [];
+  }
+
   //* get Data From [panals] list and save every tyle value in specific list.
-  getSpecificData() {
+  getPanalsSpecificData({required String collectionName}) {
     for (int i = 0; i < panals.length; i++) {
-      pmax = panals[i].pmax;
-      imp = panals[i].imp;
-      isc = panals[i].isc;
-      vmp = panals[i].vmp;
-      voc = panals[i].voc;
+      pmax = panals["data"]['pmax'] ?? [];
+      imp = panals["data"]['imp'] ?? [];
+      isc = panals["data"]['isc'] ?? [];
+      vmp = panals["data"]['vmp'] ?? [];
+      voc = panals["data"]['voc'] ?? [];
       print(
-          "pmax is >>> $pmax /n imp is >>> $imp /n imp is >>> $vmp/n imp is >>> $isc/n imp is >>> $voc");
+          "pmax is >>> $pmax\n imp is >>> $imp\n vmp is >>> $vmp\n isc is >>> $isc\n voc is >>> $voc");
+    }
+  }
+
+//* Get Data From Firebase and save it in [invertes] list
+  Map inverters = {};
+  Future<void> getInvertersData({
+    required String collectionName,
+  }) async {
+    resetInvertersData();
+    print(">>>>>>>>>>>>>>>>>> Get Inverters Data Start");
+    emit(GetInvertersDataLoading());
+    final response =
+        await inverterRepo.getInvertersWithIds(collectionName: collectionName);
+    response.when(success: (data) {
+      print("data in when func >>>>>>> $data");
+      if (!data.isNullOrEmpty()) {
+        print("data in if condition >>>>>>> ${data.isNullOrEmpty()}");
+        inverters = data!;
+        getInvertersSpecificData(collectionName: collectionName);
+        print("inverters is >>>> $inverters");
+      }
+      emit(GetInvertersDataSuccess());
+    }, failure: (error) {
+      print("GetInvertersDataError >> $error");
+      emit(GetInvertersDataError(error));
+    });
+  }
+
+//* reset data befor get to not dublicate data
+  void resetInvertersData() {
+    inverters = {};
+    modelInverter = [];
+    input1DC = [];
+    input2DC = [];
+    maxInputDC = [];
+    ratedOutputCurrent = [];
+  }
+
+  //* get Data From [panals] list and save every tyle value in specific list.
+  getInvertersSpecificData({required String collectionName}) {
+    for (int i = 0; i < inverters.length; i++) {
+      modelInverter = inverters["data"]['model_inverter'] ?? [];
+      input1DC = inverters["data"]['input_1dc'] ?? [];
+      input2DC = inverters["data"]['input_2dc'] ?? [];
+      maxInputDC = inverters["data"]['max_input_dc'] ?? [];
+      ratedOutputCurrent = inverters["data"]['rated_output_current'] ?? [];
+      print(
+          "model_inverter is >>> $modelInverter /n input1DC is >>> $input1DC /n input2DC is >>> $input2DC/n maxInputDC is >>> $maxInputDC/n ratedOutputCurrent is >>> $ratedOutputCurrent");
     }
   }
 }

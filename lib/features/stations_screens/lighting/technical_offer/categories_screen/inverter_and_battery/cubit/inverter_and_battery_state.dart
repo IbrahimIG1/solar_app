@@ -23,25 +23,15 @@ final class AddInvertersDataError extends InverterAndBatteryState {
   ErrorModel error;
   AddInvertersDataError(this.error);
 }
-//* Get Panals Data
+//* Get Data
 
-final class GetPanalDataLoading extends InverterAndBatteryState {}
+final class GetDataLoading extends InverterAndBatteryState {}
 
-final class GetPanalDataSuccess extends InverterAndBatteryState {}
+final class GetDataSuccess extends InverterAndBatteryState {}
 
-final class GetPanalDataError extends InverterAndBatteryState {
+final class GetDataError extends InverterAndBatteryState {
   ErrorModel error;
-  GetPanalDataError(this.error);
-}
-//* Get Panals Data
-
-final class GetInvertersDataLoading extends InverterAndBatteryState {}
-
-final class GetInvertersDataSuccess extends InverterAndBatteryState {}
-
-final class GetInvertersDataError extends InverterAndBatteryState {
-  ErrorModel error;
-  GetInvertersDataError(this.error);
+  GetDataError(this.error);
 }
 
 //* Radio Buttons State

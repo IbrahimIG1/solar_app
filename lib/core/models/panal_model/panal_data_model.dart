@@ -2,30 +2,34 @@
 import 'dart:convert';
 
 class PanalDataModel {
-  final List pmax;
-  final List voc;
-  final List isc;
-  final List vmp;
-  final List imp;
+  final List<double> pmax;
+  final List<double> voc;
+  final List<double> isc;
+  final List<double> vmp;
+  final List<double> imp;
+  final String name;
   PanalDataModel(
       {required this.pmax,
+      required this.name, 
       required this.voc,
       required this.isc,
       required this.vmp,
       required this.imp});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
+    return {
       'pmax': pmax,
       'voc': voc,
       'isc': isc,
       'vmp': vmp,
       'imp': imp,
+      'name': name,
     };
   }
 
   factory PanalDataModel.fromMap(Map<String, dynamic> map) {
     return PanalDataModel(
+      name: map['name'],
       pmax: List.from((map['pmax'] as List)),
       voc: List.from((map['voc'] as List)),
       isc: List.from((map['isc'] as List)),

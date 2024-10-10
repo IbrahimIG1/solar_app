@@ -9,7 +9,8 @@ import 'package:solar/features/admin/cubit/admin_cubit.dart';
 import 'package:solar/features/home/screens/customer_screen/logic/cubit/customer_cubit.dart';
 import 'package:solar/features/home/screens/customer_screen/logic/repo/customer_repo.dart';
 import 'package:solar/features/home/screens/technical_offer_screen/logic/cubit/technical_offers_cubit.dart';
-import 'package:solar/features/home/screens/technical_offer_screen/logic/repo/firebase_repo.dart';
+import 'package:solar/features/home/screens/technical_offer_screen/logic/repo/inverters_repo.dart';
+import 'package:solar/features/home/screens/technical_offer_screen/logic/repo/panals_repo.dart';
 import 'package:solar/features/home/screens/technical_offer_screen/logic/repo/technical_offers_repo.dart';
 import 'package:solar/features/stations_screens/lighting/technical_offer/categories_screen/inverter_and_battery/cubit/inverter_and_battery_cubit.dart';
 import '../../features/home/screens/price_offers/logic/cubit/price_offers_cubit.dart';
@@ -35,7 +36,7 @@ Future<void> setUp() async {
   //* services
   getIt.registerLazySingleton<DbServices>(() => DbServices(dbFactory));
   getIt.registerLazySingleton<TableSevices>(() => TableSevices());
-  getIt.registerLazySingleton<PanalServices>(
+  getIt.registerLazySingleton<FirebaseServices>(
       () => CloudFirestoreServicesImp(getIt()));
 
   //* repos
@@ -43,7 +44,8 @@ Future<void> setUp() async {
       () => TechnicalOffersRepo(getIt()));
   getIt.registerLazySingleton<CustomerRepo>(() => CustomerRepo(getIt()));
   getIt.registerLazySingleton<PriceOffersRepo>(() => PriceOffersRepo(getIt()));
-  getIt.registerLazySingleton<FirebaseRepo>(() => FirebaseRepo(getIt()));
+  getIt.registerLazySingleton<PanalsRepo>(() => PanalsRepo(getIt()));
+  getIt.registerLazySingleton<InverterRepo>(() => InverterRepo(getIt()));
 
   //* cubits
   getIt.registerFactory<TechnicalOffersCubit>(
@@ -51,6 +53,7 @@ Future<void> setUp() async {
   getIt.registerFactory<CustomerCubit>(() => CustomerCubit(getIt()));
   getIt.registerFactory<LightingCategoriesCalculationCubit>(
       () => LightingCategoriesCalculationCubit(getIt(), getIt()));
-      getIt.registerFactory<InverterAndBatteryCubit>(() => InverterAndBatteryCubit(getIt()));
-  getIt.registerFactory<AdminCubit>(() => AdminCubit(getIt()));
+  getIt.registerFactory<InverterAndBatteryCubit>(
+      () => InverterAndBatteryCubit(getIt(), getIt()));
+  getIt.registerFactory<AdminCubit>(() => AdminCubit(getIt(), getIt()));
 }

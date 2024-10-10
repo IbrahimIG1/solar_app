@@ -41,8 +41,7 @@ class AppDropDownButton extends StatelessWidget {
           ),
         ),
         expandedInsets: EdgeInsets.zero, // to get parnt width
-        initialSelection: data.first,
-
+        // initialSelection: data.first,
         onSelected: (value) {
           onSelecte(value ?? data.first);
         },

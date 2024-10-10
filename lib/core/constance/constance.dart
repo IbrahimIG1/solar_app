@@ -12,3 +12,6 @@ String inverterCollection = "inverters";
 String panalCollection = "panals";
 String inverterUid = "invertersUid";
 String panalUid = "panalsUid";
+
+String uid = "";
+

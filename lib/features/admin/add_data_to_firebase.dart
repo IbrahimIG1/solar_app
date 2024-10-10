@@ -22,7 +22,7 @@ class AddDataToFirebase extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AdminCubit(getIt()),
+      create: (context) => AdminCubit(getIt(), getIt()),
       child: BlocConsumer<AdminCubit, AdminState>(
           listener: (context, state) {},
           builder: (context, state) {
@@ -46,7 +46,7 @@ class AddDataToFirebase extends StatelessWidget {
                             children: [
                               Expanded(
                                 child: ListTile(
-                                  title: Text("Panel"),
+                                  title: const Text("Panel"),
                                   leading: Radio<DeviceType>(
                                     value: DeviceType.panel,
                                     groupValue: cubit.selectedDevice,
@@ -58,7 +58,7 @@ class AddDataToFirebase extends StatelessWidget {
                               ),
                               Expanded(
                                 child: ListTile(
-                                  title: Text("Inverter"),
+                                  title: const Text("Inverter"),
                                   leading: Radio<DeviceType>(
                                     value: DeviceType.inverter,
                                     groupValue: cubit.selectedDevice,
@@ -77,8 +77,12 @@ class AddDataToFirebase extends StatelessWidget {
                                   ? cubit.panalTypeList
                                   : cubit.inverterTypeList,
                               onSelecte: (value) {
-                                cubit.panalTypeDropdownValue = value;
-                                cubit.getPanalsData();
+                                print("isPanal is >>>> $isPanal");
+                                cubit.dropdownValue = value;
+                                isPanal
+                                    ? cubit.getPanalsData(collectionName: value)
+                                    : cubit.getInvertersData(
+                                        collectionName: value);
                               }),
                           verticalSpace(10),
                           AppTextFormFeild(
@@ -102,9 +106,8 @@ class AddDataToFirebase extends StatelessWidget {
                             focusNode: FocusNode(),
                             textInputAction: TextInputAction.next,
                             controller: cubit.vocController,
-                            hintText: isPanal
-                                ? "Enter Voc"
-                                : "Enter Maximum Input DC Voltage",
+                            hintText:
+                                isPanal ? "Enter Voc" : "Enter IN PUT 1 DC",
                             validator: (value) {
                               if (value!.isNullOrEmpty()) {
                                 return "Enter Panal Voc";
@@ -119,7 +122,7 @@ class AddDataToFirebase extends StatelessWidget {
                             textInputAction: TextInputAction.next,
                             controller: cubit.iscController,
                             hintText:
-                                isPanal ? "Enter Isc" : "Enter IN PUT 1 DC",
+                                isPanal ? "Enter Isc" : "Enter IN PUT 2 DC",
                             validator: (value) {
                               if (value!.isNullOrEmpty()) {
                                 return "Enter Panal Isc";
@@ -132,8 +135,9 @@ class AddDataToFirebase extends StatelessWidget {
                             focusNode: FocusNode(),
                             textInputAction: TextInputAction.next,
                             controller: cubit.vmpController,
-                            hintText:
-                                isPanal ? "Enter Vmp" : "Enter InPut 2 DC",
+                            hintText: isPanal
+                                ? "Enter Vmp"
+                                : "Enter Maximum Input DC Voltage",
                             validator: (value) {
                               if (value!.isNullOrEmpty()) {
                                 return "Enter Panal Vmp";
@@ -165,44 +169,39 @@ class AddDataToFirebase extends StatelessWidget {
                             child: AppTextButton(
                               text: "Add Data",
                               backgroundColor:
-                                  cubit.panalTypeDropdownValue.isNullOrEmpty()
+                                  cubit.dropdownValue.isNullOrEmpty()
                                       ? Colors.grey
                                       : Colors.green,
-                              onpressed:
-                                  cubit.panalTypeDropdownValue.isNullOrEmpty()
-                                      ? () {}
-                                      : () async {
-                                          if (cubit.formKey.currentState!
-                                              .validate()) {
-                                            isPanal
-                                                ? await cubit.addPanalsData(
-                                                    panalModel: PanalModel(
-                                                        cubit
-                                                            .panalTypeDropdownValue,
-                                                        PanalDataModel(
-                                                          pmax: cubit.pmax,
-                                                          imp: cubit.imp,
-                                                          isc: cubit.isc,
-                                                          vmp: cubit.vmp,
-                                                          voc: cubit.voc,
-                                                        )))
-                                                : await cubit.addInvertersData(
-                                                    invetrerModel: InverterModel(
-                                                        cubit.panalTypeDropdownValue,
-                                                        InverterDataModel(
-                                                          input1DC:
-                                                              cubit.input1DC,
-                                                          input2DC:
-                                                              cubit.input2DC,
-                                                          maxInputDC:
-                                                              cubit.maxInputDC,
-                                                          modelInverter: cubit
-                                                              .modelInverter,
-                                                          ratedOutputCurrent: cubit
-                                                              .ratedOutputCurrent,
-                                                        )));
-                                          }
-                                        },
+                              onpressed: cubit.dropdownValue.isNullOrEmpty()
+                                  ? () {}
+                                  : () async {
+                                      if (cubit.formKey.currentState!
+                                          .validate()) {
+                                        isPanal
+                                            ? await cubit.addPanalsData(
+                                                panalModel:
+                                                    PanalModel(PanalDataModel(
+                                                name: cubit.dropdownValue,
+                                                pmax: cubit.pmax,
+                                                imp: cubit.imp,
+                                                isc: cubit.isc,
+                                                vmp: cubit.vmp,
+                                                voc: cubit.voc,
+                                              )))
+                                            : await cubit.addInvertersData(
+                                                invetrerModel: InverterModel(
+                                                    InverterDataModel(
+                                                name: cubit.dropdownValue,
+                                                input1DC: cubit.input1DC,
+                                                input2DC: cubit.input2DC,
+                                                maxInputDC: cubit.maxInputDC,
+                                                modelInverter:
+                                                    cubit.modelInverter,
+                                                ratedOutputCurrent:
+                                                    cubit.ratedOutputCurrent,
+                                              )));
+                                      }
+                                    },
                             ),
                           ),
                         ],

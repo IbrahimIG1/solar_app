@@ -49,6 +49,9 @@ class MyApp extends StatelessWidget {
           title: 'Flutter Demo',
           theme: appThemeData(),
           debugShowCheckedModeBanner: false,
+          // routes: {
+          //   Routes.homeScreen: (context)=>HomeScreen(),
+          // },
           initialRoute: Routes.homeScreen,
           onGenerateRoute: AppRouter().generateRoute,
           // home: const HomeScreen(),

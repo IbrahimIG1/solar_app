@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:solar/core/helper/extensions.dart';
-import 'package:solar/core/models/inverter_model/inverter_data_model.dart';
-import 'package:solar/core/models/panal_model/panal_data_model.dart';
-import 'package:solar/features/home/screens/technical_offer_screen/logic/repo/firebase_repo.dart';
+import 'package:solar/features/home/screens/technical_offer_screen/logic/repo/inverters_repo.dart';
+import 'package:solar/features/home/screens/technical_offer_screen/logic/repo/panals_repo.dart';
 import 'package:solar/features/stations_screens/lighting/technical_offer/categories_screen/inverter_and_battery/cubit/inverter_and_battery_state.dart';
+import 'package:solar/core/helper/extensions.dart';
 
 class InverterAndBatteryCubit extends Cubit<InverterAndBatteryState> {
-  final FirebaseRepo firebaseRepo;
-  InverterAndBatteryCubit(this.firebaseRepo)
+  final PanalsRepo panalsRepo;
+  final InverterRepo inverterRepo;
+  InverterAndBatteryCubit(this.panalsRepo, this.inverterRepo)
       : super(InverterAndBatteryInitial());
   static InverterAndBatteryCubit get(context) => BlocProvider.of(context);
 
-  //* Controllers
-  TextEditingController pmaxController = TextEditingController();
+  //* Form key
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
   //* inverter and batery controllers
   TextEditingController loadWHController = TextEditingController();
   TextEditingController sccfController = TextEditingController();
@@ -22,6 +23,26 @@ class InverterAndBatteryCubit extends Cubit<InverterAndBatteryState> {
   TextEditingController impController = TextEditingController();
   String panalTypeDropdownValue = "";
   String inverterTypeDropdownValue = "";
+
+  //* Lists to save all values on the same panal type
+  List pmax = [];
+  List isc = [];
+  List vmp = [];
+  List voc = [];
+  List imp = [];
+  //* this list hase all data about specific panal from firebase
+
+  //* Lists to save all values on the same panal type
+  List modelInverter = [];
+  List input1DC = [];
+  List input2DC = [];
+  List maxInputDC = [];
+  List ratedOutputCurrent = [];
+
+  void changeRadioButtonValue(String value) {
+    panalTypeDropdownValue = "";
+    emit(ChangeRadioButtonsSuccess());
+  }
 
   List<String> inverterTypeList = [
     "Veichi",
@@ -44,137 +65,133 @@ class InverterAndBatteryCubit extends Cubit<InverterAndBatteryState> {
     "Solar Fabrik",
     "Lesso",
   ];
-  //* Lists to save all values on the same panal type
-  // List pmax = [];
-  // List isc = [];
-  // List vmp = [];
-  // List voc = [];
-  // List imp = [];
-  //* this list hase all data about specific panal from firebase
-  List<PanalDataModel> panals = [];
-  List<InverterDataModel> inverters = [];
-  //* Lists to save all values on the same panal type
-  // List modelInverter = [];
-  // List input1DC = [];
-  // List input2DC = [];
-  // List maxInputDC = [];
-  // List ratedOutputCurrent = [];
-
-  void changeRadioButtonValue(String value) {
-    panalTypeDropdownValue = "";
-    emit(ChangeRadioButtonsSuccess());
-  }
 
   //* Get Data From Firebase and save it in [invertes] list
-  Future<void> getPanalsData(
-      {required String collection,
-      required String collectionName,
-      required String docUid}) async {
-    if (!panals.isNullOrEmpty()) {
-      panals = [];
-    }
+  Map<String, dynamic> panals = {};
+  Map<String, dynamic> inverters = {};
 
-    print("GetPanalData Start");
-    emit(GetPanalDataLoading());
-    final response = await firebaseRepo.getAllpanals(
-        collection: collection, collectionName: collectionName, docUid: docUid);
-    response.when(success: (data) {
-      print("GetPanalDataSuccess $data");
-      for (var doc in data.docs) {
-        print("Docs data is >>>>>> ${doc.data()}");
-        panals.add(PanalDataModel.fromMap(doc.data()));
+  String panalDropdownValue = "Jinko";
+  String inverterDropdownValue = "Veichi";
+
+  Future<void> getpanals({required String panalName}) async {
+    final panalResponse =
+        await panalsRepo.getAllpanalssWithIds(collectionName: panalName);
+    panalResponse.when(success: (data) {
+      // print('panals Data in get data is >>>>>>>> $data');
+      if (!data.isNullOrEmpty()) {
+        panals = data!;
       }
-      print("panals is >>>>>>> ${panals[0].pmax}");
-      // getPanalsSpecificData();
-
-      emit(GetPanalDataSuccess());
+      print("panals Map is >>>>>>>>>> $panals");
+      // print("panals Names is >>>>>>>>>> $panalsNames");
     }, failure: (error) {
-      print("GetPanalDataError >> $error");
-      emit(GetPanalDataError(error));
+      emit(GetDataError(error));
     });
   }
 
-  //* Get Data From Firebase and save it in [invertes] list
-  Future<void> getInvertersData(
-      {required String collection,
-      required String collectionName,
-      required String docUid}) async {
-    if (!inverters.isNullOrEmpty()) {
-      inverters = [];
-    }
-    print("GetPanalData Start");
-    emit(GetInvertersDataLoading());
-    final response = await firebaseRepo.getAllpanals(
-        collection: collection, collectionName: collectionName, docUid: docUid);
-    response.when(success: (data) {
-      print("GetPanalDataSuccess $data");
-      for (var doc in data.docs) {
-        print("Docs data is >>>>>> ${doc.data()}");
-        inverters.add(InverterDataModel.fromMap(doc.data()));
+  Future<void> getInverters({required String inverterName}) async {
+    final inverterResponse =
+        await inverterRepo.getInvertersWithIds(collectionName: inverterName);
+    inverterResponse.when(success: (data) {
+      print('inverters Data in get data is >>>>>>>> $data');
+      if (!data.isNullOrEmpty()) {
+        inverters = data!;
+        print(inverters['data']['input_1dc']);
       }
-      print("panals is >>>>>>> ${inverters[0].maxInputDC}");
-      // getInverterSpecificData();
-      emit(GetInvertersDataSuccess());
+      print("Inverters Map is >>>>>>>>>> $inverters");
     }, failure: (error) {
-      print("GetInvertersDataError >> $error");
-      emit(GetInvertersDataError(error));
+      emit(GetDataError(error));
     });
   }
 
-  //* get Data From [inverters] list and save every tyle value in specific list.
-  // void getInverterSpecificData() {
-  //   for (int i = 0; i < panals.length; i++) {
-  //     maxInputDC = inverters[i].maxInputDC;
-  //     input1DC = inverters[i].input1DC;
-  //     input2DC = inverters[i].input2DC;
-  //     modelInverter = inverters[i].modelInverter;
-  //     ratedOutputCurrent = inverters[i].ratedOutputCurrent;
-  //     print(
-  //         "pmax is >>> $pmax /n imp is >>> $imp /n imp is >>> $vmp/n imp is >>> $isc/n imp is >>> $voc");
-  //   }
-  // }
+  Future<void> getData() async {
+    emit(GetDataLoading());
+
+    emit(GetDataSuccess());
+  }
+
+  //* reset data befor get to not dublicate data
+  void resetPanalsData() {
+    panals = {};
+    pmax = [];
+    isc = [];
+    vmp = [];
+    voc = [];
+    imp = [];
+  }
 
   //* get Data From [panals] list and save every tyle value in specific list.
-  // void getPanalsSpecificData() {
-  //   for (int i = 0; i < panals.length; i++) {
-  //     pmax = panals[i].pmax;
-  //     imp = panals[i].imp;
-  //     isc = panals[i].isc;
-  //     vmp = panals[i].vmp;
-  //     voc = panals[i].voc;
-  //     print(
-  //         "pmax is >>> $pmax /n imp is >>> $imp /n imp is >>> $vmp/n imp is >>> $isc/n imp is >>> $voc");
-  //   }
-  // }
-
-  //* reset all controllers after add done
-  void resetCotrollersData() {
-    pmaxController.text = "";
-    sccfController.text = "";
-    vnipController.text = "";
-    vocController.text = "";
-    impController.text = "";
+  getPanalsSpecificData() {
+    for (int i = 0; i < panals.length; i++) {
+      pmax = panals['data']['pmax'] ?? [];
+      imp = panals["data"]['imp'] ?? [];
+      isc = panals["data"]['isc'] ?? [];
+      vmp = panals["data"]['vmp'] ?? [];
+      voc = panals["data"]['voc'] ?? [];
+      print(
+          "pmax is >>> $pmax /n imp is >>> $imp /n imp is >>> $vmp/n imp is >>> $isc/n imp is >>> $voc");
+    }
   }
 
-  //* reset all lists after add done
-  // void resetPanalsListsData() {
-  //   panals = [];
-  //   pmax = [];
-  //   isc = [];
-  //   vmp = [];
-  //   voc = [];
-  //   imp = [];
-  // }
+  //* reset data befor get to not dublicate data
+  void resetInvertersData() {
+    inverters = {};
+    modelInverter = [];
+    input1DC = [];
+    input2DC = [];
+    maxInputDC = [];
+    ratedOutputCurrent = [];
+  }
 
-  //* reset all lists after add done
-  // void resetInertersListsData() {
-  //   modelInverter = [];
-  //   input1DC = [];
-  //   input2DC = [];
-  //   maxInputDC = [];
-  //   ratedOutputCurrent = [];
-  // }
+  //* get Data From [panals] list and save every tyle value in specific list.
+  getInvertersSpecificData({required String collectionName}) {
+    for (int i = 0; i < inverters.length; i++) {
+      modelInverter = inverters[collectionName]['model_inverter'] ?? [];
+      input1DC = inverters[collectionName]['input_1dc'] ?? [];
+      input2DC = inverters[collectionName]['input_2dc'] ?? [];
+      maxInputDC = inverters[collectionName]['max_input_dc'] ?? [];
+      ratedOutputCurrent =
+          inverters[collectionName]['rated_output_current'] ?? [];
+      print(
+          "pmax is >>> $pmax /n imp is >>> $imp /n imp is >>> $vmp/n imp is >>> $isc/n imp is >>> $voc");
+    }
+  }
 
+  int getExcelIndex(List list, double result) {
+    // Get the fractional part of the number
+    double fractionalPart = result - result.toInt();
+
+    // Get the first digit after the decimal point.
+    int firstDigitAfterDecimal = (fractionalPart * 10).toInt();
+
+    List modelsInverter = inverters['data']['model_inverter'];
+
+    double closestValue =
+        list.reduce((a, b) => (a - result).abs() < (b - result).abs() ? a : b);
+    // Find the index of the closest value
+    // Manually find the index of the closest
+
+    int index = modelsInverter.indexOf(closestValue);
+
+    print('inverter models values is >>  $modelsInverter');
+    print('inverter models index is >>  $index');
+    print('result is $result \n closestValue >>  $closestValue');
+    print("firstDigitAfterDecimal >> ${firstDigitAfterDecimal.toInt()}");
+    return index;
+  }
+
+  //* to check only and will remove after that
+  int closestValue(double result) {
+    double result = 0;
+
+    List modelsInverter = inverters['data']['model_inverter'];
+    if (!modelsInverter.isNullOrEmpty()) {
+      result = modelsInverter
+          .reduce((a, b) => (a - result).abs() < (b - result).abs() ? a : b);
+      return result.ceil();
+    } else {
+      return 0;
+    }
+  }
   //* >>>>>>>>>>>>>> MATHMATICAL OPERATIONS <<<<<<<<<<<<<<<<<<
 
   //* Calculation inverterCapacity (قدرة الانفرتر )
@@ -189,6 +206,12 @@ class InverterAndBatteryCubit extends Cubit<InverterAndBatteryState> {
     // convert wToPh from in to double to can use it in operation
     double wToPhDouble = double.parse(wToPh.toString());
     result = (wToPhDouble * ph) / 1000;
+    List modelsInverter = inverters['data']['model_inverter'];
+    if (!modelsInverter.isNullOrEmpty()) {
+      getExcelIndex(modelsInverter, result);
+    }
+    // print("${firstDigitAfterDecimal.toInt()} = firstDigitAfterDecimal < 5");
+
     print("قدرة الانفرتر (Inverter Capacity) >>> $result KW");
     return result;
   }
@@ -412,26 +435,37 @@ class InverterAndBatteryCubit extends Cubit<InverterAndBatteryState> {
   }
 
   void allCalculation() {
-    inverterCapacity(ph: 50);
-    double ovA = ovAv(input1DC: 350, input2DC: 780);
-    double pvModule = pvModulesInSeries(vmp: 41.32, ovAv: ovA);
+    inverterCapacity(ph: double.parse(loadWHController.text.toString()));
+    closestValue(double.parse(loadWHController.text.toString()));
+    // double ovA = ovAv(input1DC: 350, input2DC: 780);
+    // double pvModule = pvModulesInSeries(vmp: 41.32, ovAv: ovA);
 
-    checkOnSeriasNumbees(voc: 49.92, seriasNumbees: pvModule);
-    int numberOfStrings = numberOfSeries(ioc: (75 - 5), imp: 13.19);
+    // checkOnSeriasNumbees(voc: 49.92, seriasNumbees: pvModule);
+    // int numberOfStrings = numberOfSeries(ioc: (75 - 5), imp: 13.19);
 
-    int totalNumberofPanal = totalNumberOfPanelsStation(
-        pvInSeries: pvModule.ceil(),
-        stringsNumber: numberOfSeries(ioc: (75 - 5), imp: 13.19));
-    totalWattsOfTheStation(
-        totalPanelsStationNumber: totalNumberofPanal, wattSinglePanal: 545);
+    // int totalNumberofPanal = totalNumberOfPanelsStation(
+    //     pvInSeries: pvModule.ceil(),
+    //     stringsNumber: numberOfSeries(ioc: (75 - 5), imp: 13.19));
+    // totalWattsOfTheStation(
+    //     totalPanelsStationNumber: totalNumberofPanal, wattSinglePanal: 545);
 
-    wattPerOneSeries(pvInSeries: pvModule, wattSinglePanal: 49.92);
-    double tAmbir = totalAmpere(numberOfSeries: numberOfStrings, imp: 13.19);
+    // wattPerOneSeries(pvInSeries: pvModule, wattSinglePanal: 49.92);
+    // double tAmbir = totalAmpere(numberOfSeries: numberOfStrings, imp: 13.19);
 
-    amperePerSeries(seriesNumbers: numberOfStrings, totalAmpere: tAmbir);
-    double tVolt = totalVoltage(pvInSeries: pvModule.ceil(), voc: 49.92);
-    voltPerString(totalVoltage: tVolt);
-    mC4Numbers(numberOfSeries: numberOfStrings);
-    pvFuseAndFuseHolder(numberOfSeries: numberOfStrings);
+    // amperePerSeries(seriesNumbers: numberOfStrings, totalAmpere: tAmbir);
+    // double tVolt = totalVoltage(pvInSeries: pvModule.ceil(), voc: 49.92);
+    // voltPerString(totalVoltage: tVolt);
+    // mC4Numbers(numberOfSeries: numberOfStrings);
+    // pvFuseAndFuseHolder(numberOfSeries: numberOfStrings);
   }
+
+  //* get data from shared prefrence
+  // Future<List<Map<String, dynamic>>> getPdfData() async {
+  //   //* get items data which saved before to save all items not last item only.
+  //   final data = await SharedPref().getListOfMaps();
+  //   //* save all data in [pdfData] to use it.
+  //   pdfData = data;
+  //   print("get Pdf Data done pdf data is $pdfData");
+  //   return pdfData;
+  // }
 }

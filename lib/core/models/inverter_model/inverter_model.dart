@@ -3,27 +3,23 @@ import 'dart:convert';
 import 'package:solar/core/models/inverter_model/inverter_data_model.dart';
 
 class InverterModel {
-  InverterModel(this.name, this.data);
-  final String name;
-  final  InverterDataModel data;
-
-  
+  InverterModel(this.data);
+  final InverterDataModel data;
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
+    return {
       'data': data.toMap(),
     };
   }
 
   factory InverterModel.fromMap(Map<String, dynamic> map) {
     return InverterModel(
-      map['name'] as String,
-      InverterDataModel.fromMap(map['data'] as Map<String,dynamic>),
+      InverterDataModel.fromMap(map['data'] as Map<String, dynamic>),
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory InverterModel.fromJson(String source) => InverterModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory InverterModel.fromJson(String source) =>
+      InverterModel.fromMap(json.decode(source) as Map<String, dynamic>);
 }
